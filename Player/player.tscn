@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://r7k2f6vqyrs8"]
+
+[ext_resource type="Script" uid="uid://rsnbxgmdpatp" path="res://Player/player.gd" id="1_l8h54"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_l8h54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l8h54")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
