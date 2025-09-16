@@ -5,6 +5,7 @@ extends CharacterBody2D
 #var running_anim = $AnimatedSprite2D
 var jump_pressed = false
 
+const SPEED = 100
 const JUMP_SPEED = -400
 const GRAVITY = 1200
 const GRAVITY_WHILE_HOLD = 700
