@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c4xehiik8vl5x"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="DistanceLabel" type="Label" parent="."]
+offset_right = 86.0
+offset_bottom = 23.0
+text = "DISTANCE: "

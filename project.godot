@@ -11,12 +11,11 @@ config_version=5
 [application]
 
 config/name="DreamRunner"
-run/main_scene="uid://ceuo6txm6c50m"
+run/main_scene="uid://dgiyyduqacg0f"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
