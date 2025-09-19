@@ -30,6 +30,7 @@ func _process(delta):
 	$Camera2D.position.x += speed
 	
 	distance += speed
+	print(speed)
 	show_distance()
 	
 	if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
