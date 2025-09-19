@@ -1,13 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://r7k2f6vqyrs8"]
+[gd_scene load_steps=9 format=3 uid="uid://r7k2f6vqyrs8"]
 
 [ext_resource type="Script" uid="uid://rsnbxgmdpatp" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://ppwjsq52brnh" path="res://Player/child.png" id="2_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://v6uyn720apd5" path="res://Player/Idle Animation/child_idle1.png" id="2_fhl08"]
+[ext_resource type="Texture2D" uid="uid://du0161pyyoxcc" path="res://Player/Idle Animation/child_idle2.png" id="3_vtle1"]
+[ext_resource type="Texture2D" uid="uid://8mu8af5r3x1k" path="res://Player/Idle Animation/child_idle3.png" id="4_od3ui"]
+[ext_resource type="Texture2D" uid="uid://c7cwnnnifrnu5" path="res://Player/Idle Animation/child_idle4.png" id="5_00tjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
 size = Vector2(20, 58)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btcbx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fhl08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vtle1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_od3ui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_00tjw")
+}],
+"loop": true,
+"name": &"Player Idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_4ntmi")
@@ -30,4 +51,5 @@ shape = SubResource("RectangleShape2D_l8h54")
 z_index = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_btcbx")
-animation = &"Player Run"
+animation = &"Player Idle"
+frame_progress = 0.189872

@@ -6,11 +6,12 @@ extends CharacterBody2D
 var jump_pressed = false
 
 const SPEED = 100
-const JUMP_SPEED = -400
+const JUMP_SPEED = -450
 const GRAVITY = 1200
 const GRAVITY_WHILE_HOLD = 700
 
 func _physics_process(delta):
+	$AnimatedSprite2D.play("Player Idle")
 	if jump_pressed and velocity.y < 0:
 		velocity.y += GRAVITY_WHILE_HOLD * delta
 	else:
