@@ -1,8 +1,13 @@
-[gd_scene format=3 uid="uid://c4xehiik8vl5x"]
+[gd_scene load_steps=2 format=3 uid="uid://c4xehiik8vl5x"]
+
+[ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_h61sl"]
 
 [node name="HUD" type="CanvasLayer"]
 
 [node name="DistanceLabel" type="Label" parent="."]
 offset_right = 86.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("1_h61sl")
+theme_override_font_sizes/font_size = 40
 text = "DISTANCE: "

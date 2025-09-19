@@ -5,7 +5,7 @@ const CAM_START_POS := Vector2i(576, 324)
 
 var speed : float
 const START_SPEED : float = 5.0
-const MAX_SPEED : int = 25
+const MAX_SPEED : int = 15.0
 var screen_size : Vector2i
 const SPEED_MODIFIER: int = 5000
 var distance : int
@@ -36,4 +36,4 @@ func _process(delta):
 		$Ground.position.x += screen_size.x
 
 func show_distance():
-	$HUD.get_node("DistanceLabel").text = "Distance: " + str(distance / DISTANCE_MODIFIER) + " Meters"
+	$HUD.get_node("DistanceLabel").text = "Distance: " + str(distance / DISTANCE_MODIFIER) + " m"
