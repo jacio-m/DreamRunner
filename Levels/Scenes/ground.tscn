@@ -1,20 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://c45dfb07a8s8g"]
 
-[ext_resource type="Texture2D" uid="uid://df8nxcsf4m2l6" path="res://Levels/Sprites/ground.png" id="1_rlgaf"]
+[ext_resource type="Texture2D" uid="uid://j1j473jk8n5v" path="res://Levels/Sprites/cloudy_ground.png" id="1_6xr1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6e81"]
-size = Vector2(2400, 64)
+size = Vector2(3600, 51)
 
 [node name="Ground" type="StaticBody2D"]
-scale = Vector2(1.5, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -136)
-texture = ExtResource("1_rlgaf")
+texture = ExtResource("1_6xr1o")
 centered = false
 offset = Vector2(0, 720)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1200, 616)
+position = Vector2(1800, 622.5)
 shape = SubResource("RectangleShape2D_i6e81")
 debug_color = Color(0.524127, 0.416125, 1, 0.42)

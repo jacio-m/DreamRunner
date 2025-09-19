@@ -1,6 +1,6 @@
 extends Node
 
-const PLAYER_START_POS := Vector2i(150, 485)
+const PLAYER_START_POS := Vector2i(150, 515)
 const CAM_START_POS := Vector2i(576, 324)
 
 var speed : float
@@ -22,6 +22,10 @@ func new_game():
 	$Player.velocity = Vector2i(0, 0)
 	$Camera2D.position = CAM_START_POS
 	$Ground.position = Vector2i(0, 0)
+
+func _input(InputEvent):
+	if Input.is_action_just_pressed("ui_down"):
+		get_tree().reload_current_scene()
 	
 func _process(delta):
 	speed = START_SPEED + distance / SPEED_MODIFIER
