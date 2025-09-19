@@ -7,11 +7,12 @@ var speed : float
 const START_SPEED : float = 5.0
 const MAX_SPEED : int = 15.0
 var screen_size : Vector2i
-const SPEED_MODIFIER: int = 5000
+const SPEED_MODIFIER: int = 10000
 var distance : int
 const DISTANCE_MODIFIER: int = 100
 
 func _ready():
+	$"DreamSweet (main)".play()
 	screen_size = get_window().size
 	new_game()
 	

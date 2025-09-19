@@ -19,6 +19,7 @@ func _physics_process(delta):
 		
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
+			$SfxJump.play()
 			velocity.y = JUMP_SPEED
 			jump_pressed = true
 	if Input.is_action_just_released("ui_up"):

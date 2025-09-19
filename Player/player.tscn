@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://r7k2f6vqyrs8"]
+[gd_scene load_steps=10 format=3 uid="uid://r7k2f6vqyrs8"]
 
 [ext_resource type="Script" uid="uid://rsnbxgmdpatp" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://ppwjsq52brnh" path="res://Player/child.png" id="2_4ntmi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://du0161pyyoxcc" path="res://Player/Idle Animation/child_idle2.png" id="3_vtle1"]
 [ext_resource type="Texture2D" uid="uid://8mu8af5r3x1k" path="res://Player/Idle Animation/child_idle3.png" id="4_od3ui"]
 [ext_resource type="Texture2D" uid="uid://c7cwnnnifrnu5" path="res://Player/Idle Animation/child_idle4.png" id="5_00tjw"]
+[ext_resource type="AudioStream" uid="uid://be66fp2fbmcp0" path="res://Sounds/sfx_jump_07-80241.mp3" id="7_vtle1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
 size = Vector2(20, 58)
@@ -53,3 +54,6 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_btcbx")
 animation = &"Player Idle"
 frame_progress = 0.189872
+
+[node name="SfxJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vtle1")

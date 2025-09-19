@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dii14twxkxsxo"
+path="res://.godot/imported/Takashi Lee - Dream sweet-(main cutted).ogg-5172e0f7891e26f0c232ef44b23eaea8.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg"
+dest_files=["res://.godot/imported/Takashi Lee - Dream sweet-(main cutted).ogg-5172e0f7891e26f0c232ef44b23eaea8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
