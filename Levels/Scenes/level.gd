@@ -1,8 +1,9 @@
 extends Node
 
-var shadow_blob = preload("res://Enemies/enemy.tscn")
+var shadow_blob = preload("res://Enemies/shadow_blob.tscn")
+var shadow_blob2 = preload("res://Enemies/shadow_blob2.tscn")
 #maybe some other enemies later on
-var obstacle_types := [shadow_blob]
+var obstacle_types := [shadow_blob, shadow_blob2]
 var obstacles : Array
 
 const PLAYER_START_POS := Vector2i(150, 515)
@@ -20,7 +21,7 @@ var last_obs
 
 func _ready():
 	$"DreamSweet (main)".play()
-	screen_size = get_window().size
+	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
 	new_game()
 	
@@ -51,23 +52,36 @@ func _process(delta):
 	
 	if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
 		$Ground.position.x += screen_size.x
+		
+	for obs in obstacles:
+		if obs.position.x < ($Camera2D.position.x - screen_size.x):
+			remove_obs(obs)
 
 func generate_obs():
-	if obstacles.is_empty():
-		var obstacle_types = obstacle_types[randi() % obstacle_types.size()]
+	if obstacles.is_empty() or last_obs.position.x < distance + randi_range(200, 600):
+		var obstacle_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
-		obs = obstacle_types.instantiate()
+		obs = obstacle_type.instantiate()
 		var obs_height = obs.get_node("Sprite2D").texture.get_height()
 		var obs_scale = obs.get_node("Sprite2D").scale
 		var obs_x : int = screen_size.x + distance + 100
-		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 5
+		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 15
 		last_obs = obs
 		add_obs(obs, obs_x, obs_y)
 		
 func add_obs(obs, x, y):
 	obs.position = Vector2i(x, y)
+	obs.body_entered.connect(hit_obs)
 	add_child(obs)
 	obstacles.append(obs)
 
+func remove_obs(obs):
+	obs.queue_free()
+	obstacles.erase(obs)
+
 func show_distance():
 	$HUD.get_node("DistanceLabel").text = "Distance: " + str(distance / DISTANCE_MODIFIER) + " m"
+	
+func hit_obs(body):
+	if body.name == "Player":
+		print("funcionando")
