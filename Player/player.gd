@@ -7,8 +7,8 @@ var jump_pressed = false
 
 const SPEED = 100
 const JUMP_SPEED = -450
-const GRAVITY = 1200
-const GRAVITY_WHILE_HOLD = 700
+const GRAVITY = 1600
+const GRAVITY_WHILE_HOLD = 800
 
 func _physics_process(delta):
 	$AnimatedSprite2D.play("Player Idle")

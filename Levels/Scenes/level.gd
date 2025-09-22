@@ -18,44 +18,59 @@ const SPEED_MODIFIER: int = 10000
 var distance : int
 const DISTANCE_MODIFIER: int = 100
 var last_obs
+var game_running : bool
 
 func _ready():
 	$"DreamSweet (main)".play()
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
+	$GameOver.get_node("Button").pressed.connect(new_game)
 	new_game()
 	
 func new_game():
 	distance = 0
+	show_distance()
+	game_running = false
+	get_tree().paused = false
+	
+	for obs in obstacles:
+		obs.queue_free()
+	obstacles.clear()
+	
+	
 	$Player.position = PLAYER_START_POS 
 	$Player.velocity = Vector2i(0, 0)
 	$Camera2D.position = CAM_START_POS
 	$Ground.position = Vector2i(0, 0)
-
-func _input(InputEvent):
-	if Input.is_action_just_pressed("ui_down"):
-		get_tree().reload_current_scene()
+	
+	$HUD.get_node("StartLabel").visible = true
+	$GameOver.visible = false
 	
 func _process(delta):
-	speed = START_SPEED + distance / SPEED_MODIFIER
-	if speed > MAX_SPEED:
-		speed = MAX_SPEED
+	if game_running:
+		speed = START_SPEED + distance / SPEED_MODIFIER
+		if speed > MAX_SPEED:
+			speed = MAX_SPEED
+			
+		generate_obs()
+			
 		
-	generate_obs()
+		$Player.position.x += speed
+		$Camera2D.position.x += speed
 		
-	
-	$Player.position.x += speed
-	$Camera2D.position.x += speed
-	
-	distance += speed
-	show_distance()
-	
-	if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
-		$Ground.position.x += screen_size.x
+		distance += speed
+		show_distance()
 		
-	for obs in obstacles:
-		if obs.position.x < ($Camera2D.position.x - screen_size.x):
-			remove_obs(obs)
+		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
+			$Ground.position.x += screen_size.x
+			
+		for obs in obstacles:
+			if obs.position.x < ($Camera2D.position.x - screen_size.x):
+				remove_obs(obs)
+	else:
+		if Input.is_action_just_pressed("ui_accept"):
+			game_running = true
+			$HUD.get_node("StartLabel").visible = false
 
 func generate_obs():
 	if obstacles.is_empty() or last_obs.position.x < distance + randi_range(200, 600):
@@ -80,8 +95,14 @@ func remove_obs(obs):
 	obstacles.erase(obs)
 
 func show_distance():
-	$HUD.get_node("DistanceLabel").text = "Distance: " + str(distance / DISTANCE_MODIFIER) + " m"
+	$HUD.get_node("DistanceLabel").text = "DISTANCE: " + str(distance / DISTANCE_MODIFIER) + " m"
 	
 func hit_obs(body):
 	if body.name == "Player":
-		print("funcionando")
+		game_over()
+
+func game_over():
+	get_tree().paused = true
+	game_running = false
+	$GameOver.visible = true
+	$GameOver.get_node("Button").grab_focus()

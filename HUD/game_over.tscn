@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://1m2uljx22onk"]
+
+[ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_qrorf"]
+
+[node name="GameOver" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 150.0
+offset_top = 254.0
+offset_right = 968.0
+offset_bottom = 424.0
+theme_override_colors/font_color = Color(0.698039, 0.164706, 0.184314, 1)
+theme_override_colors/font_shadow_color = Color(0.478431, 0.101961, 0.129412, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("1_qrorf")
+theme_override_font_sizes/font_size = 37
+text = "OH NO! THE NIGHTMARES GOT YOU!
+PRESS ENTER TO RESTART"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = 20.0
+offset_right = -62.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("1_qrorf")
+text = "RESTART"
