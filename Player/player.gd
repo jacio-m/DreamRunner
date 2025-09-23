@@ -1,27 +1,47 @@
 class_name Player
 extends CharacterBody2D
 
-#var jump_anim = $AnimatedSprite2D
-#var running_anim = $AnimatedSprite2D
 var jump_pressed = false
+var double_jump = 0
+var input_enabled: bool = true
 
 const SPEED = 100
-const JUMP_SPEED = -450
-const GRAVITY = 1600
+const JUMP_SPEED = -500
+const GRAVITY = 1400
 const GRAVITY_WHILE_HOLD = 800
 
 func _physics_process(delta):
+	if not input_enabled:
+		$AnimatedSprite2D.play("Player Idle")
+		return
+		
 	$AnimatedSprite2D.play("Player Idle")
 	if jump_pressed and velocity.y < 0:
 		velocity.y += GRAVITY_WHILE_HOLD * delta
 	else:
 		velocity.y += GRAVITY * delta
-		
+			
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
 			$SfxJump.play()
 			velocity.y = JUMP_SPEED
 			jump_pressed = true
+			double_jump += 1
+			if double_jump > 3:
+				double_jump = 3
+	else: 
+		if double_jump == 3:
+			if Input.is_action_just_pressed("ui_up"):
+				velocity.y = JUMP_SPEED
+				double_jump = 0
+					
 	if Input.is_action_just_released("ui_up"):
 		jump_pressed = false
+	
+	var direction = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	velocity.x = direction * 250
+	if Input.is_action_just_released("ui_right") or Input.is_action_just_released("ui_left"):
+		velocity.x = 0
+	
 	move_and_slide()
+	

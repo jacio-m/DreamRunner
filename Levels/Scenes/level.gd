@@ -6,11 +6,11 @@ var shadow_blob2 = preload("res://Enemies/shadow_blob2.tscn")
 var obstacle_types := [shadow_blob, shadow_blob2]
 var obstacles : Array
 
-const PLAYER_START_POS := Vector2i(150, 515)
+const PLAYER_START_POS := Vector2i(155, 535)
 const CAM_START_POS := Vector2i(576, 324)
 
 var speed : float
-const START_SPEED : float = 5.0
+const START_SPEED : float = 7.0
 const MAX_SPEED : int = 15.0
 var screen_size : Vector2i
 var ground_height : int
@@ -21,6 +21,7 @@ var last_obs
 var game_running : bool
 
 func _ready():
+	$"DreamSweet (main)".stream.loop = true
 	$"DreamSweet (main)".play()
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
@@ -32,6 +33,7 @@ func new_game():
 	show_distance()
 	game_running = false
 	get_tree().paused = false
+	$Player.input_enabled = false
 	
 	for obs in obstacles:
 		obs.queue_free()
@@ -42,8 +44,10 @@ func new_game():
 	$Player.velocity = Vector2i(0, 0)
 	$Camera2D.position = CAM_START_POS
 	$Ground.position = Vector2i(0, 0)
+	$Player.double_jump = 0
 	
 	$HUD.get_node("StartLabel").visible = true
+	$HUD.get_node("DoubleJump").value = 0
 	$GameOver.visible = false
 	
 func _process(delta):
@@ -53,7 +57,6 @@ func _process(delta):
 			speed = MAX_SPEED
 			
 		generate_obs()
-			
 		
 		$Player.position.x += speed
 		$Camera2D.position.x += speed
@@ -67,9 +70,13 @@ func _process(delta):
 		for obs in obstacles:
 			if obs.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_obs(obs)
+		
+		$HUD.get_node("DoubleJump").value = $Player.double_jump
+		
 	else:
 		if Input.is_action_just_pressed("ui_accept"):
 			game_running = true
+			$Player.input_enabled = true
 			$HUD.get_node("StartLabel").visible = false
 
 func generate_obs():
