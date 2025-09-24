@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgiyyduqacg0f"]
+[gd_scene load_steps=9 format=3 uid="uid://dgiyyduqacg0f"]
 
 [ext_resource type="Script" uid="uid://c8ba4qxvukduu" path="res://Levels/Scenes/level.gd" id="1_3ysta"]
 [ext_resource type="PackedScene" uid="uid://c45dfb07a8s8g" path="res://Levels/Scenes/ground.tscn" id="2_y2rw1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ciihrub27hd6i" path="res://Levels/Scenes/bg.tscn" id="5_y2rw1"]
 [ext_resource type="AudioStream" uid="uid://dii14twxkxsxo" path="res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg" id="6_uihg3"]
 [ext_resource type="PackedScene" uid="uid://1m2uljx22onk" path="res://HUD/game_over.tscn" id="7_np6tt"]
+[ext_resource type="AudioStream" uid="uid://c0ktyndwwirmc" path="res://Sounds/gameover.mp3" id="8_r1var"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3ysta")
@@ -30,3 +31,7 @@ parameters/looping = true
 
 [node name="GameOver" parent="." instance=ExtResource("7_np6tt")]
 process_mode = 2
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+process_mode = 2
+stream = ExtResource("8_r1var")

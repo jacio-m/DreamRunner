@@ -15,14 +15,15 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("Player Idle")
 		return
 		
-	$AnimatedSprite2D.play("Player Idle")
 	if jump_pressed and velocity.y < 0:
 		velocity.y += GRAVITY_WHILE_HOLD * delta
 	else:
 		velocity.y += GRAVITY * delta
 			
 	if is_on_floor():
+		$AnimatedSprite2D.play("Player Run")
 		if Input.is_action_just_pressed("ui_up"):
+			$AnimatedSprite2D.play("Player Idle")
 			$SfxJump.play()
 			velocity.y = JUMP_SPEED
 			jump_pressed = true
@@ -32,6 +33,7 @@ func _physics_process(delta):
 	else: 
 		if double_jump == 3:
 			if Input.is_action_just_pressed("ui_up"):
+				$SfxJump.play()
 				velocity.y = JUMP_SPEED
 				double_jump = 0
 					

@@ -1,15 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://r7k2f6vqyrs8"]
+[gd_scene load_steps=20 format=3 uid="uid://r7k2f6vqyrs8"]
 
 [ext_resource type="Script" uid="uid://rsnbxgmdpatp" path="res://Player/player.gd" id="1_l8h54"]
-[ext_resource type="Texture2D" uid="uid://ppwjsq52brnh" path="res://Player/child.png" id="2_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://v6uyn720apd5" path="res://Player/Idle Animation/child_idle1.png" id="2_fhl08"]
 [ext_resource type="Texture2D" uid="uid://du0161pyyoxcc" path="res://Player/Idle Animation/child_idle2.png" id="3_vtle1"]
 [ext_resource type="Texture2D" uid="uid://8mu8af5r3x1k" path="res://Player/Idle Animation/child_idle3.png" id="4_od3ui"]
 [ext_resource type="Texture2D" uid="uid://c7cwnnnifrnu5" path="res://Player/Idle Animation/child_idle4.png" id="5_00tjw"]
+[ext_resource type="Texture2D" uid="uid://37h6q6qt6332" path="res://Player/Running Animation/child_running1.png" id="6_pisgm"]
+[ext_resource type="Texture2D" uid="uid://80d7f8qbu5mk" path="res://Player/Running Animation/child_running2.png" id="7_b1ygp"]
 [ext_resource type="AudioStream" uid="uid://be66fp2fbmcp0" path="res://Sounds/sfx_jump_07-80241.mp3" id="7_vtle1"]
+[ext_resource type="Texture2D" uid="uid://chtwkl7m72xo7" path="res://Player/Running Animation/child_running3.png" id="8_o28un"]
+[ext_resource type="Texture2D" uid="uid://cm3hrfh05i5jn" path="res://Player/Running Animation/child_running4.png" id="9_n471f"]
+[ext_resource type="Texture2D" uid="uid://cvp42n2rufr8h" path="res://Player/Running Animation/child_running5.png" id="10_7emwf"]
+[ext_resource type="Texture2D" uid="uid://b8yikkhpoxl61" path="res://Player/Running Animation/child_running6.png" id="11_hshwv"]
+[ext_resource type="Texture2D" uid="uid://b7wjbhvf0spka" path="res://Player/Running Animation/child_running7.png" id="12_gpjlu"]
+[ext_resource type="Texture2D" uid="uid://di2kj5xdcvwfh" path="res://Player/Running Animation/child_running8.png" id="13_8mwp6"]
+[ext_resource type="Texture2D" uid="uid://bn5qrh5p1ijlg" path="res://Player/Running Animation/child_running9.png" id="14_qemgg"]
+[ext_resource type="Texture2D" uid="uid://drm1yyl3560s5" path="res://Player/Running Animation/child_running10.png" id="15_8viyr"]
+[ext_resource type="Texture2D" uid="uid://cbycv3oi0k6ii" path="res://Player/Running Animation/child_running11.png" id="16_sm0op"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
-size = Vector2(20, 58)
+size = Vector2(19.5, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btcbx"]
 animations = [{
@@ -32,11 +42,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4ntmi")
+"texture": ExtResource("6_pisgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_b1ygp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_o28un")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_n471f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7emwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hshwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_gpjlu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8mwp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qemgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8viyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_sm0op")
 }],
 "loop": true,
 "name": &"Player Run",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -44,7 +84,7 @@ z_index = 1
 script = ExtResource("1_l8h54")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(-0.5, -1)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_l8h54")
 
@@ -52,8 +92,8 @@ shape = SubResource("RectangleShape2D_l8h54")
 z_index = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_btcbx")
-animation = &"Player Idle"
-frame_progress = 0.189872
+animation = &"Player Run"
+frame_progress = 0.15137
 
 [node name="SfxJump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_vtle1")

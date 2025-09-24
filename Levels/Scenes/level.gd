@@ -112,4 +112,5 @@ func game_over():
 	get_tree().paused = true
 	game_running = false
 	$GameOver.visible = true
+	$GameOverSound.play()
 	$GameOver.get_node("Button").grab_focus()
