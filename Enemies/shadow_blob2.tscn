@@ -1,13 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq5txkaeocxps"]
+[gd_scene load_steps=4 format=3 uid="uid://dq5txkaeocxps"]
 
-[ext_resource type="Texture2D" uid="uid://8f3fxo7yxvft" path="res://Enemies/shadow_blob2.png" id="1_fgyhr"]
+[ext_resource type="Texture2D" uid="uid://bilvcwxdwsnon" path="res://Enemies/Shadows Sprites/shadow_spike1.png" id="1_a7gyi"]
+[ext_resource type="Texture2D" uid="uid://h4giv54no387" path="res://Enemies/Shadows Sprites/shadow_spike2.png" id="2_8uqrk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo40t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a7gyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8uqrk")
+}],
+"loop": true,
+"name": &"Enemy Idle",
+"speed": 2.0
+}]
 
 [node name="Area2D" type="Area2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
-texture = ExtResource("1_fgyhr")
+sprite_frames = SubResource("SpriteFrames_xo40t")
+animation = &"Enemy Idle"
+frame_progress = 0.441099
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(3, 3)
-polygon = PackedVector2Array(6, -7.33333, -0.333333, -11.3333, -6.66667, -5.33333, -9.33333, 2, -11.3333, -5.33333, -18.3333, 0.333333, -24.6667, 14.6667, -27, 22.3333, 23.3, 22.5, 20.3333, 15.6667, 10, 0)
+polygon = PackedVector2Array(0, -10, 27.3333, 31.3333, -27.3333, 31.6667)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8f3fxo7yxvft"
-path="res://.godot/imported/shadow_blob2.png-69ed502621b1aca6990617617839eb11.ctex"
+uid="uid://bilvcwxdwsnon"
+path="res://.godot/imported/shadow_spike1.png-0f5c1d2cae9f61f8ffa039d1a5761e2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/shadow_blob2.png"
-dest_files=["res://.godot/imported/shadow_blob2.png-69ed502621b1aca6990617617839eb11.ctex"]
+source_file="res://Enemies/Shadows Sprites/shadow_spike1.png"
+dest_files=["res://.godot/imported/shadow_spike1.png-0f5c1d2cae9f61f8ffa039d1a5761e2d.ctex"]
 
 [params]
 

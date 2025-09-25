@@ -84,8 +84,8 @@ func generate_obs():
 		var obstacle_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		obs = obstacle_type.instantiate()
-		var obs_height = obs.get_node("Sprite2D").texture.get_height()
-		var obs_scale = obs.get_node("Sprite2D").scale
+		var obs_height = obs.get_node("AnimatedSprite2D").get_rect().size.y
+		var obs_scale = obs.get_node("AnimatedSprite2D").scale
 		var obs_x : int = screen_size.x + distance + 100
 		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 15
 		last_obs = obs

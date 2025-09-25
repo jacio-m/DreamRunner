@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhj6uw3tibvx1"
-path="res://.godot/imported/child_jumping1.png-c1823d09c35cee9c355cd1ba16d131f6.ctex"
+uid="uid://h4giv54no387"
+path="res://.godot/imported/shadow_spike2.png-a0329b281fb19df855e2c942dd2b532e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Jumping Animation/child_jumping1.png"
-dest_files=["res://.godot/imported/child_jumping1.png-c1823d09c35cee9c355cd1ba16d131f6.ctex"]
+source_file="res://Enemies/Shadows Sprites/shadow_spike2.png"
+dest_files=["res://.godot/imported/shadow_spike2.png-a0329b281fb19df855e2c942dd2b532e.ctex"]
 
 [params]
 

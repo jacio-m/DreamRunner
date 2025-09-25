@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpufpuvuln33k"
-path="res://.godot/imported/child_jumping4.png-541cb5ed552cede33a779160cb737f14.ctex"
+uid="uid://dw8ipdqwq15no"
+path="res://.godot/imported/shadow_blob1.png-34626ddaae7756d812cf98de77b5d625.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Jumping Animation/child_jumping4.png"
-dest_files=["res://.godot/imported/child_jumping4.png-541cb5ed552cede33a779160cb737f14.ctex"]
+source_file="res://Enemies/Shadows Sprites/shadow_blob1.png"
+dest_files=["res://.godot/imported/shadow_blob1.png-34626ddaae7756d812cf98de77b5d625.ctex"]
 
 [params]
 
