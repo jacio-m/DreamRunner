@@ -80,7 +80,7 @@ func _process(delta):
 			$HUD.get_node("StartLabel").visible = false
 
 func generate_obs():
-	if obstacles.is_empty() or last_obs.position.x < distance + randi_range(200, 600):
+	if obstacles.is_empty() or last_obs.position.x < distance + randi_range(20, 200):
 		var obstacle_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		obs = obstacle_type.instantiate()

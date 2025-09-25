@@ -23,7 +23,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		$AnimatedSprite2D.play("Player Run")
 		if Input.is_action_just_pressed("ui_up"):
-			$AnimatedSprite2D.play("Player Idle")
+			$AnimatedSprite2D.play("Player Jump")
 			$SfxJump.play()
 			velocity.y = JUMP_SPEED
 			jump_pressed = true

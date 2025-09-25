@@ -1,14 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://r7k2f6vqyrs8"]
+[gd_scene load_steps=24 format=3 uid="uid://r7k2f6vqyrs8"]
 
 [ext_resource type="Script" uid="uid://rsnbxgmdpatp" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://v6uyn720apd5" path="res://Player/Idle Animation/child_idle1.png" id="2_fhl08"]
 [ext_resource type="Texture2D" uid="uid://du0161pyyoxcc" path="res://Player/Idle Animation/child_idle2.png" id="3_vtle1"]
 [ext_resource type="Texture2D" uid="uid://8mu8af5r3x1k" path="res://Player/Idle Animation/child_idle3.png" id="4_od3ui"]
 [ext_resource type="Texture2D" uid="uid://c7cwnnnifrnu5" path="res://Player/Idle Animation/child_idle4.png" id="5_00tjw"]
+[ext_resource type="Texture2D" uid="uid://bhj6uw3tibvx1" path="res://Player/Jumping Animation/child_jumping1.png" id="6_7emwf"]
 [ext_resource type="Texture2D" uid="uid://37h6q6qt6332" path="res://Player/Running Animation/child_running1.png" id="6_pisgm"]
 [ext_resource type="Texture2D" uid="uid://80d7f8qbu5mk" path="res://Player/Running Animation/child_running2.png" id="7_b1ygp"]
+[ext_resource type="Texture2D" uid="uid://csbcpl5xeysrf" path="res://Player/Jumping Animation/child_jumping2.png" id="7_hshwv"]
 [ext_resource type="AudioStream" uid="uid://be66fp2fbmcp0" path="res://Sounds/sfx_jump_07-80241.mp3" id="7_vtle1"]
+[ext_resource type="Texture2D" uid="uid://6om4v8ep0sd5" path="res://Player/Jumping Animation/child_jumping3.png" id="8_gpjlu"]
 [ext_resource type="Texture2D" uid="uid://chtwkl7m72xo7" path="res://Player/Running Animation/child_running3.png" id="8_o28un"]
+[ext_resource type="Texture2D" uid="uid://dpufpuvuln33k" path="res://Player/Jumping Animation/child_jumping4.png" id="9_8mwp6"]
 [ext_resource type="Texture2D" uid="uid://cm3hrfh05i5jn" path="res://Player/Running Animation/child_running4.png" id="9_n471f"]
 [ext_resource type="Texture2D" uid="uid://cvp42n2rufr8h" path="res://Player/Running Animation/child_running5.png" id="10_7emwf"]
 [ext_resource type="Texture2D" uid="uid://b8yikkhpoxl61" path="res://Player/Running Animation/child_running6.png" id="11_hshwv"]
@@ -39,6 +43,23 @@ animations = [{
 "loop": true,
 "name": &"Player Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7emwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hshwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gpjlu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8mwp6")
+}],
+"loop": false,
+"name": &"Player Jump",
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -92,8 +113,9 @@ shape = SubResource("RectangleShape2D_l8h54")
 z_index = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_btcbx")
-animation = &"Player Run"
-frame_progress = 0.15137
+animation = &"Player Jump"
+frame = 3
+frame_progress = 1.0
 
 [node name="SfxJump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_vtle1")
