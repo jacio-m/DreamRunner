@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://sn42ofrpplib"]
+[gd_scene load_steps=5 format=3 uid="uid://sn42ofrpplib"]
 
+[ext_resource type="Script" uid="uid://bnliusf73lfdr" path="res://Enemies/shadow.gd" id="1_g7lfu"]
 [ext_resource type="Texture2D" uid="uid://dw8ipdqwq15no" path="res://Enemies/Shadows Sprites/shadow_blob1.png" id="1_glq3i"]
 [ext_resource type="Texture2D" uid="uid://8f3fxo7yxvft" path="res://Enemies/Shadows Sprites/shadow_blob2.png" id="2_g7lfu"]
 
@@ -18,12 +19,13 @@ animations = [{
 }]
 
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_g7lfu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1e4a8")
 animation = &"Enemy Idle"
-frame_progress = 0.840609
+frame_progress = 0.404496
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(3, 3)

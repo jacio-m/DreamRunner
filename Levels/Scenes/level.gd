@@ -61,6 +61,10 @@ func _process(delta):
 		$Player.position.x += speed
 		$Camera2D.position.x += speed
 		
+		var cam_left = $Camera2D.position.x - screen_size.x / 2 + 30
+		var cam_right = $Camera2D.position.x + screen_size.x / 2
+		$Player.position.x = clamp($Player.position.x, cam_left, cam_right)
+		
 		distance += speed
 		show_distance()
 		
@@ -84,10 +88,10 @@ func generate_obs():
 		var obstacle_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		obs = obstacle_type.instantiate()
-		var obs_height = obs.get_node("AnimatedSprite2D").get_rect().size.y
+		var obs_height = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("Enemy Idle", 0).get_size().y
 		var obs_scale = obs.get_node("AnimatedSprite2D").scale
 		var obs_x : int = screen_size.x + distance + 100
-		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 15
+		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 25
 		last_obs = obs
 		add_obs(obs, obs_x, obs_y)
 		
