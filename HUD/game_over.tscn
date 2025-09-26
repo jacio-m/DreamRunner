@@ -33,6 +33,7 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_colors/icon_focus_color = Color(0, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)

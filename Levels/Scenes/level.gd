@@ -62,7 +62,7 @@ func _process(delta):
 		$Camera2D.position.x += speed
 		
 		var cam_left = $Camera2D.position.x - screen_size.x / 2 + 30
-		var cam_right = $Camera2D.position.x + screen_size.x / 2
+		var cam_right = $Camera2D.position.x + screen_size.x / 2 - 30
 		$Player.position.x = clamp($Player.position.x, cam_left, cam_right)
 		
 		distance += speed

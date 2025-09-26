@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4xehiik8vl5x"]
+[gd_scene load_steps=4 format=3 uid="uid://c4xehiik8vl5x"]
 
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_h61sl"]
+[ext_resource type="Texture2D" uid="uid://b6aqamfrmju2p" path="res://HUD/doublejumpbar(under).png" id="2_yu8mg"]
+[ext_resource type="Texture2D" uid="uid://ngqpchhly8uu" path="res://HUD/doublejumpbar(progress).png" id="3_jvmdh"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -41,14 +43,13 @@ DIRECTIONALS KEYS!
 PRESS ENTER TO PLAY!"
 horizontal_alignment = 1
 
-[node name="DoubleJump" type="ProgressBar" parent="."]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 7.0
-offset_top = -272.0
-offset_right = 254.0
-offset_bottom = -228.0
-grow_vertical = 2
+[node name="DoubleJump" type="TextureProgressBar" parent="."]
+offset_left = 781.0
+offset_top = 3.0
+offset_right = 1144.0
+offset_bottom = 65.0
 max_value = 3.0
-show_percentage = false
+value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_yu8mg")
+texture_progress = ExtResource("3_jvmdh")
