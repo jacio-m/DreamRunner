@@ -5,10 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://du0161pyyoxcc" path="res://Player/Idle Animation/child_idle2.png" id="3_vtle1"]
 [ext_resource type="Texture2D" uid="uid://8mu8af5r3x1k" path="res://Player/Idle Animation/child_idle3.png" id="4_od3ui"]
 [ext_resource type="Texture2D" uid="uid://c7cwnnnifrnu5" path="res://Player/Idle Animation/child_idle4.png" id="5_00tjw"]
+[ext_resource type="Texture2D" uid="uid://cc3tx0ltg3oly" path="res://Player/Jumping Animation/child_jumping1.png" id="6_7emwf"]
 [ext_resource type="Texture2D" uid="uid://37h6q6qt6332" path="res://Player/Running Animation/child_running1.png" id="6_pisgm"]
 [ext_resource type="Texture2D" uid="uid://80d7f8qbu5mk" path="res://Player/Running Animation/child_running2.png" id="7_b1ygp"]
+[ext_resource type="Texture2D" uid="uid://dbfd8qhxk0dw7" path="res://Player/Jumping Animation/child_jumping2.png" id="7_hshwv"]
 [ext_resource type="AudioStream" uid="uid://be66fp2fbmcp0" path="res://Sounds/sfx_jump_07-80241.mp3" id="7_vtle1"]
+[ext_resource type="Texture2D" uid="uid://ehqitl64kaw" path="res://Player/Jumping Animation/child_jumping3.png" id="8_gpjlu"]
 [ext_resource type="Texture2D" uid="uid://chtwkl7m72xo7" path="res://Player/Running Animation/child_running3.png" id="8_o28un"]
+[ext_resource type="Texture2D" uid="uid://k41jfi7x7gb" path="res://Player/Jumping Animation/child_jumping4.png" id="9_8mwp6"]
 [ext_resource type="Texture2D" uid="uid://cm3hrfh05i5jn" path="res://Player/Running Animation/child_running4.png" id="9_n471f"]
 [ext_resource type="Texture2D" uid="uid://cvp42n2rufr8h" path="res://Player/Running Animation/child_running5.png" id="10_7emwf"]
 [ext_resource type="Texture2D" uid="uid://b8yikkhpoxl61" path="res://Player/Running Animation/child_running6.png" id="11_hshwv"]
@@ -20,18 +24,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
 size = Vector2(19.5, 50)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pisgm"]
-load_path = "res://.godot/imported/child_jumping1.png-c1823d09c35cee9c355cd1ba16d131f6.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b1ygp"]
-load_path = "res://.godot/imported/child_jumping2.png-ae687d63cdad438c7905f28e21246743.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o28un"]
-load_path = "res://.godot/imported/child_jumping3.png-b1cff27e7eb15999b3cd74609bbad8ed.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n471f"]
-load_path = "res://.godot/imported/child_jumping4.png-541cb5ed552cede33a779160cb737f14.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btcbx"]
 animations = [{
@@ -54,16 +46,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_pisgm")
+"texture": ExtResource("6_7emwf")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_b1ygp")
+"texture": ExtResource("7_hshwv")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_o28un")
+"texture": ExtResource("8_gpjlu")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_n471f")
+"texture": ExtResource("9_8mwp6")
 }],
 "loop": false,
 "name": &"Player Jump",

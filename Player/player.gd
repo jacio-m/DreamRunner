@@ -6,9 +6,9 @@ var double_jump = 0
 var input_enabled: bool = true
 
 const SPEED = 100
-const JUMP_SPEED = -500
-const GRAVITY = 1400
-const GRAVITY_WHILE_HOLD = 800
+const JUMP_SPEED = -600
+const GRAVITY = 1900
+const GRAVITY_WHILE_HOLD = 900
 
 func _physics_process(delta):
 	if not input_enabled:

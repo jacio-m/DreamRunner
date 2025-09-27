@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://1m2uljx22onk"]
+[gd_scene load_steps=3 format=3 uid="uid://1m2uljx22onk"]
 
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_qrorf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrorf"]
+bg_color = Color(0.282353, 0.243137, 0.72549, 1)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
 
 [node name="GameOver" type="CanvasLayer"]
 
@@ -33,9 +42,9 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_colors/icon_focus_color = Color(0, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("1_qrorf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qrorf")
 text = "RESTART"

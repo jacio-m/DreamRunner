@@ -6,7 +6,7 @@ var shadow_blob2 = preload("res://Enemies/shadow_blob2.tscn")
 var obstacle_types := [shadow_blob, shadow_blob2]
 var obstacles : Array
 
-const PLAYER_START_POS := Vector2i(155, 535)
+const PLAYER_START_POS := Vector2i(155, 550)
 const CAM_START_POS := Vector2i(576, 324)
 
 var speed : float

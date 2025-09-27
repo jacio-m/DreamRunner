@@ -37,8 +37,10 @@ theme_override_fonts/font = ExtResource("1_h61sl")
 theme_override_font_sizes/font_size = 40
 text = "PRESS UP TO JUMP!
 
-YOU CAN WALK BY PRESSING 
-DIRECTIONALS KEYS!
+AFTER 3 JUMPS, YOU CAN 
+DO  A DOUBLE JUMP!
+
+MOVE WITH ARROW KEYS!
 
 PRESS ENTER TO PLAY!"
 horizontal_alignment = 1
