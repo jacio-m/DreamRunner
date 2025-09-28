@@ -71,10 +71,17 @@ func _process(delta):
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
 			$Ground.position.x += screen_size.x
 			
+		if $Player.is_on_floor():
+			$CloudParticle.position = $Player.position
+			$CloudParticle.position.y += 40
+			$CloudParticle.emitting = true
+			
 		for obs in obstacles:
 			if obs.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_obs(obs)
-		
+				
+		var current_progress: float = 0.0
+		var progress_smoothing: float = 5.0
 		$HUD.get_node("DoubleJump").value = $Player.double_jump
 		
 	else:

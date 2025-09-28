@@ -37,11 +37,11 @@ process_mode = 2
 process_mode = 2
 stream = ExtResource("8_r1var")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CloudParticle" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 30
+amount = 60
 texture = ExtResource("9_e5b45")
-lifetime = 0.74
+lifetime = 0.5
 one_shot = true
 explosiveness = 0.26
 randomness = 0.3
