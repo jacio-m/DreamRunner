@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgiyyduqacg0f"]
+[gd_scene load_steps=10 format=3 uid="uid://dgiyyduqacg0f"]
 
 [ext_resource type="Script" uid="uid://c8ba4qxvukduu" path="res://Levels/Scenes/level.gd" id="1_3ysta"]
 [ext_resource type="PackedScene" uid="uid://c45dfb07a8s8g" path="res://Levels/Scenes/ground.tscn" id="2_y2rw1"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dii14twxkxsxo" path="res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg" id="6_uihg3"]
 [ext_resource type="PackedScene" uid="uid://1m2uljx22onk" path="res://HUD/game_over.tscn" id="7_np6tt"]
 [ext_resource type="AudioStream" uid="uid://c0ktyndwwirmc" path="res://Sounds/gameover.mp3" id="8_r1var"]
+[ext_resource type="Texture2D" uid="uid://2ux5yd301bh4" path="res://Levels/Sprites/cloudparticle.png" id="9_e5b45"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3ysta")
@@ -35,3 +36,18 @@ process_mode = 2
 [node name="GameOverSound" type="AudioStreamPlayer" parent="."]
 process_mode = 2
 stream = ExtResource("8_r1var")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("9_e5b45")
+lifetime = 0.74
+one_shot = true
+explosiveness = 0.26
+randomness = 0.3
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 6.0
