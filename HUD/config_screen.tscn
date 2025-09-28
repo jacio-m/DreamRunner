@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4e0i1sppeo6u"]
+
+[ext_resource type="Script" uid="uid://cgqn4b1fq1vhq" path="res://HUD/config_screen.gd" id="1_xc0qo"]
+
+[node name="Config" type="Node"]
+script = ExtResource("1_xc0qo")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 489.0
+offset_top = 325.0
+offset_right = 613.0
+offset_bottom = 348.0
+text = "idk config menu"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 511.0
+offset_top = 374.0
+offset_right = 589.0
+offset_bottom = 450.0
+text = "BACK"

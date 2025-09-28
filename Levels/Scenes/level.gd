@@ -1,9 +1,10 @@
 extends Node
 
 var shadow_blob = preload("res://Enemies/shadow_blob.tscn")
-var shadow_blob2 = preload("res://Enemies/shadow_blob2.tscn")
+var shadow_spike = preload("res://Enemies/shadow_spike.tscn")
+var shadow_kitty = preload("res://Enemies/shadow_kitty.tscn")
 #maybe some other enemies later on
-var obstacle_types := [shadow_blob, shadow_blob2]
+var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
 var obstacles : Array
 
 const PLAYER_START_POS := Vector2i(155, 550)

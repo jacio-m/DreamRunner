@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DreamRunner"
-run/main_scene="uid://dgiyyduqacg0f"
+run/main_scene="uid://dqgwbeljp3ujc"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://dvmcf6qu2bw3y"
 

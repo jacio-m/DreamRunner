@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://csypo7scjhxj5"]
+
+[ext_resource type="Script" uid="uid://bnliusf73lfdr" path="res://Enemies/shadow.gd" id="1_eooo5"]
+[ext_resource type="Texture2D" uid="uid://dbcyv0jecjyix" path="res://Enemies/Shadows Sprites/kitty_shadow1.png" id="1_k54pk"]
+[ext_resource type="Texture2D" uid="uid://1mrw6km3au80" path="res://Enemies/Shadows Sprites/kitty_shadow2.png" id="2_eooo5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4yojb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k54pk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eooo5")
+}],
+"loop": true,
+"name": &"Enemy Idle",
+"speed": 2.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_eooo5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4yojb")
+animation = &"Enemy Idle"
+frame = 1
+frame_progress = 0.129974
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-31.6667, 25, -21, 21, -16.3333, 21, -13.3333, 18, -11, 21, 4, 21, 6.33333, 18, 9, 21, 21, 21, 32, 25, 32, 30, 28.6667, 32, -29, 32, -32, 30)

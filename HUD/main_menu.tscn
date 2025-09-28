@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqgwbeljp3ujc"]
+
+[ext_resource type="Script" uid="uid://yfc80vp1mx8r" path="res://main_menu.gd" id="1_tssjr"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_tssjr")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 420.0
+offset_top = 204.0
+offset_right = 660.0
+offset_bottom = 304.0
+text = "PLAY"
+
+[node name="ConfigButton" type="Button" parent="."]
+offset_left = 415.0
+offset_top = 323.0
+offset_right = 664.0
+offset_bottom = 429.0
+text = "CONFIG"
+
+[node name="TutorialButton" type="Button" parent="."]
+offset_left = 418.0
+offset_top = 456.0
+offset_right = 660.0
+offset_bottom = 554.0
+text = "TUTORIAL"
