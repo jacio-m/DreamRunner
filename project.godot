@@ -13,7 +13,13 @@ config_version=5
 config/name="DreamRunner"
 run/main_scene="uid://dqgwbeljp3ujc"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.32549, 0.0352941, 0.517647, 1)
+boot_splash/image="uid://dvmcf6qu2bw3y"
 config/icon="uid://dvmcf6qu2bw3y"
+
+[autoload]
+
+FadeAnimation="*res://HUD/fade_animation.tscn"
 
 [display]
 

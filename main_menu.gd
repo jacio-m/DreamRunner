@@ -7,10 +7,10 @@ func _ready():
 
 
 func play_game():
-	get_tree().change_scene_to_file("res://Levels/Scenes/main.tscn")
+	FadeAnimation.fade_to_scene("res://Levels/Scenes/main.tscn")
 
 func config_scene():
-	get_tree().change_scene_to_file("res://HUD/config_screen.tscn")
+	FadeAnimation.fade_to_scene("res://HUD/config_screen.tscn")
 
 func tutorial_scene():
-	get_tree().change_scene_to_file("res://HUD/tutorial.tscn")
+	FadeAnimation.fade_to_scene("res://HUD/tutorial.tscn")
