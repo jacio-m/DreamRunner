@@ -19,6 +19,8 @@ var distance : int
 const DISTANCE_MODIFIER: int = 100
 var last_obs
 var game_running : bool
+var current_progress: float = 0.0
+var progress_smoothing : float = 5.0
 
 func _ready():
 	$"DreamSweet (main)".stream.loop = true
@@ -34,6 +36,7 @@ func new_game():
 	game_running = false
 	get_tree().paused = false
 	$Player.input_enabled = false
+	$Player.get_node("DoubleJump").value = current_progress
 	
 	for obs in obstacles:
 		obs.queue_free()
@@ -47,7 +50,6 @@ func new_game():
 	$Player.double_jump = 0
 	
 	$HUD.get_node("StartLabel").visible = true
-	$HUD.get_node("DoubleJump").value = 0
 	$GameOver.visible = false
 	
 func _process(delta):
@@ -80,9 +82,9 @@ func _process(delta):
 			if obs.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_obs(obs)
 				
-		var current_progress: float = 0.0
-		var progress_smoothing: float = 5.0
-		$HUD.get_node("DoubleJump").value = $Player.double_jump
+		var final_progress = float($Player.double_jump) / 3 * 100
+		current_progress = lerp(current_progress, final_progress, delta * progress_smoothing)
+		$Player.get_node("DoubleJump").value = current_progress
 		
 	else:
 		if Input.is_action_just_pressed("ui_accept"):

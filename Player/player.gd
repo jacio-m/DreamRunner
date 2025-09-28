@@ -33,6 +33,7 @@ func _physics_process(delta):
 	else: 
 		if double_jump == 3:
 			if Input.is_action_just_pressed("ui_up"):
+				$AnimatedSprite2D.play("Player Jump")
 				$SfxJump.play()
 				velocity.y = JUMP_SPEED
 				double_jump = 0
