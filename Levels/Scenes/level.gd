@@ -10,11 +10,11 @@ const PLAYER_START_POS := Vector2i(155, 550)
 const CAM_START_POS := Vector2i(576, 324)
 
 var speed : float
-const START_SPEED : float = 7.0
-const MAX_SPEED : int = 15.0
+const START_SPEED : float = 800.0
+const MAX_SPEED : float = 1400.0
 var screen_size : Vector2i
 var ground_height : int
-const SPEED_MODIFIER: int = 10000
+const SPEED_MODIFIER: int = 800
 var distance : int
 const DISTANCE_MODIFIER: int = 100
 var last_obs
@@ -54,20 +54,20 @@ func new_game():
 	
 func _process(delta):
 	if game_running:
-		speed = START_SPEED + distance / SPEED_MODIFIER
+		speed = START_SPEED + distance / SPEED_MODIFIER 
 		if speed > MAX_SPEED:
 			speed = MAX_SPEED
 			
 		generate_obs()
 		
-		$Player.position.x += speed
-		$Camera2D.position.x += speed
+		$Player.position.x += speed * delta
+		$Camera2D.position.x += speed * delta
 		
 		var cam_left = $Camera2D.position.x - screen_size.x / 2 + 30
 		var cam_right = $Camera2D.position.x + screen_size.x / 2 - 30
 		$Player.position.x = clamp($Player.position.x, cam_left, cam_right)
 		
-		distance += speed
+		distance += speed * delta
 		show_distance()
 		
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
@@ -93,13 +93,13 @@ func _process(delta):
 			$HUD.get_node("StartLabel").visible = false
 
 func generate_obs():
-	if obstacles.is_empty() or last_obs.position.x < distance + randi_range(20, 200):
+	if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 100 + randi_range(0, 200):
 		var obstacle_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		obs = obstacle_type.instantiate()
 		var obs_height = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("Enemy Idle", 0).get_size().y
 		var obs_scale = obs.get_node("AnimatedSprite2D").scale
-		var obs_x : int = screen_size.x + distance + 100
+		var obs_x : int = $Camera2D.position.x + screen_size.x + 100
 		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 25
 		last_obs = obs
 		add_obs(obs, obs_x, obs_y)
