@@ -1,20 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4e0i1sppeo6u"]
+[gd_scene load_steps=4 format=3 uid="uid://d4e0i1sppeo6u"]
 
 [ext_resource type="Script" uid="uid://cgqn4b1fq1vhq" path="res://HUD/config_screen.gd" id="1_xc0qo"]
+[ext_resource type="Texture2D" uid="uid://c4dofmepmfprr" path="res://HUD/Sprites/main_menu1.png" id="2_8ian7"]
+[ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_lul8w"]
 
 [node name="Config" type="Node"]
 script = ExtResource("1_xc0qo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_8ian7")
+centered = false
 
 [node name="Label" type="Label" parent="."]
 offset_left = 489.0
 offset_top = 325.0
 offset_right = 613.0
 offset_bottom = 348.0
-text = "idk config menu"
+theme_override_fonts/font = ExtResource("3_lul8w")
+text = "WIP config menu"
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 511.0
 offset_top = 374.0
-offset_right = 589.0
+offset_right = 652.0
 offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("3_lul8w")
 text = "BACK"

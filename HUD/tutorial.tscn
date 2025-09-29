@@ -1,20 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcaxvcr3gedc"]
+[gd_scene load_steps=4 format=3 uid="uid://bcaxvcr3gedc"]
 
 [ext_resource type="Script" uid="uid://bq5qravcbtof0" path="res://tutorial.gd" id="1_3e5vs"]
+[ext_resource type="Texture2D" uid="uid://c4dofmepmfprr" path="res://HUD/Sprites/main_menu1.png" id="2_bn36r"]
+[ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_bir4d"]
 
 [node name="Tutorial" type="Node"]
 script = ExtResource("1_3e5vs")
 
+[node name="WIP" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_bn36r")
+centered = false
+
 [node name="Label" type="Label" parent="."]
-offset_left = 521.0
-offset_top = 285.0
-offset_right = 655.0
-offset_bottom = 308.0
-text = "idk tutorial scene"
+offset_left = 479.0
+offset_top = 289.0
+offset_right = 684.0
+offset_bottom = 313.0
+theme_override_fonts/font = ExtResource("3_bir4d")
+text = "WIP tutorial scene"
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 515.0
 offset_top = 351.0
 offset_right = 641.0
 offset_bottom = 415.0
+theme_override_fonts/font = ExtResource("3_bir4d")
 text = "BACK"

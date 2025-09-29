@@ -24,14 +24,15 @@ var current_progress: float = 0.0
 var progress_smoothing : float = 5.0
 
 func _ready():
-	$"DreamSweet (main)".stream.loop = true
-	$"DreamSweet (main)".play()
+	if not $"DreamSweet (main)".playing:
+		$"DreamSweet (main)".stream.loop = true
+		$"DreamSweet (main)".play()
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
-	$GameOver.get_node("Button").pressed.connect(new_game)
+	$GameOver.get_node("Button").pressed.connect(func():
+		await FadeAnimation.fade_to_scene(get_tree().current_scene.scene_file_path))
 	$GameOver.get_node("MenuButton").pressed.connect(func():
 		await FadeAnimation.fade_to_scene("res://HUD/main_menu.tscn"))
-	FadeAnimation.fade_out()
 	new_game()
 	
 func new_game():

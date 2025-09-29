@@ -1,6 +1,7 @@
 extends Node
 
 func _ready():
+	$BackButton.grab_focus()
 	$BackButton.pressed.connect(main_menu)
 
 func main_menu():
