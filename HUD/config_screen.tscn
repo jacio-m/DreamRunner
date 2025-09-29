@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4e0i1sppeo6u"]
+[gd_scene load_steps=11 format=3 uid="uid://d4e0i1sppeo6u"]
 
 [ext_resource type="Script" uid="uid://cgqn4b1fq1vhq" path="res://HUD/config_screen.gd" id="1_xc0qo"]
 [ext_resource type="Texture2D" uid="uid://c4dofmepmfprr" path="res://HUD/Sprites/main_menu1.png" id="2_8ian7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="4_nvavp"]
 [ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="5_wiqho"]
 [ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="6_uqe8c"]
+[ext_resource type="AudioStream" uid="uid://cgcxbnq8no005" path="res://Sounds/shine-4-268912.mp3" id="7_wiqho"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nvavp"]
 texture = ExtResource("6_uqe8c")
@@ -25,19 +26,39 @@ texture = ExtResource("2_8ian7")
 centered = false
 
 [node name="Label" type="Label" parent="."]
-offset_left = 489.0
-offset_top = 325.0
-offset_right = 613.0
-offset_bottom = 348.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_top = 199.0
+offset_right = 91.0
+offset_bottom = 222.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_lul8w")
 text = "WIP config menu"
 
 [node name="BackButton" type="Button" parent="."]
-offset_left = 494.0
-offset_top = 353.0
-offset_right = 673.0
-offset_bottom = 478.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -72.5
+offset_right = 97.0
+offset_bottom = 72.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("3_lul8w")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxTexture_nvavp")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_wiqho")
 theme_override_styles/normal = SubResource("StyleBoxTexture_uqe8c")
 text = "BACK"
+
+[node name="EnterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_wiqho")
+pitch_scale = 2.99

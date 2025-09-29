@@ -8,21 +8,30 @@ func _ready():
 
 func play_game():
 	$"../EnterSound".play()
+	$PlayButton.release_focus()
+	var pressed_style = $PlayButton.get("theme_override_styles/pressed")
+	$PlayButton.add_theme_stylebox_override("normal", pressed_style)
 	FadeAnimation.fade_to_scene("res://Levels/Scenes/main.tscn")
 
 func config_scene():
 	$"../EnterSound".play()
+	$ConfigButton.release_focus()
+	var pressed_style = $ConfigButton.get("theme_override_styles/pressed")
+	$ConfigButton.add_theme_stylebox_override("normal", pressed_style)
 	FadeAnimation.fade_to_scene("res://HUD/config_screen.tscn")
 
 func tutorial_scene():
 	$"../EnterSound".play()
+	$TutorialButton.release_focus()
+	var pressed_style = $TutorialButton.get("theme_override_styles/pressed")
+	$TutorialButton.add_theme_stylebox_override("normal", pressed_style)
 	FadeAnimation.fade_to_scene("res://HUD/tutorial.tscn")
-
+	
 func _on_play_button_focus_entered():
 	$"../SelectingSound".play()
-
-func _on_config_button_focus_entered():
+	
+func _on_config_button_focus_entered() -> void:
 	$"../SelectingSound".play()
 
-func _on_tutorial_button_focus_entered():
+func _on_tutorial_button_focus_entered() -> void:
 	$"../SelectingSound".play()
