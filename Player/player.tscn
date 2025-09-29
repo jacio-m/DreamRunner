@@ -21,8 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://bn5qrh5p1ijlg" path="res://Player/Running Animation/child_running9.png" id="14_qemgg"]
 [ext_resource type="Texture2D" uid="uid://drm1yyl3560s5" path="res://Player/Running Animation/child_running10.png" id="15_8viyr"]
 [ext_resource type="Texture2D" uid="uid://cbycv3oi0k6ii" path="res://Player/Running Animation/child_running11.png" id="16_sm0op"]
-[ext_resource type="Texture2D" uid="uid://b6aqamfrmju2p" path="res://HUD/doublejumpbar(under).png" id="22_gpjlu"]
-[ext_resource type="Texture2D" uid="uid://ngqpchhly8uu" path="res://HUD/doublejumpbar(progress).png" id="23_8mwp6"]
+[ext_resource type="Texture2D" uid="uid://b6aqamfrmju2p" path="res://HUD/Sprites/doublejumpbar(under).png" id="22_gpjlu"]
+[ext_resource type="Texture2D" uid="uid://ngqpchhly8uu" path="res://HUD/Sprites/doublejumpbar(progress).png" id="23_8mwp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
 size = Vector2(19.5, 50)

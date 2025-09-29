@@ -1,6 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqgwbeljp3ujc"]
+[gd_scene load_steps=10 format=3 uid="uid://dqgwbeljp3ujc"]
 
 [ext_resource type="Script" uid="uid://yfc80vp1mx8r" path="res://main_menu.gd" id="1_tssjr"]
+[ext_resource type="Texture2D" uid="uid://v6uyn720apd5" path="res://Player/Idle Animation/child_idle1.png" id="2_l7hc5"]
+[ext_resource type="Texture2D" uid="uid://dw8ipdqwq15no" path="res://Enemies/Shadows Sprites/shadow_blob1.png" id="2_yudvj"]
+[ext_resource type="Texture2D" uid="uid://du0161pyyoxcc" path="res://Player/Idle Animation/child_idle2.png" id="3_mg70j"]
+[ext_resource type="Texture2D" uid="uid://8f3fxo7yxvft" path="res://Enemies/Shadows Sprites/shadow_blob2.png" id="3_qvokx"]
+[ext_resource type="Texture2D" uid="uid://8mu8af5r3x1k" path="res://Player/Idle Animation/child_idle3.png" id="4_yudvj"]
+[ext_resource type="Texture2D" uid="uid://c7cwnnnifrnu5" path="res://Player/Idle Animation/child_idle4.png" id="5_qvokx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6co8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yudvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qvokx")
+}],
+"loop": true,
+"name": &"Shadow Idle",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fojc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l7hc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mg70j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yudvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qvokx")
+}],
+"loop": true,
+"name": &"Child Idle",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_tssjr")
@@ -25,3 +65,18 @@ offset_top = 456.0
 offset_right = 660.0
 offset_bottom = 554.0
 text = "TUTORIAL"
+
+[node name="ShadowIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(180, 449)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_6co8s")
+animation = &"Shadow Idle"
+frame_progress = 0.981968
+
+[node name="ChildIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(948, 465)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_fojc5")
+animation = &"Child Idle"
+frame_progress = 0.889329
+flip_h = true

@@ -9,6 +9,9 @@ func _ready():
 func fade_in():
 	anim.play("Fade In")
 	
+func fade_out():
+	anim.play("Fade Out")
+	
 func fade_to_scene(scene_path: String):
 	anim.play("Fade Out")
 	await anim.animation_finished

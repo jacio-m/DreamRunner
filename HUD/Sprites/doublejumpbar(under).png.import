@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6aqamfrmju2p"
-path="res://.godot/imported/doublejumpbar(under).png-e4f9a11a32a93220454121345d84d050.ctex"
+path="res://.godot/imported/doublejumpbar(under).png-4466ae518a02a676ff7db9ae6ddb5a7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/doublejumpbar(under).png"
-dest_files=["res://.godot/imported/doublejumpbar(under).png-e4f9a11a32a93220454121345d84d050.ctex"]
+source_file="res://HUD/Sprites/doublejumpbar(under).png"
+dest_files=["res://.godot/imported/doublejumpbar(under).png-4466ae518a02a676ff7db9ae6ddb5a7b.ctex"]
 
 [params]
 

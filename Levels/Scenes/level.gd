@@ -29,6 +29,7 @@ func _ready():
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
 	$GameOver.get_node("Button").pressed.connect(new_game)
+	FadeAnimation.fade_out()
 	new_game()
 	
 func new_game():
@@ -52,6 +53,7 @@ func new_game():
 	
 	$HUD.get_node("StartLabel").visible = true
 	$GameOver.visible = false
+	FadeAnimation.fade_in()
 	
 func _process(delta):
 	if game_running:

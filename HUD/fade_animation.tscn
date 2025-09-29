@@ -57,6 +57,7 @@ _data = {
 }
 
 [node name="FadeAnimation" type="CanvasLayer"]
+process_mode = 3
 layer = 2
 script = ExtResource("1_iu3ro")
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ngqpchhly8uu"
-path="res://.godot/imported/doublejumpbar(progress).png-a4c0de0b8dfe2fae17aa6b169d49af2d.ctex"
+uid="uid://b85m4btt0vx5h"
+path="res://.godot/imported/menu_title3.png-cb1a76aade6201a53863e7775e3599ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://HUD/doublejumpbar(progress).png"
-dest_files=["res://.godot/imported/doublejumpbar(progress).png-a4c0de0b8dfe2fae17aa6b169d49af2d.ctex"]
+source_file="res://HUD/Sprites/menu_title3.png"
+dest_files=["res://.godot/imported/menu_title3.png-cb1a76aade6201a53863e7775e3599ec.ctex"]
 
 [params]
 

@@ -1,6 +1,8 @@
 extends Node
 
 func _ready():
+	$ChildIdle.play("Child Idle")
+	$ShadowIdle.play("Shadow Idle")
 	$PlayButton.pressed.connect(play_game)
 	$ConfigButton.pressed.connect(config_scene)
 	$TutorialButton.pressed.connect(tutorial_scene)
