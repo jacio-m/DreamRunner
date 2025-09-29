@@ -8,3 +8,6 @@ func _ready():
 	$ChildIdle.play("Child Idle")
 	$ShadowIdle.play("Shadow Idle")
 	$Title.play("Title Animation")
+	$NavigateLabel/DownKey.play()
+	$NavigateLabel/UpKey.play()
+	$ConfirmLabel/EnterKey.play()
