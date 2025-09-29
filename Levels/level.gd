@@ -133,7 +133,3 @@ func game_over():
 	$GameOver.visible = true
 	$GameOverSound.play()
 	$GameOver.get_node("VBoxContainer/Button").grab_focus()
-	if $GameOver.get_node("VBoxContainer/Button").has_focus():
-		$SelectingSound.play()
-	elif $GameOver.get_node("VBoxContainer/MenuButton").has_focus():
-		$SelectingSound.play()
