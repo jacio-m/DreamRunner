@@ -120,6 +120,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="SfxJump" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("7_vtle1")
 
 [node name="DoubleJump" type="TextureProgressBar" parent="."]

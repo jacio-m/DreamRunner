@@ -29,13 +29,23 @@ centered = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -104.0
-offset_top = 250.0
-offset_right = 101.0
-offset_bottom = 274.0
+offset_left = -188.0
+offset_top = 218.0
+offset_right = 232.0
+offset_bottom = 397.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("3_bir4d")
-text = "WIP tutorial scene"
+theme_override_font_sizes/font_size = 25
+text = "PRESS UP TO JUMP!
+
+AFTER 3 JUMPS, YOU CAN 
+DO  A DOUBLE JUMP!
+
+MOVE WITH ARROW KEYS!
+"
 
 [node name="BackButton" type="Button" parent="."]
 anchors_preset = 8
@@ -43,12 +53,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = -72.5
-offset_right = 97.0
-offset_bottom = 72.5
+offset_left = -99.0
+offset_top = 64.0
+offset_right = 95.0
+offset_bottom = 209.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)

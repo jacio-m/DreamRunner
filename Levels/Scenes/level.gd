@@ -27,9 +27,11 @@ func _ready():
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
-	$GameOver.get_node("Button").pressed.connect(func():
+	$GameOver.get_node("VBoxContainer/Button").pressed.connect(func():
+		$EnterSound.play()
 		await FadeAnimation.fade_to_scene(get_tree().current_scene.scene_file_path))
-	$GameOver.get_node("MenuButton").pressed.connect(func():
+	$GameOver.get_node("VBoxContainer/MenuButton").pressed.connect(func():
+		$EnterSound.play()
 		await FadeAnimation.fade_to_scene("res://HUD/main_menu.tscn"))
 	new_game()
 	
@@ -97,7 +99,7 @@ func _process(delta):
 			$HUD.get_node("StartLabel").visible = false
 
 func generate_obs():
-	if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 100 + randi_range(0, 200):
+	if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 50 + randi_range(0, 200):
 		var obstacle_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		obs = obstacle_type.instantiate()
@@ -130,4 +132,8 @@ func game_over():
 	game_running = false
 	$GameOver.visible = true
 	$GameOverSound.play()
-	$GameOver.get_node("Button").grab_focus()
+	$GameOver.get_node("VBoxContainer/Button").grab_focus()
+	if $GameOver.get_node("VBoxContainer/Button").has_focus():
+		$SelectingSound.play()
+	elif $GameOver.get_node("VBoxContainer/MenuButton").has_focus():
+		$SelectingSound.play()

@@ -20,7 +20,7 @@ texture = ExtResource("4_nvavp")
 [node name="Config" type="Node"]
 script = ExtResource("1_xc0qo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="WIP" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("2_8ian7")
 centered = false
@@ -49,6 +49,7 @@ offset_right = 97.0
 offset_bottom = 72.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)

@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgiyyduqacg0f"]
+[gd_scene load_steps=11 format=3 uid="uid://dgiyyduqacg0f"]
 
 [ext_resource type="Script" uid="uid://c8ba4qxvukduu" path="res://Levels/Scenes/level.gd" id="1_3ysta"]
 [ext_resource type="PackedScene" uid="uid://c45dfb07a8s8g" path="res://Levels/Scenes/ground.tscn" id="2_y2rw1"]
 [ext_resource type="PackedScene" uid="uid://r7k2f6vqyrs8" path="res://Player/player.tscn" id="3_uihg3"]
 [ext_resource type="PackedScene" uid="uid://c4xehiik8vl5x" path="res://HUD/hud.tscn" id="4_np6tt"]
 [ext_resource type="PackedScene" uid="uid://ciihrub27hd6i" path="res://Levels/Scenes/bg.tscn" id="5_y2rw1"]
-[ext_resource type="AudioStream" uid="uid://dii14twxkxsxo" path="res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg" id="6_uihg3"]
 [ext_resource type="PackedScene" uid="uid://1m2uljx22onk" path="res://HUD/game_over.tscn" id="7_np6tt"]
 [ext_resource type="AudioStream" uid="uid://c0ktyndwwirmc" path="res://Sounds/gameover.mp3" id="8_r1var"]
+[ext_resource type="AudioStream" uid="uid://cgcxbnq8no005" path="res://Sounds/shine-4-268912.mp3" id="9_513b0"]
 [ext_resource type="Texture2D" uid="uid://2ux5yd301bh4" path="res://Levels/Sprites/cloudparticle.png" id="9_e5b45"]
+[ext_resource type="AudioStream" uid="uid://xp7up1ii6a52" path="res://Sounds/shine-2-268904.mp3" id="10_513b0"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3ysta")
@@ -24,11 +25,6 @@ position = Vector2(153, 489)
 [node name="HUD" parent="." instance=ExtResource("4_np6tt")]
 
 [node name="BG" parent="." instance=ExtResource("5_y2rw1")]
-
-[node name="DreamSweet (main)" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("6_uihg3")
-parameters/looping = true
 
 [node name="GameOver" parent="." instance=ExtResource("7_np6tt")]
 process_mode = 2
@@ -51,3 +47,13 @@ initial_velocity_min = 50.0
 initial_velocity_max = 100.0
 scale_amount_min = 2.0
 scale_amount_max = 6.0
+
+[node name="EnterSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("9_513b0")
+pitch_scale = 2.99
+
+[node name="SelectingSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("10_513b0")
+pitch_scale = 3.05
