@@ -29,6 +29,8 @@ func _ready():
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
 	$GameOver.get_node("Button").pressed.connect(new_game)
+	$GameOver.get_node("MenuButton").pressed.connect(func():
+		await FadeAnimation.fade_to_scene("res://HUD/main_menu.tscn"))
 	FadeAnimation.fade_out()
 	new_game()
 	

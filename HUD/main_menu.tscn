@@ -1,12 +1,34 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqgwbeljp3ujc"]
+[gd_scene load_steps=16 format=3 uid="uid://dqgwbeljp3ujc"]
 
 [ext_resource type="Script" uid="uid://yfc80vp1mx8r" path="res://main_menu.gd" id="1_tssjr"]
 [ext_resource type="Texture2D" uid="uid://v6uyn720apd5" path="res://Player/Idle Animation/child_idle1.png" id="2_l7hc5"]
+[ext_resource type="Texture2D" uid="uid://c4dofmepmfprr" path="res://HUD/Sprites/main_menu1.png" id="2_qvokx"]
 [ext_resource type="Texture2D" uid="uid://dw8ipdqwq15no" path="res://Enemies/Shadows Sprites/shadow_blob1.png" id="2_yudvj"]
 [ext_resource type="Texture2D" uid="uid://du0161pyyoxcc" path="res://Player/Idle Animation/child_idle2.png" id="3_mg70j"]
 [ext_resource type="Texture2D" uid="uid://8f3fxo7yxvft" path="res://Enemies/Shadows Sprites/shadow_blob2.png" id="3_qvokx"]
+[ext_resource type="Texture2D" uid="uid://w0nvdxht75ab" path="res://HUD/Sprites/menu_title1.png" id="3_tcarw"]
+[ext_resource type="Texture2D" uid="uid://c0twmjdxjr7yl" path="res://HUD/Sprites/menu_title2.png" id="4_qs2e7"]
 [ext_resource type="Texture2D" uid="uid://8mu8af5r3x1k" path="res://Player/Idle Animation/child_idle3.png" id="4_yudvj"]
 [ext_resource type="Texture2D" uid="uid://c7cwnnnifrnu5" path="res://Player/Idle Animation/child_idle4.png" id="5_qvokx"]
+[ext_resource type="Texture2D" uid="uid://b85m4btt0vx5h" path="res://HUD/Sprites/menu_title3.png" id="5_xudqj"]
+[ext_resource type="Script" uid="uid://bdq5iqqq4egxr" path="res://HUD/menu_buttons.gd" id="6_qs2e7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fqn15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tcarw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qs2e7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xudqj")
+}],
+"loop": true,
+"name": &"Title Animation",
+"speed": 7.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6co8s"]
 animations = [{
@@ -45,38 +67,48 @@ animations = [{
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_tssjr")
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_qvokx")
+centered = false
+
+[node name="Title" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_fqn15")
+animation = &"Title Animation"
+frame = 1
+frame_progress = 0.0210648
+centered = false
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
 offset_left = 420.0
 offset_top = 204.0
-offset_right = 660.0
-offset_bottom = 304.0
+offset_right = 460.0
+offset_bottom = 244.0
+script = ExtResource("6_qs2e7")
+
+[node name="PlayButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
 text = "PLAY"
 
-[node name="ConfigButton" type="Button" parent="."]
-offset_left = 415.0
-offset_top = 323.0
-offset_right = 664.0
-offset_bottom = 429.0
+[node name="ConfigButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
 text = "CONFIG"
 
-[node name="TutorialButton" type="Button" parent="."]
-offset_left = 418.0
-offset_top = 456.0
-offset_right = 660.0
-offset_bottom = 554.0
+[node name="TutorialButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
 text = "TUTORIAL"
 
 [node name="ShadowIdle" type="AnimatedSprite2D" parent="."]
-position = Vector2(180, 449)
-scale = Vector2(3, 3)
+position = Vector2(117, 67)
 sprite_frames = SubResource("SpriteFrames_6co8s")
 animation = &"Shadow Idle"
-frame_progress = 0.981968
+frame_progress = 0.626949
 
 [node name="ChildIdle" type="AnimatedSprite2D" parent="."]
-position = Vector2(948, 465)
+position = Vector2(976, 495)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_fojc5")
 animation = &"Child Idle"
-frame_progress = 0.889329
+frame_progress = 0.50171
 flip_h = true
