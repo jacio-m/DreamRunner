@@ -20,6 +20,7 @@ config/icon="uid://dvmcf6qu2bw3y"
 [autoload]
 
 FadeAnimation="*res://HUD/fade_animation.tscn"
+MusicManager="*res://Sounds/music_manager.tscn"
 
 [display]
 

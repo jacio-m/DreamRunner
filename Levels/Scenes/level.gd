@@ -24,9 +24,7 @@ var current_progress: float = 0.0
 var progress_smoothing : float = 5.0
 
 func _ready():
-	if not $"DreamSweet (main)".playing:
-		$"DreamSweet (main)".stream.loop = true
-		$"DreamSweet (main)".play()
+	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
 	$GameOver.get_node("Button").pressed.connect(func():
