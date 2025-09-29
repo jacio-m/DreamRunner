@@ -7,10 +7,13 @@ func _ready():
 	$TutorialButton.pressed.connect(tutorial_scene)
 
 func play_game():
+	$"../EnterSound".play()
 	FadeAnimation.fade_to_scene("res://Levels/Scenes/main.tscn")
 
 func config_scene():
+	$"../EnterSound".play()
 	FadeAnimation.fade_to_scene("res://HUD/config_screen.tscn")
 
 func tutorial_scene():
+	$"../EnterSound".play()
 	FadeAnimation.fade_to_scene("res://HUD/tutorial.tscn")

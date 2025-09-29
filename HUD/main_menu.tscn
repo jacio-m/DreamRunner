@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqgwbeljp3ujc"]
+[gd_scene load_steps=19 format=3 uid="uid://dqgwbeljp3ujc"]
 
 [ext_resource type="Script" uid="uid://yfc80vp1mx8r" path="res://main_menu.gd" id="1_tssjr"]
 [ext_resource type="Texture2D" uid="uid://v6uyn720apd5" path="res://Player/Idle Animation/child_idle1.png" id="2_l7hc5"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b85m4btt0vx5h" path="res://HUD/Sprites/menu_title3.png" id="5_xudqj"]
 [ext_resource type="Script" uid="uid://bdq5iqqq4egxr" path="res://HUD/menu_buttons.gd" id="6_qs2e7"]
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="7_xudqj"]
+[ext_resource type="AudioStream" uid="uid://xp7up1ii6a52" path="res://Sounds/shine-2-268904.mp3" id="14_c5h8u"]
+[ext_resource type="AudioStream" uid="uid://cgcxbnq8no005" path="res://Sounds/shine-4-268912.mp3" id="15_64i8y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fqn15"]
 animations = [{
@@ -137,3 +139,19 @@ sprite_frames = SubResource("SpriteFrames_fojc5")
 animation = &"Child Idle"
 frame_progress = 0.50171
 flip_h = true
+
+[node name="DemoLabel" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 630.0
+offset_right = 104.0
+offset_bottom = 653.0
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("7_xudqj")
+text = "DEMO 0.3V"
+
+[node name="SelectingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_c5h8u")
+
+[node name="EnterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_64i8y")
+pitch_scale = 2.99
