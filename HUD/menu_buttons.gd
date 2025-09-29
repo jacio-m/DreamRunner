@@ -17,3 +17,12 @@ func config_scene():
 func tutorial_scene():
 	$"../EnterSound".play()
 	FadeAnimation.fade_to_scene("res://HUD/tutorial.tscn")
+
+func _on_play_button_focus_entered():
+	$"../SelectingSound".play()
+
+func _on_config_button_focus_entered():
+	$"../SelectingSound".play()
+
+func _on_tutorial_button_focus_entered():
+	$"../SelectingSound".play()
