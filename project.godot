@@ -21,6 +21,7 @@ config/icon="uid://dvmcf6qu2bw3y"
 
 FadeAnimation="*res://HUD/fade_animation.tscn"
 MusicManager="*res://Sounds/music_manager.tscn"
+GameData="*res://game_data.gd"
 
 [display]
 

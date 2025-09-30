@@ -126,6 +126,10 @@ func show_distance():
 func hit_obs(body):
 	if body.name == "Player":
 		game_over()
+		
+func feather_collect(body):
+	if body.name == "Player":
+		feather_count += 1
 
 func game_over():
 	get_tree().paused = true
