@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4xehiik8vl5x"]
+[gd_scene load_steps=3 format=3 uid="uid://c4xehiik8vl5x"]
 
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_h61sl"]
+[ext_resource type="Texture2D" uid="uid://bsglm4e1bmhjy" path="res://Items/Sprites/feather.png" id="2_mi5n8"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -35,3 +36,14 @@ theme_override_fonts/font = ExtResource("1_h61sl")
 theme_override_font_sizes/font_size = 40
 text = "PRESS ENTER TO PLAY!"
 horizontal_alignment = 1
+
+[node name="FeatherCount" type="Sprite2D" parent="."]
+position = Vector2(36, 71)
+texture = ExtResource("2_mi5n8")
+
+[node name="FeatherLabel" type="Label" parent="FeatherCount"]
+offset_left = 26.0
+offset_top = -10.0
+offset_right = 66.0
+offset_bottom = 13.0
+text = ": "
