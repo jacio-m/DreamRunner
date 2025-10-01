@@ -267,7 +267,7 @@ offset_right = 104.0
 offset_bottom = 653.0
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("7_xudqj")
-text = "DEMO 0.3V"
+text = "DEMO 0.4V"
 
 [node name="NavigateLabel" type="Label" parent="."]
 offset_left = 161.0

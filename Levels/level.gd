@@ -3,11 +3,14 @@ extends Node
 var shadow_blob = preload("res://Enemies/shadow_blob.tscn")
 var shadow_spike = preload("res://Enemies/shadow_spike.tscn")
 var shadow_kitty = preload("res://Enemies/shadow_kitty.tscn")
-var feather_item = preload("res://Items/feather.tscn")
 #maybe some other enemies later on
+
+var feather_item = preload("res://Items/feather.tscn")
+
 var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
 var obstacles : Array
-var feathers: Array
+var item_types := [feather_item]
+var items: Array
 
 const PLAYER_START_POS := Vector2i(155, 550)
 const CAM_START_POS := Vector2i(576, 324)
@@ -21,7 +24,7 @@ const SPEED_MODIFIER: int = 400
 var distance : int
 const DISTANCE_MODIFIER: int = 100
 var last_obs
-var last_feather
+var last_item
 var game_running : bool
 var current_progress: float = 0.0
 var progress_smoothing : float = 5.0
@@ -68,7 +71,7 @@ func _process(delta):
 			speed = MAX_SPEED
 			
 		generate_obs()
-		generate_feathers()
+		generate_items()
 		
 		$Player.position.x += speed * delta
 		$Camera2D.position.x += speed * delta
@@ -92,9 +95,9 @@ func _process(delta):
 			if obs.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_obs(obs)
 		
-		for feather in feathers:
-			if feather.position.x < ($Camera2D.position.x - screen_size.x):
-				remove_feather(feather)
+		for item in items:
+			if item.position.x < ($Camera2D.position.x - screen_size.x):
+				remove_item(item)
 				
 		var final_progress = float($Player.double_jump) / 3 * 100
 		current_progress = lerp(current_progress, final_progress, delta * progress_smoothing)
@@ -118,22 +121,23 @@ func generate_obs():
 		last_obs = obs
 		add_obs(obs, obs_x, obs_y)
 
-func generate_feathers():
-	if feathers.is_empty() or last_feather.position.x < $Camera2D.position.x + randi_range(100, 500):
-		var feather = feather_item.instantiate()
-		var feather_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 1000)
-		var feather_y: int = $Camera2D.position.y - randi_range(10, 30)
-		last_feather = feather
-		add_feather(feather, feather_x, feather_y)
+func generate_items():
+	if items.is_empty() or last_item.position.x < $Camera2D.position.x + randi_range(100, 500):
+		var item_type = item_types[randi() % item_types.size()]
+		var item = item_type.instantiate()
+		var item_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 2000)
+		var item_y: int = $Camera2D.position.y - randi_range(10, 30)
+		last_item = item
+		add_item(item, item_x, item_y)
 		
-func add_feather(feather, x, y):
-	feather.position = Vector2i(x, y)
-	feather.body_entered.connect(func(body):
+func add_item(item, x, y):
+	item.position = Vector2i(x, y)
+	item.body_entered.connect(func(body):
 		if body.name == "Player":
 			GameData.feather_count += 1
-			remove_feather(feather))
-	add_child(feather)
-	feathers.append(feather)
+			remove_item(item))
+	add_child(item)
+	items.append(item)
 	
 func add_obs(obs, x, y):
 	obs.position = Vector2i(x, y)
@@ -145,9 +149,9 @@ func remove_obs(obs):
 	obs.queue_free()
 	obstacles.erase(obs)
 	
-func remove_feather(feather):
-	feather.queue_free()
-	feathers.erase(feather)
+func remove_item(item):
+	item.queue_free()
+	items.erase(item)
 
 func show_distance():
 	$HUD.get_node("DistanceLabel").text = "DISTANCE: " + str(distance / DISTANCE_MODIFIER) + " m"
