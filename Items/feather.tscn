@@ -6,6 +6,7 @@
 size = Vector2(50, 55)
 
 [node name="Area2D" type="Area2D"]
+scale = Vector2(1.5, 1.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ke1u7")

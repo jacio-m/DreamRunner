@@ -122,13 +122,16 @@ func generate_feathers():
 	if feathers.is_empty() or last_feather.position.x < $Camera2D.position.x + randi_range(100, 500):
 		var feather = feather_item.instantiate()
 		var feather_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 1000)
-		var feather_y: int = $Camera2D.position.y - randi_range(10, 50)
+		var feather_y: int = $Camera2D.position.y - randi_range(10, 30)
 		last_feather = feather
 		add_feather(feather, feather_x, feather_y)
 		
 func add_feather(feather, x, y):
 	feather.position = Vector2i(x, y)
-	feather.body_entered.connect(feather_collect)
+	feather.body_entered.connect(func(body):
+		if body.name == "Player":
+			GameData.feather_count += 1
+			remove_feather(feather))
 	add_child(feather)
 	feathers.append(feather)
 	
@@ -148,16 +151,11 @@ func remove_feather(feather):
 
 func show_distance():
 	$HUD.get_node("DistanceLabel").text = "DISTANCE: " + str(distance / DISTANCE_MODIFIER) + " m"
-	$HUD.get_node("FeatherCount/FeatherLabel").text = ": " + str(GameData.feather_count)
+	$HUD.get_node("FeatherLabel").text = str(GameData.feather_count)
 	
 func hit_obs(body):
 	if body.name == "Player":
 		game_over()
-		
-func feather_collect(body):
-	if body.name == "Player":
-		GameData.feather_count += 1
-		remove_feather(last_feather)
 
 func game_over():
 	get_tree().paused = true

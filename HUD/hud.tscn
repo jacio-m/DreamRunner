@@ -38,12 +38,18 @@ text = "PRESS ENTER TO PLAY!"
 horizontal_alignment = 1
 
 [node name="FeatherCount" type="Sprite2D" parent="."]
-position = Vector2(36, 71)
+position = Vector2(47, 88)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_mi5n8")
 
-[node name="FeatherLabel" type="Label" parent="FeatherCount"]
-offset_left = 26.0
-offset_top = -10.0
-offset_right = 66.0
-offset_bottom = 13.0
-text = ": "
+[node name="FeatherLabel" type="Label" parent="."]
+offset_left = 82.0
+offset_top = 75.0
+offset_right = 198.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("1_h61sl")
+theme_override_font_sizes/font_size = 40
+text = "num"
