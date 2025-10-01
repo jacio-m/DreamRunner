@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cx750ryk3nwbo"]
 
-[ext_resource type="Texture2D" uid="uid://bsglm4e1bmhjy" path="res://Items/Sprites/feather.png" id="1_ke1u7"]
+[ext_resource type="Texture2D" uid="uid://bsglm4e1bmhjy" path="res://Items/Sprites/feather.png" id="1_x54hj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kw7dk"]
 size = Vector2(50, 55)
@@ -9,7 +9,7 @@ size = Vector2(50, 55)
 scale = Vector2(1.5, 1.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ke1u7")
+texture = ExtResource("1_x54hj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0.5)

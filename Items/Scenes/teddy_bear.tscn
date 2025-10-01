@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://r60jfr512ddi"]
+
+[ext_resource type="Texture2D" uid="uid://bdni02sr7n87w" path="res://Items/Sprites/teddyBear.png" id="1_3ps6o"]
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(1.4, 1.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3ps6o")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, -7, -13, -18, -16, -26, -12, -30, -5, -28, 2, -30, 10, -27, 15, -30, 19, -27, 19, -21, 17, -20, 16, -10, 9, -3, 16, 2, 16, 8, 10, 12, 15, 14, 17, 18, 16, 24, 12, 28, 5, 27, 3, 24, 1, 28, -2, 30, -8, 29, -11, 26, -14, 19, -15, 14, -18, 14, -22, 10, -22, 2, -19, -1, -14, -1)

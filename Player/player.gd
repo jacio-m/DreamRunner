@@ -4,6 +4,7 @@ extends CharacterBody2D
 var jump_pressed = false
 var double_jump = 0
 var input_enabled: bool = true
+var shield: bool = false
 
 const SPEED = 100
 const JUMP_SPEED = -600

@@ -4,12 +4,13 @@ var shadow_blob = preload("res://Enemies/shadow_blob.tscn")
 var shadow_spike = preload("res://Enemies/shadow_spike.tscn")
 var shadow_kitty = preload("res://Enemies/shadow_kitty.tscn")
 #maybe some other enemies later on
-var pillow_item = preload("res://Items/pillow.tscn")
-var feather_item = preload("res://Items/feather.tscn")
+var pillow_item = preload("res://Items/Scenes/pillow.tscn")
+var feather_item = preload("res://Items/Scenes/feather.tscn")
+var teddy_bear_item = preload("res://Items/Scenes/teddy_bear.tscn")
 
 var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
 var obstacles : Array
-var item_types := [feather_item, pillow_item]
+var item_types := [feather_item, pillow_item, teddy_bear_item]
 var items: Array
 
 const PLAYER_START_POS := Vector2i(155, 550)
@@ -123,7 +124,14 @@ func generate_obs():
 
 func generate_items():
 	if items.is_empty() or last_item.position.x < $Camera2D.position.x + randi_range(100, 500):
-		var item_type = item_types[randi() % item_types.size()]
+		var item_type = randi() % 100
+		if item_type > 10:
+			item_type = feather_item
+		elif item_type < 10:
+			if randi() % 4 > 1:
+				item_type = pillow_item
+			else:
+				item_type = teddy_bear_item
 		var item = item_type.instantiate()
 		var item_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 2000)
 		var item_y: int = $Camera2D.position.y - randi_range(10, 30)
@@ -132,11 +140,25 @@ func generate_items():
 		
 func add_item(item, x, y):
 	item.position = Vector2i(x, y)
-	item.body_entered.connect(func(body):
-		if body.name == "Player":
-			$ItemCollectedSound.play()
-			GameData.feather_count += 1
-			remove_item(item))
+	if item.scene_file_path == feather_item.resource_path: 
+		item.body_entered.connect(func(body):
+			if body.name == "Player":
+				$ItemCollectedSound.play()
+				GameData.feather_count += 1
+				remove_item(item))
+	elif item.scene_file_path == pillow_item.resource_path:
+		item.body_entered.connect(func(body):
+			if body.name == "Player":
+				$ItemCollectedSound.play()
+				GameData.feather_count += 10
+				remove_item(item))
+	elif item.scene_file_path == teddy_bear_item.resource_path:
+		item.body_entered.connect(func(body):
+			if body.name == "Player":
+				$ItemCollectedSound.play()
+				$Player.shield = true
+				remove_item(item)
+			)
 	add_child(item)
 	items.append(item)
 	

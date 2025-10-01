@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgkweythcmlgc"]
 
-[ext_resource type="Texture2D" uid="uid://8uhmn5u4yulb" path="res://Items/Sprites/pillow.png" id="1_cw0ef"]
+[ext_resource type="Texture2D" uid="uid://8uhmn5u4yulb" path="res://Items/Sprites/pillow.png" id="1_eux4r"]
 
 [node name="Area2D" type="Area2D"]
-scale = Vector2(1.3, 1.3)
+scale = Vector2(1.4, 1.4)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_cw0ef")
+texture = ExtResource("1_eux4r")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(8, -31, 31, -8, -8, 31, -32, 8)
