@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://r7k2f6vqyrs8"]
+[gd_scene load_steps=24 format=3 uid="uid://r7k2f6vqyrs8"]
 
 [ext_resource type="Script" uid="uid://rsnbxgmdpatp" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://v6uyn720apd5" path="res://Player/Idle Animation/child_idle1.png" id="2_fhl08"]
@@ -21,8 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://bn5qrh5p1ijlg" path="res://Player/Running Animation/child_running9.png" id="14_qemgg"]
 [ext_resource type="Texture2D" uid="uid://drm1yyl3560s5" path="res://Player/Running Animation/child_running10.png" id="15_8viyr"]
 [ext_resource type="Texture2D" uid="uid://cbycv3oi0k6ii" path="res://Player/Running Animation/child_running11.png" id="16_sm0op"]
-[ext_resource type="Texture2D" uid="uid://b6aqamfrmju2p" path="res://HUD/Sprites/doublejumpbar(under).png" id="22_gpjlu"]
-[ext_resource type="Texture2D" uid="uid://ngqpchhly8uu" path="res://HUD/Sprites/doublejumpbar(progress).png" id="23_8mwp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8h54"]
 size = Vector2(19.5, 50)
@@ -122,13 +120,3 @@ frame_progress = 1.0
 [node name="SfxJump" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("7_vtle1")
-
-[node name="DoubleJump" type="TextureProgressBar" parent="."]
-offset_left = -45.0
-offset_top = -91.0
-offset_right = 57.0
-offset_bottom = -66.0
-value = 1.0
-nine_patch_stretch = true
-texture_under = ExtResource("22_gpjlu")
-texture_progress = ExtResource("23_8mwp6")

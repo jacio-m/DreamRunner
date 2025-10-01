@@ -17,7 +17,7 @@ const START_SPEED : float = 800.0
 const MAX_SPEED : float = 1400.0
 var screen_size : Vector2i
 var ground_height : int
-const SPEED_MODIFIER: int = 800
+const SPEED_MODIFIER: int = 400
 var distance : int
 const DISTANCE_MODIFIER: int = 100
 var last_obs
@@ -44,7 +44,7 @@ func new_game():
 	game_running = false
 	get_tree().paused = false
 	$Player.input_enabled = false
-	$Player.get_node("DoubleJump").value = current_progress
+	$HUD.get_node("DoubleJump").value = current_progress
 	
 	for obs in obstacles:
 		obs.queue_free()
@@ -98,7 +98,7 @@ func _process(delta):
 				
 		var final_progress = float($Player.double_jump) / 3 * 100
 		current_progress = lerp(current_progress, final_progress, delta * progress_smoothing)
-		$Player.get_node("DoubleJump").value = current_progress
+		$HUD.get_node("DoubleJump").value = current_progress
 		
 	else:
 		if Input.is_action_just_pressed("ui_accept"):
@@ -107,7 +107,7 @@ func _process(delta):
 			$HUD.get_node("StartLabel").visible = false
 
 func generate_obs():
-	if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 50 + randi_range(0, 200):
+	if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 50 + randi_range(0, 400):
 		var obstacle_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		obs = obstacle_type.instantiate()
