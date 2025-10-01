@@ -4,12 +4,12 @@ var shadow_blob = preload("res://Enemies/shadow_blob.tscn")
 var shadow_spike = preload("res://Enemies/shadow_spike.tscn")
 var shadow_kitty = preload("res://Enemies/shadow_kitty.tscn")
 #maybe some other enemies later on
-
+var pillow_item = preload("res://Items/pillow.tscn")
 var feather_item = preload("res://Items/feather.tscn")
 
 var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
 var obstacles : Array
-var item_types := [feather_item]
+var item_types := [feather_item, pillow_item]
 var items: Array
 
 const PLAYER_START_POS := Vector2i(155, 550)
@@ -134,6 +134,7 @@ func add_item(item, x, y):
 	item.position = Vector2i(x, y)
 	item.body_entered.connect(func(body):
 		if body.name == "Player":
+			$ItemCollectedSound.play()
 			GameData.feather_count += 1
 			remove_item(item))
 	add_child(item)
