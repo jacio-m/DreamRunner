@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4e0i1sppeo6u"]
+[gd_scene load_steps=26 format=3 uid="uid://d4e0i1sppeo6u"]
 
 [ext_resource type="Script" uid="uid://cgqn4b1fq1vhq" path="res://HUD/config_screen.gd" id="1_xc0qo"]
 [ext_resource type="Texture2D" uid="uid://cl7f0evsun4u4" path="res://Levels/Sprites/BG Sprites/configBG.png" id="2_gphxe"]
@@ -9,15 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://dawwcfftmwy6q" path="res://HUD/Sprites/enter_key1.png" id="8_gphxe"]
 [ext_resource type="Texture2D" uid="uid://b421tfqxeu1nq" path="res://HUD/Sprites/enter_key2.png" id="9_b056o"]
 [ext_resource type="Script" uid="uid://cgskrf1tdqwj6" path="res://HUD/SoundSliders.gd" id="9_gphxe"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nvavp"]
-texture = ExtResource("6_uqe8c")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wiqho"]
-texture = ExtResource("5_wiqho")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqe8c"]
-texture = ExtResource("4_nvavp")
+[ext_resource type="Texture2D" uid="uid://bjy7gr83rq5vh" path="res://HUD/Sprites/up_key1.png" id="10_xo1hv"]
+[ext_resource type="Texture2D" uid="uid://c0esvier6a7uo" path="res://HUD/Sprites/up_key2.png" id="11_gpe3s"]
+[ext_resource type="Texture2D" uid="uid://d34mf6363jbiy" path="res://HUD/Sprites/down_key1.png" id="12_0kde5"]
+[ext_resource type="Texture2D" uid="uid://bxajn8lrlsmlb" path="res://HUD/Sprites/down_key2.png" id="13_b1222"]
+[ext_resource type="Texture2D" uid="uid://bsht5i32kbgr5" path="res://HUD/Sprites/left_key1.png" id="14_bss33"]
+[ext_resource type="Texture2D" uid="uid://muta7pt4wbdv" path="res://HUD/Sprites/left_key2.png" id="15_2mmkp"]
+[ext_resource type="Texture2D" uid="uid://c5ao607e7n5lw" path="res://HUD/Sprites/right_key1.png" id="16_g5qd7"]
+[ext_resource type="Texture2D" uid="uid://dbucc47icgko4" path="res://HUD/Sprites/right_key2.png" id="17_38k71"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f15cq"]
 animations = [{
@@ -33,15 +32,80 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Config" type="Node"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ihbg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_xo1hv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gpe3s")
+}],
+"loop": true,
+"name": &"Up Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sr7wp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0kde5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_b1222")
+}],
+"loop": true,
+"name": &"Down Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxtvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_bss33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2mmkp")
+}],
+"loop": true,
+"name": &"Left Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5x0vb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_g5qd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_38k71")
+}],
+"loop": true,
+"name": &"Right Key",
+"speed": 2.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nvavp"]
+texture = ExtResource("6_uqe8c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wiqho"]
+texture = ExtResource("5_wiqho")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqe8c"]
+texture = ExtResource("4_nvavp")
+
+[node name="Settings" type="Node"]
 script = ExtResource("1_xc0qo")
 
-[node name="WIP" type="Sprite2D" parent="."]
+[node name="SettingsBG" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("2_gphxe")
 centered = false
 
-[node name="Label" type="Label" parent="."]
+[node name="SettingsLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -57,18 +121,125 @@ theme_override_fonts/font = ExtResource("3_lul8w")
 theme_override_font_sizes/font_size = 60
 text = "SETTINGS"
 
-[node name="BackButton" type="Button" parent="."]
-anchors_preset = 8
+[node name="WIP" type="Label" parent="SettingsLabel"]
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = 116.0
-offset_right = 91.0
-offset_bottom = 261.0
+offset_left = 127.0
+offset_top = 51.0
+offset_right = 507.0
+offset_bottom = 105.0
 grow_horizontal = 2
-grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.0862745, 0.054902, 0.447059, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_lul8w")
+theme_override_font_sizes/font_size = 35
+text = "(WIP)"
+
+[node name="ConfirmLabel" type="Label" parent="."]
+offset_left = 670.0
+offset_top = 619.0
+offset_right = 745.0
+offset_bottom = 644.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_lul8w")
+text = "SELECT"
+
+[node name="EnterKey" type="AnimatedSprite2D" parent="ConfirmLabel"]
+position = Vector2(-14.6154, 3.84615)
+sprite_frames = SubResource("SpriteFrames_f15cq")
+animation = &"Enter Key"
+
+[node name="NavigateLabel" type="Label" parent="."]
+offset_left = 431.0
+offset_top = 616.0
+offset_right = 536.0
+offset_bottom = 639.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_lul8w")
+text = "NAVIGATE"
+
+[node name="UpKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-40.7693, -13.8462)
+sprite_frames = SubResource("SpriteFrames_6ihbg")
+animation = &"Up Key"
+
+[node name="DownKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-40.7693, 6.92307)
+sprite_frames = SubResource("SpriteFrames_sr7wp")
+animation = &"Down Key"
+
+[node name="LeftKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-66.1539, 6.92308)
+sprite_frames = SubResource("SpriteFrames_uxtvu")
+animation = &"Left Key"
+
+[node name="RightKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-15.3846, 6.92308)
+sprite_frames = SubResource("SpriteFrames_5x0vb")
+animation = &"Right Key"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VolumeSliders" type="VBoxContainer" parent="."]
+offset_left = 384.0
+offset_top = 173.0
+offset_right = 764.0
+offset_bottom = 547.0
+script = ExtResource("9_gphxe")
+
+[node name="MusicVolumeLabel" type="Label" parent="VolumeSliders"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.0862745, 0.054902, 0.447059, 1)
+theme_override_fonts/font = ExtResource("3_lul8w")
+theme_override_font_sizes/font_size = 20
+text = "MUSIC VOLUME"
+horizontal_alignment = 1
+
+[node name="MusicVolume" type="HScrollBar" parent="VolumeSliders"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="SFXVolumeLabel" type="Label" parent="VolumeSliders"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.0862745, 0.054902, 0.447059, 1)
+theme_override_fonts/font = ExtResource("3_lul8w")
+theme_override_font_sizes/font_size = 20
+text = "SFX VOLUME"
+horizontal_alignment = 1
+
+[node name="SFXVolume" type="HScrollBar" parent="VolumeSliders"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="BackButton" type="Button" parent="VolumeSliders"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
@@ -80,45 +251,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_wiqho")
 theme_override_styles/normal = SubResource("StyleBoxTexture_uqe8c")
 text = "BACK"
 
-[node name="ConfirmLabel" type="Label" parent="."]
-offset_left = 529.0
-offset_top = 583.5
-offset_right = 604.0
-offset_bottom = 608.5
-scale = Vector2(1.3, 1.3)
-theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_fonts/font = ExtResource("3_lul8w")
-text = "SELECT"
-
-[node name="EnterKey" type="AnimatedSprite2D" parent="ConfirmLabel"]
-position = Vector2(-14.6154, 3.84615)
-sprite_frames = SubResource("SpriteFrames_f15cq")
-animation = &"Enter Key"
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 423.0
-offset_top = 250.0
-offset_right = 670.0
-offset_bottom = 415.0
-script = ExtResource("9_gphxe")
-
-[node name="MusicVolume" type="HScrollBar" parent="VBoxContainer"]
-layout_mode = 2
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[node name="SFXVolume" type="HScrollBar" parent="VBoxContainer"]
-layout_mode = 2
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[connection signal="value_changed" from="VBoxContainer/MusicVolume" to="VBoxContainer" method="_on_music_volume_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/SFXVolume" to="VBoxContainer" method="_on_sfx_volume_value_changed"]
+[connection signal="focus_entered" from="VolumeSliders/MusicVolume" to="VolumeSliders" method="_on_music_volume_focus_entered"]
+[connection signal="value_changed" from="VolumeSliders/MusicVolume" to="VolumeSliders" method="_on_music_volume_value_changed"]
+[connection signal="focus_entered" from="VolumeSliders/SFXVolume" to="VolumeSliders" method="_on_sfx_volume_focus_entered"]
+[connection signal="value_changed" from="VolumeSliders/SFXVolume" to="VolumeSliders" method="_on_sfx_volume_value_changed"]
+[connection signal="focus_entered" from="VolumeSliders/BackButton" to="VolumeSliders" method="_on_back_button_focus_entered"]

@@ -29,7 +29,6 @@ var last_item
 var game_running : bool
 var current_progress: float = 0.0
 var progress_smoothing : float = 5.0
-var item_prob : int
 
 func _ready():
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
