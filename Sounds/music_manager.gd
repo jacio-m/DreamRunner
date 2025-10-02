@@ -1,7 +1,6 @@
 extends Node
 
 @onready var musicPlayer = $MusicPlayer
-@onready var SFXPlayer = $SFXPlayer
 var current_track : String = ""
 var current_sfx: String = ""
 
@@ -14,6 +13,9 @@ func play_music(path : String):
 	musicPlayer.play()
 
 func play_SFX(path: String):
-	current_sfx = path
-	SFXPlayer.stream = load(path)
-	SFXPlayer.play()
+	var SFXplayer = AudioStreamPlayer.new()
+	SFXplayer.stream = load(path)
+	add_child(SFXplayer)
+	SFXplayer.play()
+	SFXplayer.finished.connect(func():
+		SFXplayer.queue_free())

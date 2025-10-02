@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://1m2uljx22onk"]
+[gd_scene load_steps=12 format=3 uid="uid://1m2uljx22onk"]
 
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_qrorf"]
 [ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="2_fox26"]
+[ext_resource type="Script" uid="uid://b0v4qpnihxppj" path="res://HUD/gameOverButton.gd" id="2_u3met"]
 [ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="3_u3met"]
 [ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="4_h62o8"]
 
@@ -52,6 +53,7 @@ offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = -80
+script = ExtResource("2_u3met")
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -80,3 +82,6 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_fox26")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u3met")
 theme_override_styles/normal = SubResource("StyleBoxTexture_h62o8")
 text = "MAIN MENU"
+
+[connection signal="focus_entered" from="VBoxContainer/Button" to="VBoxContainer" method="_on_button_focus_entered"]
+[connection signal="focus_entered" from="VBoxContainer/MenuButton" to="VBoxContainer" method="_on_menu_button_focus_entered"]

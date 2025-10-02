@@ -36,10 +36,10 @@ func _ready():
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
 	$GameOver.get_node("VBoxContainer/Button").pressed.connect(func():
-		$EnterSound.play()
+		MusicManager.play_SFX("res://Sounds/entersound.ogg")
 		await FadeAnimation.fade_to_scene(get_tree().current_scene.scene_file_path))
 	$GameOver.get_node("VBoxContainer/MenuButton").pressed.connect(func():
-		$EnterSound.play()
+		MusicManager.play_SFX("res://Sounds/entersound.ogg")
 		await FadeAnimation.fade_to_scene("res://HUD/main_menu.tscn"))
 	new_game()
 	
@@ -146,19 +146,19 @@ func add_item(item, x, y):
 	if item.scene_file_path == feather_item.resource_path: 
 		item.body_entered.connect(func(body):
 			if body.name == "Player":
-				$ItemCollectedSound.play()
+				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
 				GameData.feather_count += 1
 				remove_item(item))
 	elif item.scene_file_path == pillow_item.resource_path:
 		item.body_entered.connect(func(body):
 			if body.name == "Player":
-				$ItemCollectedSound.play()
+				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
 				GameData.feather_count += 10
 				remove_item(item))
 	elif item.scene_file_path == teddy_bear_item.resource_path:
 		item.body_entered.connect(func(body):
 			if body.name == "Player":
-				$TeddyBearSound.play()
+				MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
 				$Player.shield = true
 				$HUD.get_node("ShieldOn").visible = true
 				remove_item(item)
@@ -189,7 +189,7 @@ func hit_obs(body):
 			if $Player.shield == false:
 				game_over()
 			else:
-				$TeddyBearSound.play()
+				MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
 				$Player.shield = false
 				$HUD.get_node("ShieldOn").visible = false
 
@@ -197,5 +197,5 @@ func game_over():
 	get_tree().paused = true
 	game_running = false
 	$GameOver.visible = true
-	$GameOverSound.play()
+	MusicManager.play_SFX("res://Sounds/gameover.mp3")
 	$GameOver.get_node("VBoxContainer/Button").grab_focus()

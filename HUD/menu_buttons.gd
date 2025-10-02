@@ -1,7 +1,9 @@
 extends VBoxContainer
 
 func _ready():
+	$PlayButton.focus_entered.disconnect(_on_play_button_focus_entered)
 	$PlayButton.grab_focus()
+	$PlayButton.focus_entered.connect(_on_play_button_focus_entered)
 	$PlayButton.pressed.connect(play_game)
 	$ConfigButton.pressed.connect(config_scene)
 	$TutorialButton.pressed.connect(tutorial_scene)

@@ -6,7 +6,7 @@ func _ready():
 	$BackButton.pressed.connect(main_menu)
 
 func main_menu():
-	$"EnterSound".play()
+	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$BackButton.release_focus()
 	var pressed_style = $BackButton.get("theme_override_styles/pressed")
 	$BackButton.add_theme_stylebox_override("normal", pressed_style)

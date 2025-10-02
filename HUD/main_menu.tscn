@@ -51,15 +51,6 @@ texture = ExtResource("8_tukxf")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rdytk"]
 texture = ExtResource("7_gf600")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rt0k"]
-texture = ExtResource("9_rdytk")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4bpgo"]
-texture = ExtResource("8_tukxf")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t7sjn"]
-texture = ExtResource("7_gf600")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7cs82"]
 texture = ExtResource("9_rdytk")
 
@@ -67,6 +58,15 @@ texture = ExtResource("9_rdytk")
 texture = ExtResource("8_tukxf")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ouis3"]
+texture = ExtResource("7_gf600")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rt0k"]
+texture = ExtResource("9_rdytk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4bpgo"]
+texture = ExtResource("8_tukxf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t7sjn"]
 texture = ExtResource("7_gf600")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bpgo"]
@@ -208,19 +208,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_tukxf")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rdytk")
 text = "PLAY"
 
-[node name="ConfigButton" type="Button" parent="MenuButtons"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-mouse_filter = 2
-theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_fonts/font = ExtResource("7_xudqj")
-theme_override_styles/focus = SubResource("StyleBoxTexture_4rt0k")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_4bpgo")
-theme_override_styles/normal = SubResource("StyleBoxTexture_t7sjn")
-text = "CONFIG"
-
 [node name="TutorialButton" type="Button" parent="MenuButtons"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
@@ -233,6 +220,19 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_7cs82")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_j7typ")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ouis3")
 text = "TUTORIAL"
+
+[node name="ConfigButton" type="Button" parent="MenuButtons"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("7_xudqj")
+theme_override_styles/focus = SubResource("StyleBoxTexture_4rt0k")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4bpgo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t7sjn")
+text = "SETTINGS"
 
 [node name="ShadowSpikeIdle" type="AnimatedSprite2D" parent="."]
 position = Vector2(273, 254)
@@ -306,5 +306,5 @@ animation = &"Enter Key"
 frame_progress = 0.775035
 
 [connection signal="focus_entered" from="MenuButtons/PlayButton" to="MenuButtons" method="_on_play_button_focus_entered"]
-[connection signal="focus_entered" from="MenuButtons/ConfigButton" to="MenuButtons" method="_on_config_button_focus_entered"]
 [connection signal="focus_entered" from="MenuButtons/TutorialButton" to="MenuButtons" method="_on_tutorial_button_focus_entered"]
+[connection signal="focus_entered" from="MenuButtons/ConfigButton" to="MenuButtons" method="_on_config_button_focus_entered"]
