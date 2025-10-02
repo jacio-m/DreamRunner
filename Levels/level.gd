@@ -128,13 +128,13 @@ func generate_items():
 	if items.is_empty() or last_item.position.x < $Camera2D.position.x + randi_range(100, 500):
 		var item_type
 		var item_prob = randi() % 100
-		if item_prob >= 10:
+		if item_prob < 89:
 			item_type = feather_item
-		elif item_prob < 10:
-			if randi() % 4 > 1:
-				item_type = pillow_item
-			else:
-				item_type = teddy_bear_item
+		elif item_prob < 98:
+			item_type = pillow_item
+		else:
+			item_type = teddy_bear_item
+			
 		var item = item_type.instantiate()
 		var item_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 2000)
 		var item_y: int = $Camera2D.position.y - randi_range(10, 30)
@@ -158,7 +158,7 @@ func add_item(item, x, y):
 	elif item.scene_file_path == teddy_bear_item.resource_path:
 		item.body_entered.connect(func(body):
 			if body.name == "Player":
-				$ItemCollectedSound.play()
+				$TeddyBearSound.play()
 				$Player.shield = true
 				$HUD.get_node("ShieldOn").visible = true
 				remove_item(item)
@@ -189,6 +189,7 @@ func hit_obs(body):
 			if $Player.shield == false:
 				game_over()
 			else:
+				$TeddyBearSound.play()
 				$Player.shield = false
 				$HUD.get_node("ShieldOn").visible = false
 

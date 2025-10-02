@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgiyyduqacg0f"]
+[gd_scene load_steps=13 format=3 uid="uid://dgiyyduqacg0f"]
 
 [ext_resource type="Script" uid="uid://c8ba4qxvukduu" path="res://Levels/level.gd" id="1_3ysta"]
 [ext_resource type="PackedScene" uid="uid://c45dfb07a8s8g" path="res://Levels/Scenes/ground.tscn" id="2_y2rw1"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://2ux5yd301bh4" path="res://Levels/Sprites/cloudparticle.png" id="9_e5b45"]
 [ext_resource type="AudioStream" uid="uid://xp7up1ii6a52" path="res://Sounds/shine-2-268904.mp3" id="10_513b0"]
 [ext_resource type="AudioStream" uid="uid://bwpcj12udotbh" path="res://Sounds/item_collected.ogg" id="11_dk07v"]
+[ext_resource type="AudioStream" uid="uid://bgi8lp3h1evcn" path="res://Sounds/squeaky-toy-1-6059.mp3" id="12_sbuv8"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3ysta")
@@ -62,3 +63,6 @@ pitch_scale = 3.05
 [node name="ItemCollectedSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_dk07v")
 volume_db = 5.0
+
+[node name="TeddyBearSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_sbuv8")
