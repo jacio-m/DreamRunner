@@ -29,6 +29,7 @@ var last_item
 var game_running : bool
 var current_progress: float = 0.0
 var progress_smoothing : float = 5.0
+var item_prob : int
 
 func _ready():
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
@@ -48,6 +49,7 @@ func new_game():
 	game_running = false
 	get_tree().paused = false
 	$Player.input_enabled = false
+	$Player.shield = false
 	$HUD.get_node("DoubleJump").value = current_progress
 	
 	for obs in obstacles:
@@ -124,10 +126,11 @@ func generate_obs():
 
 func generate_items():
 	if items.is_empty() or last_item.position.x < $Camera2D.position.x + randi_range(100, 500):
-		var item_type = randi() % 100
-		if item_type > 10:
+		var item_type
+		var item_prob = randi() % 100
+		if item_prob >= 10:
 			item_type = feather_item
-		elif item_type < 10:
+		elif item_prob < 10:
 			if randi() % 4 > 1:
 				item_type = pillow_item
 			else:
@@ -157,6 +160,7 @@ func add_item(item, x, y):
 			if body.name == "Player":
 				$ItemCollectedSound.play()
 				$Player.shield = true
+				$HUD.get_node("ShieldOn").visible = true
 				remove_item(item)
 			)
 	add_child(item)
@@ -182,7 +186,11 @@ func show_distance():
 	
 func hit_obs(body):
 	if body.name == "Player":
-		game_over()
+			if $Player.shield == false:
+				game_over()
+			else:
+				$Player.shield = false
+				$HUD.get_node("ShieldOn").visible = false
 
 func game_over():
 	get_tree().paused = true

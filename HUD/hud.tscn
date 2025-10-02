@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4xehiik8vl5x"]
+[gd_scene load_steps=6 format=3 uid="uid://c4xehiik8vl5x"]
 
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_h61sl"]
 [ext_resource type="Texture2D" uid="uid://bsglm4e1bmhjy" path="res://Items/Sprites/feather.png" id="2_mi5n8"]
 [ext_resource type="Texture2D" uid="uid://b6aqamfrmju2p" path="res://HUD/Sprites/doublejumpbar(under).png" id="3_jvmdh"]
 [ext_resource type="Texture2D" uid="uid://ngqpchhly8uu" path="res://HUD/Sprites/doublejumpbar(progress).png" id="4_1rsjr"]
+[ext_resource type="Texture2D" uid="uid://bdni02sr7n87w" path="res://Items/Sprites/teddyBear.png" id="5_1rsjr"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -65,3 +66,9 @@ value = 1.0
 nine_patch_stretch = true
 texture_under = ExtResource("3_jvmdh")
 texture_progress = ExtResource("4_1rsjr")
+
+[node name="ShieldOn" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(438, 88)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("5_1rsjr")

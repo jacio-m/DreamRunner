@@ -4,6 +4,8 @@ func _ready():
 	$ConfirmLabel/EnterKey.play()
 	$BackButton.grab_focus()
 	$BackButton.pressed.connect(main_menu)
+	$ChildJump.play()
+	$UpKey.play()
 
 func main_menu():
 	$"EnterSound".play()
