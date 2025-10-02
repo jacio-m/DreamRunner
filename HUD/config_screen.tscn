@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d4e0i1sppeo6u"]
+[gd_scene load_steps=14 format=3 uid="uid://d4e0i1sppeo6u"]
 
 [ext_resource type="Script" uid="uid://cgqn4b1fq1vhq" path="res://HUD/config_screen.gd" id="1_xc0qo"]
 [ext_resource type="Texture2D" uid="uid://cl7f0evsun4u4" path="res://Levels/Sprites/BG Sprites/configBG.png" id="2_gphxe"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="6_uqe8c"]
 [ext_resource type="Texture2D" uid="uid://dawwcfftmwy6q" path="res://HUD/Sprites/enter_key1.png" id="8_gphxe"]
 [ext_resource type="Texture2D" uid="uid://b421tfqxeu1nq" path="res://HUD/Sprites/enter_key2.png" id="9_b056o"]
+[ext_resource type="Script" uid="uid://cgskrf1tdqwj6" path="res://HUD/SoundSliders.gd" id="9_gphxe"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nvavp"]
 texture = ExtResource("6_uqe8c")
@@ -105,9 +106,19 @@ offset_left = 423.0
 offset_top = 250.0
 offset_right = 670.0
 offset_bottom = 415.0
+script = ExtResource("9_gphxe")
 
 [node name="MusicVolume" type="HScrollBar" parent="VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [node name="SFXVolume" type="HScrollBar" parent="VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[connection signal="value_changed" from="VBoxContainer/MusicVolume" to="VBoxContainer" method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SFXVolume" to="VBoxContainer" method="_on_sfx_volume_value_changed"]
