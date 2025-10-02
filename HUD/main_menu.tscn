@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dqgwbeljp3ujc"]
+[gd_scene load_steps=41 format=3 uid="uid://dqgwbeljp3ujc"]
 
 [ext_resource type="Script" uid="uid://yfc80vp1mx8r" path="res://main_menu.gd" id="1_tssjr"]
 [ext_resource type="Texture2D" uid="uid://v6uyn720apd5" path="res://Player/Idle Animation/child_idle1.png" id="2_l7hc5"]
@@ -18,8 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="9_rdytk"]
 [ext_resource type="Texture2D" uid="uid://bilvcwxdwsnon" path="res://Enemies/Shadows Sprites/shadow_spike1.png" id="11_rdytk"]
 [ext_resource type="Texture2D" uid="uid://h4giv54no387" path="res://Enemies/Shadows Sprites/shadow_spike2.png" id="12_4rt0k"]
-[ext_resource type="AudioStream" uid="uid://xp7up1ii6a52" path="res://Sounds/shine-2-268904.mp3" id="14_c5h8u"]
-[ext_resource type="AudioStream" uid="uid://cgcxbnq8no005" path="res://Sounds/shine-4-268912.mp3" id="15_64i8y"]
 [ext_resource type="Texture2D" uid="uid://bjy7gr83rq5vh" path="res://HUD/Sprites/up_key1.png" id="19_7cs82"]
 [ext_resource type="Texture2D" uid="uid://c0esvier6a7uo" path="res://HUD/Sprites/up_key2.png" id="20_j7typ"]
 [ext_resource type="Texture2D" uid="uid://d34mf6363jbiy" path="res://HUD/Sprites/down_key1.png" id="21_ouis3"]
@@ -306,14 +304,6 @@ position = Vector2(-14.6154, 3.84615)
 sprite_frames = SubResource("SpriteFrames_sr50l")
 animation = &"Enter Key"
 frame_progress = 0.775035
-
-[node name="SelectingSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_c5h8u")
-pitch_scale = 3.05
-
-[node name="EnterSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_64i8y")
-pitch_scale = 2.99
 
 [connection signal="focus_entered" from="MenuButtons/PlayButton" to="MenuButtons" method="_on_play_button_focus_entered"]
 [connection signal="focus_entered" from="MenuButtons/ConfigButton" to="MenuButtons" method="_on_config_button_focus_entered"]

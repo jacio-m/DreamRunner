@@ -25,7 +25,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("Player Run")
 		if Input.is_action_just_pressed("ui_up"):
 			$AnimatedSprite2D.play("Player Jump")
-			$SfxJump.play()
+			MusicManager.play_SFX("res://Sounds/sfx_jump_07-80241.mp3")
 			velocity.y = JUMP_SPEED
 			jump_pressed = true
 			double_jump += 1
@@ -35,7 +35,7 @@ func _physics_process(delta):
 		if double_jump == 3:
 			if Input.is_action_just_pressed("ui_up"):
 				$AnimatedSprite2D.play("Player Jump")
-				$SfxJump.play()
+				MusicManager.play_SFX("res://Sounds/sfx_jump_07-80241.mp3")
 				velocity.y = JUMP_SPEED
 				double_jump = 0
 					
