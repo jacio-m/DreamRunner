@@ -5,7 +5,11 @@ func _ready():
 	$BackButton.grab_focus()
 	$BackButton.pressed.connect(main_menu)
 	$ChildJump.play()
-	$UpKey.play()
+	$ChildJump/UpKey.play()
+	$ChildRun.play()
+	$ChildRun/RightKey.play()
+	$ChildRun/LeftKey.play()
+	$ShadowIdle.play()
 
 func main_menu():
 	$"EnterSound".play()
