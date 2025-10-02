@@ -1,6 +1,7 @@
-[gd_scene load_steps=47 format=3 uid="uid://bcaxvcr3gedc"]
+[gd_scene load_steps=48 format=3 uid="uid://bcaxvcr3gedc"]
 
 [ext_resource type="Script" uid="uid://bq5qravcbtof0" path="res://tutorial.gd" id="1_3e5vs"]
+[ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="2_eacv7"]
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_bir4d"]
 [ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="4_g887x"]
 [ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="5_1t327"]
@@ -60,6 +61,20 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_5j066"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_t5gy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ej0yr")
+}],
+"loop": true,
+"name": &"Up Key",
+"speed": 2.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_pdjei"]
 animations = [{
 "frames": [{
@@ -80,17 +95,31 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5j066"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ilqp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_t5gy2")
+"texture": ExtResource("28_hsvtp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_ej0yr")
+"texture": ExtResource("29_sjju7")
 }],
 "loop": true,
-"name": &"Up Key",
+"name": &"Left Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1owce"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_y8yhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_qt7iw")
+}],
+"loop": true,
+"name": &"Right Key",
 "speed": 2.0
 }]
 
@@ -135,34 +164,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1owce"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("26_y8yhf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_qt7iw")
-}],
-"loop": true,
-"name": &"Right Key",
-"speed": 2.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8ilqp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("28_hsvtp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_sjju7")
-}],
-"loop": true,
-"name": &"Left Key",
-"speed": 2.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_kbh5l"]
 animations = [{
 "frames": [{
@@ -180,12 +181,10 @@ animations = [{
 [node name="Tutorial" type="Node"]
 script = ExtResource("1_3e5vs")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -26.0
-offset_right = 1181.0
-offset_bottom = 676.0
-color = Color(0, 0, 0, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_eacv7")
+centered = false
 
 [node name="HowTo" type="Label" parent="."]
 anchors_preset = 5
@@ -337,27 +336,54 @@ position = Vector2(-14.6154, 3.84615)
 sprite_frames = SubResource("SpriteFrames_gjqde")
 animation = &"Enter Key"
 
+[node name="JumpLabel" type="Label" parent="."]
+offset_left = 147.0
+offset_top = 266.0
+offset_right = 204.0
+offset_bottom = 289.0
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("3_bir4d")
+text = "JUMP"
+
+[node name="UpKey" type="AnimatedSprite2D" parent="."]
+position = Vector2(174.5, 247)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_5j066")
+animation = &"Up Key"
+
 [node name="ChildJump" type="AnimatedSprite2D" parent="."]
 position = Vector2(173, 184)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_pdjei")
 frame_progress = 0.295717
 
-[node name="UpKey" type="AnimatedSprite2D" parent="ChildJump"]
-position = Vector2(1, 42)
-sprite_frames = SubResource("SpriteFrames_5j066")
-animation = &"Up Key"
-
-[node name="JumpLabel" type="Label" parent="ChildJump"]
-offset_left = -25.3333
-offset_top = 54.6667
-offset_right = 31.6667
-offset_bottom = 77.6667
+[node name="RunLabel" type="Label" parent="."]
+offset_left = 279.0
+offset_top = 267.0
+offset_right = 336.0
+offset_bottom = 290.0
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("3_bir4d")
-text = "JUMP"
+text = "MOVE"
+
+[node name="LeftKey" type="AnimatedSprite2D" parent="."]
+position = Vector2(288, 245.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_8ilqp")
+animation = &"Left Key"
+frame_progress = 0.799457
+
+[node name="RightKey" type="AnimatedSprite2D" parent="."]
+position = Vector2(333, 245.5)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_1owce")
+animation = &"Right Key"
+frame_progress = 0.549647
 
 [node name="ChildRun" type="AnimatedSprite2D" parent="."]
 position = Vector2(318, 181)
@@ -365,30 +391,6 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nuewf")
 animation = &"Running"
 frame_progress = 0.00748152
-
-[node name="RunLabel" type="Label" parent="ChildRun"]
-offset_left = -26.0
-offset_top = 57.3333
-offset_right = 17.0
-offset_bottom = 80.3333
-theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
-theme_override_constants/outline_size = 0
-theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("3_bir4d")
-text = "RUN"
-
-[node name="RightKey" type="AnimatedSprite2D" parent="ChildRun"]
-position = Vector2(10, 43)
-sprite_frames = SubResource("SpriteFrames_1owce")
-animation = &"Right Key"
-frame_progress = 0.549647
-
-[node name="LeftKey" type="AnimatedSprite2D" parent="ChildRun"]
-position = Vector2(-20, 43)
-sprite_frames = SubResource("SpriteFrames_8ilqp")
-animation = &"Left Key"
-frame_progress = 0.799457
 
 [node name="DoubleJump" type="TextureProgressBar" parent="."]
 offset_left = 686.0

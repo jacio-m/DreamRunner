@@ -5,10 +5,10 @@ func _ready():
 	$BackButton.grab_focus()
 	$BackButton.pressed.connect(main_menu)
 	$ChildJump.play()
-	$ChildJump/UpKey.play()
+	$UpKey.play()
 	$ChildRun.play()
-	$ChildRun/RightKey.play()
-	$ChildRun/LeftKey.play()
+	$RightKey.play()
+	$LeftKey.play()
 	$ShadowIdle.play()
 
 func main_menu():

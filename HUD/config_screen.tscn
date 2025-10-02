@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://d4e0i1sppeo6u"]
 
 [ext_resource type="Script" uid="uid://cgqn4b1fq1vhq" path="res://HUD/config_screen.gd" id="1_xc0qo"]
-[ext_resource type="Texture2D" uid="uid://c4dofmepmfprr" path="res://HUD/Sprites/main_menu1.png" id="2_8ian7"]
+[ext_resource type="Texture2D" uid="uid://cl7f0evsun4u4" path="res://Levels/Sprites/BG Sprites/configBG.png" id="2_gphxe"]
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_lul8w"]
 [ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="4_nvavp"]
 [ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="5_wiqho"]
@@ -38,7 +38,7 @@ script = ExtResource("1_xc0qo")
 
 [node name="WIP" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
-texture = ExtResource("2_8ian7")
+texture = ExtResource("2_gphxe")
 centered = false
 
 [node name="Label" type="Label" parent="."]
