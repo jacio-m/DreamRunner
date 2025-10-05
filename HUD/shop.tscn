@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dv8le1ebiw87s"]
+[gd_scene load_steps=41 format=3 uid="uid://dv8le1ebiw87s"]
 
 [ext_resource type="Script" uid="uid://c6xr71vqtuc5l" path="res://HUD/shop.gd" id="1_5c50q"]
 [ext_resource type="Texture2D" uid="uid://uqxvnl7dg2uj" path="res://Levels/Sprites/BG Sprites/shopBG.png" id="1_mlslr"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="13_cqis4"]
 [ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="14_2wihh"]
 [ext_resource type="Texture2D" uid="uid://bsglm4e1bmhjy" path="res://Items/Sprites/feather.png" id="16_tgprg"]
+[ext_resource type="Texture2D" uid="uid://bdni02sr7n87w" path="res://Items/Sprites/teddyBear.png" id="17_2wihh"]
 [ext_resource type="Texture2D" uid="uid://dawwcfftmwy6q" path="res://HUD/Sprites/enter_key1.png" id="17_cqis4"]
 [ext_resource type="Texture2D" uid="uid://b421tfqxeu1nq" path="res://HUD/Sprites/enter_key2.png" id="18_2wihh"]
 [ext_resource type="Texture2D" uid="uid://bjy7gr83rq5vh" path="res://HUD/Sprites/up_key1.png" id="19_i4jry"]
@@ -82,8 +83,14 @@ animations = [{
 }]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cqis4"]
+texture = ExtResource("12_hh5en")
+expand_margin_top = 45.0
+expand_margin_bottom = 45.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2wihh"]
+texture = ExtResource("13_cqis4")
+expand_margin_top = 45.0
+expand_margin_bottom = 45.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4jry"]
 texture = ExtResource("14_2wihh")
@@ -207,10 +214,10 @@ theme_override_font_sizes/font_size = 40
 text = "num"
 
 [node name="ConfirmLabel" type="Label" parent="."]
-offset_left = 599.0
-offset_top = 615.0
-offset_right = 674.0
-offset_bottom = 640.0
+offset_left = 689.0
+offset_top = 613.0
+offset_right = 764.0
+offset_bottom = 638.0
 scale = Vector2(1.3, 1.3)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
@@ -236,12 +243,34 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 focus_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+[node name="TeddyBuy" type="Button" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxTexture_cqis4")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_2wihh")
 theme_override_styles/normal = SubResource("StyleBoxTexture_i4jry")
+
+[node name="Teddy" type="Sprite2D" parent="VBoxContainer/HBoxContainer2/TeddyBuy"]
+position = Vector2(49, 47)
+texture = ExtResource("17_2wihh")
+
+[node name="FeatherPrice" type="Sprite2D" parent="VBoxContainer/HBoxContainer2/TeddyBuy"]
+position = Vector2(36, 85)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_tgprg")
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer2/TeddyBuy"]
+offset_left = 45.0
+offset_top = 81.0
+offset_right = 161.0
+offset_bottom = 136.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("11_5qbqv")
+theme_override_font_sizes/font_size = 40
+text = "50"
 
 [node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 100)
@@ -258,10 +287,10 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_2qwtp")
 text = "BACK"
 
 [node name="NavigateLabel" type="Label" parent="."]
-offset_left = 410.0
-offset_top = 616.0
-offset_right = 515.0
-offset_bottom = 639.0
+offset_left = 500.0
+offset_top = 614.0
+offset_right = 605.0
+offset_bottom = 637.0
 scale = Vector2(1.3, 1.3)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
@@ -288,3 +317,14 @@ animation = &"Left Key"
 position = Vector2(-15.3846, 6.92308)
 sprite_frames = SubResource("SpriteFrames_qquwe")
 animation = &"Right Key"
+
+[node name="Dialogue" type="Label" parent="."]
+offset_left = -49.0
+offset_top = 410.0
+offset_right = 366.0
+offset_bottom = 459.0
+theme_override_fonts/font = ExtResource("11_5qbqv")
+theme_override_font_sizes/font_size = 12
+text = "Start your next run with the teddy 
+bear, might be life saver!"
+horizontal_alignment = 1

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://boqlj6087sqw6"
+path="res://.godot/imported/Takashi Lee - Dream Merch.ogg-dc061c07300994d031666bc6255fe083.oggvorbisstr"
+
+[deps]
+
+source_file="res://Sounds/Takashi Lee - Dream Merch.ogg"
+dest_files=["res://.godot/imported/Takashi Lee - Dream Merch.ogg-dc061c07300994d031666bc6255fe083.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
