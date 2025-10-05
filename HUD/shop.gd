@@ -29,6 +29,7 @@ func buy_item():
 	if $VBoxContainer/HBoxContainer2/TeddyBuy.has_focus():
 		if GameData.feather_count >= 50:
 			GameData.feather_count -= 50
+			MusicManager.play_SFX("res://Sounds/itembought.mp3")
 			$FeatherLabel.text = str(GameData.feather_count)
 			#MusicManager.playSFX(itemboughtsound)
 			$Dialogue.text = dialogue_options[4]
@@ -36,6 +37,7 @@ func buy_item():
 			$VBoxContainer/HBoxContainer2/TeddyBuy.add_theme_stylebox_override("focus", pressed_style)
 			$VBoxContainer/HBoxContainer2/TeddyBuy.add_theme_stylebox_override("normal", pressed_style)
 		else:
+			MusicManager.play_SFX("res://Sounds/purchasefailed.mp3")
 			$Dialogue.text = dialogue_options[3]
 			#MusicManager.playSFX(puchasefailed)
 			 
