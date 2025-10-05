@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dv8le1ebiw87s"]
+[gd_scene load_steps=40 format=3 uid="uid://dv8le1ebiw87s"]
 
 [ext_resource type="Script" uid="uid://c6xr71vqtuc5l" path="res://HUD/shop.gd" id="1_5c50q"]
 [ext_resource type="Texture2D" uid="uid://uqxvnl7dg2uj" path="res://Levels/Sprites/BG Sprites/shopBG.png" id="1_mlslr"]
@@ -67,15 +67,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igwu2"]
-texture = ExtResource("12_hh5en")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ucyl"]
-texture = ExtResource("13_cqis4")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2qwtp"]
-texture = ExtResource("14_2wihh")
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_qyt3w"]
 animations = [{
 "frames": [{
@@ -89,6 +80,30 @@ animations = [{
 "name": &"Enter Key",
 "speed": 2.0
 }]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cqis4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2wihh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4jry"]
+texture = ExtResource("14_2wihh")
+expand_margin_top = 45.0
+expand_margin_bottom = 45.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igwu2"]
+texture = ExtResource("12_hh5en")
+expand_margin_top = 45.0
+expand_margin_bottom = 45.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ucyl"]
+texture = ExtResource("13_cqis4")
+expand_margin_top = 45.0
+expand_margin_bottom = 45.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2qwtp"]
+texture = ExtResource("14_2wihh")
+expand_margin_top = 45.0
+expand_margin_bottom = 45.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gxe88"]
 animations = [{
@@ -174,29 +189,6 @@ position = Vector2(569, 401.723)
 scale = Vector2(3.05729, 4.06738)
 texture = ExtResource("10_b2s0v")
 
-[node name="BackButton" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 128.0
-offset_top = 211.0
-offset_right = 322.0
-offset_bottom = 356.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_fonts/font = ExtResource("11_5qbqv")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxTexture_igwu2")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_0ucyl")
-theme_override_styles/normal = SubResource("StyleBoxTexture_2qwtp")
-text = "BACK"
-
 [node name="FeatherCount" type="Sprite2D" parent="."]
 position = Vector2(45.6, 43.6)
 scale = Vector2(1.3, 1.3)
@@ -236,7 +228,7 @@ custom_minimum_size = Vector2(580, 0)
 offset_left = 356.0
 offset_top = 207.0
 offset_right = 936.0
-offset_bottom = 525.0
+offset_bottom = 523.0
 focus_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
@@ -247,6 +239,23 @@ focus_mode = 2
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_cqis4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2wihh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i4jry")
+
+[node name="BackButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("11_5qbqv")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxTexture_igwu2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0ucyl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2qwtp")
+text = "BACK"
 
 [node name="NavigateLabel" type="Label" parent="."]
 offset_left = 410.0
