@@ -1,7 +1,13 @@
 extends Node
 
 func _ready():
-	$BackButton.grab_focus()
+	$ConfirmLabel/EnterKey.play()
+	$NavigateLabel/UpKey.play()
+	$NavigateLabel/DownKey.play()
+	$NavigateLabel/LeftKey.play()
+	$NavigateLabel/RightKey.play()
+	$FeatherLabel.text = str(GameData.feather_count)
+	$VBoxContainer/HBoxContainer2/Button.grab_focus()
 	$Heidi.play("Idle")
 	$Child.play("Idle")
 	$BackButton.pressed.connect(main_menu)

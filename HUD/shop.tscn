@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dv8le1ebiw87s"]
+[gd_scene load_steps=37 format=3 uid="uid://dv8le1ebiw87s"]
 
 [ext_resource type="Script" uid="uid://c6xr71vqtuc5l" path="res://HUD/shop.gd" id="1_5c50q"]
 [ext_resource type="Texture2D" uid="uid://uqxvnl7dg2uj" path="res://Levels/Sprites/BG Sprites/shopBG.png" id="1_mlslr"]
@@ -15,6 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="12_hh5en"]
 [ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="13_cqis4"]
 [ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="14_2wihh"]
+[ext_resource type="Texture2D" uid="uid://bsglm4e1bmhjy" path="res://Items/Sprites/feather.png" id="16_tgprg"]
+[ext_resource type="Texture2D" uid="uid://dawwcfftmwy6q" path="res://HUD/Sprites/enter_key1.png" id="17_cqis4"]
+[ext_resource type="Texture2D" uid="uid://b421tfqxeu1nq" path="res://HUD/Sprites/enter_key2.png" id="18_2wihh"]
+[ext_resource type="Texture2D" uid="uid://bjy7gr83rq5vh" path="res://HUD/Sprites/up_key1.png" id="19_i4jry"]
+[ext_resource type="Texture2D" uid="uid://c0esvier6a7uo" path="res://HUD/Sprites/up_key2.png" id="20_jju4m"]
+[ext_resource type="Texture2D" uid="uid://d34mf6363jbiy" path="res://HUD/Sprites/down_key1.png" id="21_igwu2"]
+[ext_resource type="Texture2D" uid="uid://bxajn8lrlsmlb" path="res://HUD/Sprites/down_key2.png" id="22_0ucyl"]
+[ext_resource type="Texture2D" uid="uid://bsht5i32kbgr5" path="res://HUD/Sprites/left_key1.png" id="23_2qwtp"]
+[ext_resource type="Texture2D" uid="uid://muta7pt4wbdv" path="res://HUD/Sprites/left_key2.png" id="24_se7t2"]
+[ext_resource type="Texture2D" uid="uid://c5ao607e7n5lw" path="res://HUD/Sprites/right_key1.png" id="25_10k8k"]
+[ext_resource type="Texture2D" uid="uid://dbucc47icgko4" path="res://HUD/Sprites/right_key2.png" id="26_yejor"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i4jry"]
 animations = [{
@@ -65,6 +76,76 @@ texture = ExtResource("13_cqis4")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2qwtp"]
 texture = ExtResource("14_2wihh")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_qyt3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_cqis4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_2wihh")
+}],
+"loop": true,
+"name": &"Enter Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gxe88"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_i4jry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_jju4m")
+}],
+"loop": true,
+"name": &"Up Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_np5qj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_igwu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_0ucyl")
+}],
+"loop": true,
+"name": &"Down Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yv4qy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_2qwtp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_se7t2")
+}],
+"loop": true,
+"name": &"Left Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qquwe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_10k8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_yejor")
+}],
+"loop": true,
+"name": &"Right Key",
+"speed": 2.0
+}]
+
 [node name="Shop" type="Node"]
 script = ExtResource("1_5c50q")
 
@@ -78,14 +159,14 @@ position = Vector2(144, 535)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_i4jry")
 animation = &"Idle"
-frame_progress = 0.182372
+frame_progress = 0.802761
 
 [node name="Child" type="AnimatedSprite2D" parent="."]
 position = Vector2(1077, 542)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_jju4m")
 animation = &"Idle"
-frame_progress = 0.246379
+frame_progress = 0.866787
 flip_h = true
 
 [node name="Cloud" type="Sprite2D" parent="."]
@@ -99,10 +180,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = 209.0
-offset_right = 98.0
-offset_bottom = 354.0
+offset_left = 128.0
+offset_top = 211.0
+offset_right = 322.0
+offset_bottom = 356.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -115,3 +196,86 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_igwu2")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0ucyl")
 theme_override_styles/normal = SubResource("StyleBoxTexture_2qwtp")
 text = "BACK"
+
+[node name="FeatherCount" type="Sprite2D" parent="."]
+position = Vector2(45.6, 43.6)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("16_tgprg")
+
+[node name="FeatherLabel" type="Label" parent="."]
+offset_left = 80.6
+offset_top = 30.6
+offset_right = 196.6
+offset_bottom = 85.6
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("11_5qbqv")
+theme_override_font_sizes/font_size = 40
+text = "num"
+
+[node name="ConfirmLabel" type="Label" parent="."]
+offset_left = 599.0
+offset_top = 615.0
+offset_right = 674.0
+offset_bottom = 640.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("11_5qbqv")
+text = "SELECT"
+
+[node name="EnterKey" type="AnimatedSprite2D" parent="ConfirmLabel"]
+position = Vector2(-14.6154, 3.84615)
+sprite_frames = SubResource("SpriteFrames_qyt3w")
+animation = &"Enter Key"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(580, 0)
+offset_left = 356.0
+offset_top = 207.0
+offset_right = 936.0
+offset_bottom = 525.0
+focus_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+focus_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="NavigateLabel" type="Label" parent="."]
+offset_left = 410.0
+offset_top = 616.0
+offset_right = 515.0
+offset_bottom = 639.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("11_5qbqv")
+text = "NAVIGATE"
+
+[node name="UpKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-40.7693, -13.8462)
+sprite_frames = SubResource("SpriteFrames_gxe88")
+animation = &"Up Key"
+
+[node name="DownKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-40.7693, 6.92307)
+sprite_frames = SubResource("SpriteFrames_np5qj")
+animation = &"Down Key"
+
+[node name="LeftKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-66.1539, 6.92308)
+sprite_frames = SubResource("SpriteFrames_yv4qy")
+animation = &"Left Key"
+
+[node name="RightKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-15.3846, 6.92308)
+sprite_frames = SubResource("SpriteFrames_qquwe")
+animation = &"Right Key"
