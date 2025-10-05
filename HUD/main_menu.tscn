@@ -184,19 +184,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -176.0
-offset_top = -195.0
+offset_top = -223.0
 offset_right = -56.0
-offset_bottom = -28.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = -29
+theme_override_constants/separation = -26
 script = ExtResource("6_qs2e7")
 
 [node name="PlayButton" type="Button" parent="MenuButtons"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
@@ -208,8 +208,21 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_tukxf")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rdytk")
 text = "PLAY"
 
+[node name="ShopButton" type="Button" parent="MenuButtons"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("7_xudqj")
+theme_override_styles/focus = SubResource("StyleBoxTexture_gf600")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tukxf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rdytk")
+text = "SHOP"
+
 [node name="TutorialButton" type="Button" parent="MenuButtons"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
@@ -222,7 +235,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_ouis3")
 text = "TUTORIAL"
 
 [node name="ConfigButton" type="Button" parent="MenuButtons"]
-custom_minimum_size = Vector2(0, 75)
+custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
@@ -312,5 +325,6 @@ animation = &"Enter Key"
 frame_progress = 0.775035
 
 [connection signal="focus_entered" from="MenuButtons/PlayButton" to="MenuButtons" method="_on_play_button_focus_entered"]
+[connection signal="focus_entered" from="MenuButtons/ShopButton" to="MenuButtons" method="_on_shop_button_focus_entered"]
 [connection signal="focus_entered" from="MenuButtons/TutorialButton" to="MenuButtons" method="_on_tutorial_button_focus_entered"]
 [connection signal="focus_entered" from="MenuButtons/ConfigButton" to="MenuButtons" method="_on_config_button_focus_entered"]

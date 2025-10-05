@@ -5,6 +5,7 @@ func _ready():
 	$PlayButton.grab_focus()
 	$PlayButton.focus_entered.connect(_on_play_button_focus_entered)
 	$PlayButton.pressed.connect(play_game)
+	$ShopButton.pressed.connect(shop_scene)
 	$ConfigButton.pressed.connect(config_scene)
 	$TutorialButton.pressed.connect(tutorial_scene)
 
@@ -14,6 +15,13 @@ func play_game():
 	var pressed_style = $PlayButton.get("theme_override_styles/pressed")
 	$PlayButton.add_theme_stylebox_override("normal", pressed_style)
 	FadeAnimation.fade_to_scene("res://Levels/Scenes/main.tscn")
+	
+func shop_scene():
+	MusicManager.play_SFX("res://Sounds/entersound.ogg")
+	$ShopButton.release_focus()
+	var pressed_style = $ShopButton.get("theme_override_styles/pressed")
+	$ShopButton.add_theme_stylebox_override("normal", pressed_style)
+	FadeAnimation.fade_to_scene("res://HUD/shop.tscn")
 
 func config_scene():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
@@ -32,8 +40,11 @@ func tutorial_scene():
 func _on_play_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
 	
-func _on_config_button_focus_entered() -> void:
+func _on_config_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
 
-func _on_tutorial_button_focus_entered() -> void:
+func _on_tutorial_button_focus_entered():
+	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
+
+func _on_shop_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
