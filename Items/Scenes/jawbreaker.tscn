@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1l2uvkol48vb"]
+
+[ext_resource type="Texture2D" uid="uid://brgwx7m38ogv3" path="res://Items/Sprites/jawbreaker.png" id="1_t5y8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vka87"]
+radius = 25.0
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t5y8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vka87")

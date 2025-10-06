@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct8wpthvw6dxp"]
+
+[ext_resource type="Texture2D" uid="uid://cc7f7wx2eq6au" path="res://Items/Sprites/lollipop.png" id="1_ug5p7"]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ug5p7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-28, 24, 1, -5, -2, -12, -1, -20, 3, -26, 10, -29, 16, -29, 22, -26, 25, -23, 28, -17, 28, -11, 27, -8, 24, -2, 21, 0, 16, 1, 7, 0, 5, -1, -24, 28, -27, 27)
