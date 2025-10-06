@@ -3,11 +3,16 @@ extends Node
 var dialogue_options = [ "Start your next run with the teddy 
 bear, might be life saver!",
 "Leaving already?",
-"Bye bye!",
 "Hey! You can't afford that!",
 "Thanks!"]
 
+var goodbye_options = ["Sayounara!", "Bye bye!", "Tchau!"]
+
 func _ready():
+	if GameData.teddy_bought == true:
+		$VBoxContainer/HBoxContainer2/TeddyBuy.disabled = true
+	else:
+		$VBoxContainer/HBoxContainer2/TeddyBuy.disabled = false
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream Merch.ogg")
 	play_anims()
 	$FeatherLabel.text = str(GameData.feather_count)
@@ -19,7 +24,7 @@ func _ready():
 
 func main_menu():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
-	$Dialogue.text = dialogue_options[2]
+	$Dialogue.text = goodbye_options[randi_range(0, 2)]
 	$VBoxContainer/HBoxContainer2/BackButton.release_focus()
 	var pressed_style = $VBoxContainer/HBoxContainer2/BackButton.get("theme_override_styles/pressed")
 	$VBoxContainer/HBoxContainer2/BackButton.add_theme_stylebox_override("normal", pressed_style)
@@ -31,15 +36,18 @@ func buy_item():
 			GameData.feather_count -= 50
 			MusicManager.play_SFX("res://Sounds/itembought.mp3")
 			$FeatherLabel.text = str(GameData.feather_count)
-			#MusicManager.playSFX(itemboughtsound)
-			$Dialogue.text = dialogue_options[4]
+			$Dialogue.text = dialogue_options[3]
 			var pressed_style = $VBoxContainer/HBoxContainer2/TeddyBuy.get("theme_override_styles/pressed")
 			$VBoxContainer/HBoxContainer2/TeddyBuy.add_theme_stylebox_override("focus", pressed_style)
 			$VBoxContainer/HBoxContainer2/TeddyBuy.add_theme_stylebox_override("normal", pressed_style)
+			$VBoxContainer/HBoxContainer2/TeddyBuy.disabled = true
+			GameData.teddy_bought = true
+			
+		#elif ... more items coming soon
+		
 		else:
 			MusicManager.play_SFX("res://Sounds/purchasefailed.mp3")
-			$Dialogue.text = dialogue_options[3]
-			#MusicManager.playSFX(puchasefailed)
+			$Dialogue.text = dialogue_options[2]
 			 
 	
 func dialogue():

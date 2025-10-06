@@ -49,6 +49,7 @@ func new_game():
 	get_tree().paused = false
 	$Player.input_enabled = false
 	$Player.shield = false
+	enable_items()
 	$HUD.get_node("DoubleJump").value = current_progress
 	
 	for obs in obstacles:
@@ -160,8 +161,7 @@ func add_item(item, x, y):
 				MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
 				$Player.shield = true
 				$HUD.get_node("ShieldOn").visible = true
-				remove_item(item)
-			)
+				remove_item(item))
 	add_child(item)
 	items.append(item)
 	
@@ -198,3 +198,11 @@ func game_over():
 	$GameOver.visible = true
 	MusicManager.play_SFX("res://Sounds/gameover.mp3")
 	$GameOver.get_node("VBoxContainer/Button").grab_focus()
+
+func enable_items():
+	if GameData.teddy_bought == true:
+			MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
+			$Player.shield = true
+			$HUD.get_node("ShieldOn").visible = true
+			GameData.teddy_bought = false
+	#more items coming soon
