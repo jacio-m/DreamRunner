@@ -7,10 +7,11 @@ var shadow_kitty = preload("res://Enemies/shadow_kitty.tscn")
 var pillow_item = preload("res://Items/Scenes/pillow.tscn")
 var feather_item = preload("res://Items/Scenes/feather.tscn")
 var teddy_bear_item = preload("res://Items/Scenes/teddy_bear.tscn")
+var lollipop_item = preload("res://Items/Scenes/lollipop.tscn")
 
 var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
 var obstacles : Array
-var item_types := [feather_item, pillow_item, teddy_bear_item]
+var item_types := [feather_item, pillow_item, teddy_bear_item, lollipop_item]
 var items: Array
 
 const PLAYER_START_POS := Vector2i(155, 550)
@@ -29,6 +30,7 @@ var last_item
 var game_running : bool
 var current_progress: float = 0.0
 var progress_smoothing : float = 5.0
+var lollipop_effect : bool
 
 func _ready():
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
@@ -133,7 +135,7 @@ func generate_items():
 		elif item_prob < 98:
 			item_type = pillow_item
 		else:
-			item_type = teddy_bear_item
+			item_type = [teddy_bear_item, lollipop_item][randi() % 2]
 			
 		var item = item_type.instantiate()
 		var item_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 2000)
@@ -162,6 +164,19 @@ func add_item(item, x, y):
 				$Player.shield = true
 				$HUD.get_node("ShieldOn").visible = true
 				remove_item(item))
+	elif item.scene_file_path == lollipop_item.resource_path:
+		item.body_entered.connect(func(body):
+			if body.name == "Player":
+				#MusicManager.play_SFX(candysfx)
+				lollipop_effect = true
+				var duration = Timer.new()
+				duration.wait_time = 5.0
+				duration.one_shot = true
+				duration.timeout.connect(func():
+					lollipop_effect = false)
+				add_child(duration)
+				duration.start()
+				remove_item(item))
 	add_child(item)
 	items.append(item)
 	
@@ -180,7 +195,10 @@ func remove_item(item):
 	items.erase(item)
 
 func show_distance():
-	$HUD.get_node("DistanceLabel").text = "DISTANCE: " + str(distance / DISTANCE_MODIFIER) + " m"
+	var displayed_distance = distance / DISTANCE_MODIFIER
+	if lollipop_effect == true:
+		displayed_distance *= 2
+	$HUD.get_node("DistanceLabel").text = "DISTANCE: " + str(displayed_distance) + " m"
 	$HUD.get_node("FeatherLabel").text = str(GameData.feather_count)
 	
 func hit_obs(body):
