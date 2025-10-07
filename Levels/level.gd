@@ -24,6 +24,7 @@ var screen_size : Vector2i
 var ground_height : int
 const SPEED_MODIFIER: int = 400
 var distance : int
+var distance_gain : int
 const DISTANCE_MODIFIER: int = 100
 var last_obs
 var last_item
@@ -69,6 +70,10 @@ func new_game():
 	$GameOver.visible = false
 	FadeAnimation.fade_in()
 	
+	#for testing new items
+	await get_tree().create_timer(10).timeout
+	spawn_test()
+	
 func _process(delta):
 	if game_running:
 		speed = START_SPEED + distance / SPEED_MODIFIER 
@@ -85,7 +90,10 @@ func _process(delta):
 		var cam_right = $Camera2D.position.x + screen_size.x / 2 - 30
 		$Player.position.x = clamp($Player.position.x, cam_left, cam_right)
 		
-		distance += speed * delta
+		distance_gain = speed * delta
+		if lollipop_effect == true:
+			distance_gain *= 2
+		distance += distance_gain
 		show_distance()
 		
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
@@ -149,13 +157,19 @@ func add_item(item, x, y):
 		item.body_entered.connect(func(body):
 			if body.name == "Player":
 				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
-				GameData.feather_count += 1
+				if lollipop_effect == true:
+					GameData.feather_count += 2
+				else: 
+					GameData.feather_count += 1
 				remove_item(item))
 	elif item.scene_file_path == pillow_item.resource_path:
 		item.body_entered.connect(func(body):
 			if body.name == "Player":
 				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
-				GameData.feather_count += 10
+				if lollipop_effect == true:
+					GameData.feather_count += 20
+				else:
+					GameData.feather_count += 10
 				remove_item(item))
 	elif item.scene_file_path == teddy_bear_item.resource_path:
 		item.body_entered.connect(func(body):
@@ -167,10 +181,10 @@ func add_item(item, x, y):
 	elif item.scene_file_path == lollipop_item.resource_path:
 		item.body_entered.connect(func(body):
 			if body.name == "Player":
-				#MusicManager.play_SFX(candysfx)
+				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
 				lollipop_effect = true
 				var duration = Timer.new()
-				duration.wait_time = 5.0
+				duration.wait_time = 15.0
 				duration.one_shot = true
 				duration.timeout.connect(func():
 					lollipop_effect = false)
@@ -196,8 +210,6 @@ func remove_item(item):
 
 func show_distance():
 	var displayed_distance = distance / DISTANCE_MODIFIER
-	if lollipop_effect == true:
-		displayed_distance *= 2
 	$HUD.get_node("DistanceLabel").text = "DISTANCE: " + str(displayed_distance) + " m"
 	$HUD.get_node("FeatherLabel").text = str(GameData.feather_count)
 	
@@ -223,4 +235,11 @@ func enable_items():
 			$Player.shield = true
 			$HUD.get_node("ShieldOn").visible = true
 			GameData.teddy_bought = false
+
+#for testing new items
+func spawn_test():
+		var test = lollipop_item.instantiate()
+		var x = $Camera2D.position.x + 300
+		var y = $Camera2D.position.y - 20
+		add_item(test, x, y)
 	#more items coming soon
