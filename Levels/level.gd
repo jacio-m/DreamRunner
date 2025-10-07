@@ -8,10 +8,11 @@ var pillow_item = preload("res://Items/Scenes/pillow.tscn")
 var feather_item = preload("res://Items/Scenes/feather.tscn")
 var teddy_bear_item = preload("res://Items/Scenes/teddy_bear.tscn")
 var lollipop_item = preload("res://Items/Scenes/lollipop.tscn")
+var chocolatebar_item = preload("res://Items/Scenes/chocolatebar.tscn")
 
 var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
 var obstacles : Array
-var item_types := [feather_item, pillow_item, teddy_bear_item, lollipop_item]
+var item_types := [feather_item, pillow_item, teddy_bear_item, lollipop_item, chocolatebar_item]
 var items: Array
 
 const PLAYER_START_POS := Vector2i(155, 550)
@@ -144,7 +145,6 @@ func generate_items():
 			item_type = pillow_item
 		else:
 			item_type = [teddy_bear_item, lollipop_item][randi() % 2]
-			
 		var item = item_type.instantiate()
 		var item_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 2000)
 		var item_y: int = $Camera2D.position.y - randi_range(10, 30)
@@ -188,6 +188,19 @@ func add_item(item, x, y):
 				duration.one_shot = true
 				duration.timeout.connect(func():
 					lollipop_effect = false)
+				add_child(duration)
+				duration.start()
+				remove_item(item))
+	elif item.scene_file_path == chocolatebar_item.resource_path:
+		item.body_entered.connect(func(body):
+			if body.name == "Player":
+				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
+				Engine.time_scale = 0.5
+				var duration = Timer.new()
+				duration.wait_time = 15.0
+				duration.one_shot = true
+				duration.timeout.connect(func():
+					Engine.time_scale = 1.0)
 				add_child(duration)
 				duration.start()
 				remove_item(item))
@@ -238,8 +251,7 @@ func enable_items():
 
 #for testing new items
 func spawn_test():
-		var test = lollipop_item.instantiate()
+		var test = chocolatebar_item.instantiate()
 		var x = $Camera2D.position.x + 300
 		var y = $Camera2D.position.y - 20
 		add_item(test, x, y)
-	#more items coming soon
