@@ -9,6 +9,7 @@ var feather_item = preload("res://Items/Scenes/feather.tscn")
 var teddy_bear_item = preload("res://Items/Scenes/teddy_bear.tscn")
 var lollipop_item = preload("res://Items/Scenes/lollipop.tscn")
 var chocolatebar_item = preload("res://Items/Scenes/chocolatebar.tscn")
+var item_effects := {}
 
 var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
 var obstacles : Array
@@ -35,6 +36,40 @@ var progress_smoothing : float = 5.0
 var lollipop_effect : bool
 
 func _ready():
+	item_effects = {
+		feather_item.resource_path: func(item):
+			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
+			GameData.feather_count += 2 if lollipop_effect else 1,
+			
+		pillow_item.resource_path: func(item):
+			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
+			GameData.feather_count += 20 if lollipop_effect else 10,
+		
+		teddy_bear_item.resource_path: func(item):
+			MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
+			$Player.shield = true
+			$HUD.get_node("ShieldOn").visible = true,
+			
+		lollipop_item.resource_path: func(item):
+			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
+			lollipop_effect = true
+			var duration = Timer.new()
+			duration.wait_time = 15.0
+			duration.one_shot = true
+			duration.timeout.connect(func(): lollipop_effect = false)
+			add_child(duration)
+			duration.start(),
+		
+		chocolatebar_item.resource_path: func(_item):
+			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
+			var tween_in = create_tween()
+			tween_in.tween_property(Engine, "time_scale", 0.5, 0.3)
+			tween_in.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 0.5, 0.3)
+			await get_tree().create_timer(7).timeout
+			var tween_out = create_tween()
+			tween_out.tween_property(Engine, "time_scale", 1.0, 0.5)
+			tween_out.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 1.0, 0.5)}
+			
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
@@ -153,56 +188,13 @@ func generate_items():
 		
 func add_item(item, x, y):
 	item.position = Vector2i(x, y)
-	if item.scene_file_path == feather_item.resource_path: 
-		item.body_entered.connect(func(body):
-			if body.name == "Player":
-				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
-				if lollipop_effect == true:
-					GameData.feather_count += 2
-				else: 
-					GameData.feather_count += 1
-				remove_item(item))
-	elif item.scene_file_path == pillow_item.resource_path:
-		item.body_entered.connect(func(body):
-			if body.name == "Player":
-				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
-				if lollipop_effect == true:
-					GameData.feather_count += 20
-				else:
-					GameData.feather_count += 10
-				remove_item(item))
-	elif item.scene_file_path == teddy_bear_item.resource_path:
-		item.body_entered.connect(func(body):
-			if body.name == "Player":
-				MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
-				$Player.shield = true
-				$HUD.get_node("ShieldOn").visible = true
-				remove_item(item))
-	elif item.scene_file_path == lollipop_item.resource_path:
-		item.body_entered.connect(func(body):
-			if body.name == "Player":
-				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
-				lollipop_effect = true
-				var duration = Timer.new()
-				duration.wait_time = 15.0
-				duration.one_shot = true
-				duration.timeout.connect(func():
-					lollipop_effect = false)
-				add_child(duration)
-				duration.start()
-				remove_item(item))
-	elif item.scene_file_path == chocolatebar_item.resource_path:
-		item.body_entered.connect(func(body):
-			if body.name == "Player":
-				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
-				remove_item(item)
-				var tween_in = create_tween()
-				tween_in.tween_property(Engine, "time_scale", 0.5, 0.3)
-				tween_in.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 0.5, 0.3)
-				await get_tree().create_timer(7).timeout
-				var tween_out = create_tween()
-				tween_out.tween_property(Engine, "time_scale", 1.0, 0.3)
-				tween_out.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 1.0, 0.3))
+	
+	item.body_entered.connect(func(body):
+		if body.name == "Player":
+			remove_item(item)
+			if item_effects.has(item.scene_file_path):
+				await item_effects[item.scene_file_path].call(item))
+				
 	add_child(item)
 	items.append(item)
 	
@@ -252,12 +244,12 @@ func enable_items():
 	if GameData.teddy_bought == true:
 			MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
 			$Player.shield = true
-			$HUD.get_node("ShieldOn").visible = true 
+			$HUD.get_node("ShieldOn").visible = true
 			GameData.teddy_bought = false
 
 #for testing new items
 func spawn_test():
-		var test = chocolatebar_item.instantiate()
+		var test = lollipop_item.instantiate()
 		var x = $Camera2D.position.x + 300
 		var y = $Camera2D.position.y - 20
 		add_item(test, x, y)
