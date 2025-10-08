@@ -72,7 +72,7 @@ func new_game():
 	FadeAnimation.fade_in()
 	
 	#for testing new items
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(5).timeout
 	spawn_test()
 	
 func _process(delta):
@@ -195,15 +195,14 @@ func add_item(item, x, y):
 		item.body_entered.connect(func(body):
 			if body.name == "Player":
 				MusicManager.play_SFX("res://Sounds/item_collected.ogg")
-				Engine.time_scale = 0.5
-				var duration = Timer.new()
-				duration.wait_time = 15.0
-				duration.one_shot = true
-				duration.timeout.connect(func():
-					Engine.time_scale = 1.0)
-				add_child(duration)
-				duration.start()
-				remove_item(item))
+				remove_item(item)
+				var tween_in = create_tween()
+				tween_in.tween_property(Engine, "time_scale", 0.5, 0.3)
+				tween_in.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 0.5, 0.3)
+				await get_tree().create_timer(7).timeout
+				var tween_out = create_tween()
+				tween_out.tween_property(Engine, "time_scale", 1.0, 0.3)
+				tween_out.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 1.0, 0.3))
 	add_child(item)
 	items.append(item)
 	
@@ -236,8 +235,15 @@ func hit_obs(body):
 				$HUD.get_node("ShieldOn").visible = false
 
 func game_over():
-	get_tree().paused = true
+	lollipop_effect = false
 	game_running = false
+	$Player.input_enabled = false
+	if Engine.time_scale != 1:
+		var tween_out = create_tween()
+		tween_out.tween_property(Engine, "time_scale", 1.0, 0.1)
+		tween_out.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 1.0, 0.1)
+		await tween_out.finished
+	get_tree().paused = true
 	$GameOver.visible = true
 	MusicManager.play_SFX("res://Sounds/gameover.mp3")
 	$GameOver.get_node("VBoxContainer/Button").grab_focus()
@@ -246,7 +252,7 @@ func enable_items():
 	if GameData.teddy_bought == true:
 			MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
 			$Player.shield = true
-			$HUD.get_node("ShieldOn").visible = true
+			$HUD.get_node("ShieldOn").visible = true 
 			GameData.teddy_bought = false
 
 #for testing new items
