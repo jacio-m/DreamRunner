@@ -54,7 +54,7 @@ func _ready():
 			$HUD.get_node("ShieldOn").visible = true,
 			
 		lollipop_item.resource_path: func(item):
-			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
+			MusicManager.play_SFX("res://Sounds/candycollected.ogg")
 			lollipop_effect = true
 			var duration = Timer.new()
 			duration.wait_time = 15.0
@@ -65,7 +65,7 @@ func _ready():
 		
 		chocolatebar_item.resource_path: func(_item):
 			chocolatebar_effect = true
-			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
+			MusicManager.play_SFX("res://Sounds/candycollected.ogg")
 			var tween_in = create_tween()
 			tween_in.tween_property(Engine, "time_scale", 0.5, 0.3)
 			tween_in.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 0.5, 0.3)
@@ -77,7 +77,7 @@ func _ready():
 		
 		jawbreaker_item.resource_path: func(_item):
 			jawbreaker_effect = true
-			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
+			MusicManager.play_SFX("res://Sounds/candycollected.ogg")
 			var timer = Timer.new()
 			timer.wait_time = 10.0
 			timer.one_shot = true
@@ -273,13 +273,13 @@ func update_HUD():
 
 #for testing new items
 func spawn_test():
-		#var test = chocolatebar_item.instantiate()
-		#var test2 = lollipop_item.instantiate()
+		var test = chocolatebar_item.instantiate()
+		var test2 = lollipop_item.instantiate()
 		var test3 = jawbreaker_item.instantiate()
-		#var test4 = teddy_bear_item.instantiate()
+		var test4 = teddy_bear_item.instantiate()
 		var x = $Camera2D.position.x + 300
 		var y = $Camera2D.position.y - 20
-		#add_item(test, x, y)
-		#add_item(test2, x, y)
+		add_item(test, x, y)
+		add_item(test2, x, y)
 		add_item(test3, x, y)
-		#add_item(test4, x, y)
+		add_item(test4, x, y)
