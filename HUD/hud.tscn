@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4xehiik8vl5x"]
+[gd_scene load_steps=9 format=3 uid="uid://c4xehiik8vl5x"]
 
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="1_h61sl"]
 [ext_resource type="Texture2D" uid="uid://bsglm4e1bmhjy" path="res://Items/Sprites/feather.png" id="2_mi5n8"]
 [ext_resource type="Texture2D" uid="uid://b6aqamfrmju2p" path="res://HUD/Sprites/doublejumpbar(under).png" id="3_jvmdh"]
 [ext_resource type="Texture2D" uid="uid://ngqpchhly8uu" path="res://HUD/Sprites/doublejumpbar(progress).png" id="4_1rsjr"]
 [ext_resource type="Texture2D" uid="uid://bdni02sr7n87w" path="res://Items/Sprites/teddyBear.png" id="5_1rsjr"]
+[ext_resource type="Texture2D" uid="uid://brgwx7m38ogv3" path="res://Items/Sprites/jawbreaker.png" id="6_ncsg0"]
+[ext_resource type="Texture2D" uid="uid://cc7f7wx2eq6au" path="res://Items/Sprites/lollipop.png" id="7_6dvid"]
+[ext_resource type="Texture2D" uid="uid://crhcmfteouah7" path="res://Items/Sprites/chocolatebar.png" id="8_6dvid"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -72,3 +75,21 @@ visible = false
 position = Vector2(438, 88)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("5_1rsjr")
+
+[node name="JawbreakerOn" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(575, 92)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("6_ncsg0")
+
+[node name="LollipopOn" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(502, 88)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("7_6dvid")
+
+[node name="ChocolateBarOn" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(657, 88)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("8_6dvid")

@@ -36,6 +36,7 @@ var current_progress: float = 0.0
 var progress_smoothing : float = 5.0
 var lollipop_effect : bool
 var jawbreaker_effect : bool
+var chocolatebar_effect : bool
 
 func _ready():
 	item_effects = {
@@ -63,11 +64,13 @@ func _ready():
 			duration.start(),
 		
 		chocolatebar_item.resource_path: func(_item):
+			chocolatebar_effect = true
 			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
 			var tween_in = create_tween()
 			tween_in.tween_property(Engine, "time_scale", 0.5, 0.3)
 			tween_in.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 0.5, 0.3)
 			await get_tree().create_timer(7).timeout
+			chocolatebar_effect = false
 			var tween_out = create_tween()
 			tween_out.tween_property(Engine, "time_scale", 1.0, 0.5)
 			tween_out.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 1.0, 0.5),
@@ -95,13 +98,12 @@ func _ready():
 	
 func new_game():
 	distance = 0
-	show_distance()
 	game_running = false
 	get_tree().paused = false
 	$Player.input_enabled = false
 	$Player.shield = false
 	enable_items()
-	$HUD.get_node("DoubleJump").value = current_progress
+	update_HUD()
 	
 	for obs in obstacles:
 		obs.queue_free()
@@ -142,7 +144,6 @@ func _process(delta):
 		if lollipop_effect == true:
 			distance_gain *= 2
 		distance += distance_gain
-		show_distance()
 		
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
 			$Ground.position.x += screen_size.x
@@ -160,14 +161,12 @@ func _process(delta):
 			if item.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_item(item)
 		
-		for item in items:
-			if jawbreaker_effect == true:
-				var direction = ($Player.position - item.position).normalized()
-				item.position += direction * 300 * delta
+		if jawbreaker_effect == true:
+			apply_jawbreaker_effect(delta)
 				
 		var final_progress = float($Player.double_jump) / 3 * 100
 		current_progress = lerp(current_progress, final_progress, delta * progress_smoothing)
-		$HUD.get_node("DoubleJump").value = current_progress
+		update_HUD()
 		
 	else:
 		if Input.is_action_just_pressed("ui_accept"):
@@ -228,11 +227,6 @@ func remove_obs(obs):
 func remove_item(item):
 	item.queue_free()
 	items.erase(item)
-
-func show_distance():
-	var displayed_distance = distance / DISTANCE_MODIFIER
-	$HUD.get_node("DistanceLabel").text = "DISTANCE: " + str(displayed_distance) + " m"
-	$HUD.get_node("FeatherLabel").text = str(GameData.feather_count)
 	
 func hit_obs(body):
 	if body.name == "Player":
@@ -241,7 +235,6 @@ func hit_obs(body):
 			else:
 				MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
 				$Player.shield = false
-				$HUD.get_node("ShieldOn").visible = false
 
 func game_over():
 	lollipop_effect = false
@@ -261,12 +254,32 @@ func enable_items():
 	if GameData.teddy_bought == true:
 			MusicManager.play_SFX("res://Sounds/squeaky-toy.mp3")
 			$Player.shield = true
-			$HUD.get_node("ShieldOn").visible = true
 			GameData.teddy_bought = false
+
+func apply_jawbreaker_effect(delta):
+	for item in items:
+		var direction = ($Player.position - item.position).normalized()
+		item.position += direction * 300 * delta
+
+func update_HUD():
+	var displayed_distance = distance / DISTANCE_MODIFIER
+	$HUD.get_node("DistanceLabel").text = "DISTANCE: " + str(displayed_distance) + " m"
+	$HUD.get_node("FeatherLabel").text = str(GameData.feather_count)
+	$HUD.get_node("ShieldOn").visible = $Player.shield
+	$HUD.get_node("JawbreakerOn").visible = jawbreaker_effect
+	$HUD.get_node("LollipopOn").visible = lollipop_effect
+	$HUD.get_node("ChocolateBarOn").visible = chocolatebar_effect
+	$HUD.get_node("DoubleJump").value = current_progress
 
 #for testing new items
 func spawn_test():
-		var test = jawbreaker_item.instantiate()
+		#var test = chocolatebar_item.instantiate()
+		#var test2 = lollipop_item.instantiate()
+		var test3 = jawbreaker_item.instantiate()
+		#var test4 = teddy_bear_item.instantiate()
 		var x = $Camera2D.position.x + 300
 		var y = $Camera2D.position.y - 20
-		add_item(test, x, y)
+		#add_item(test, x, y)
+		#add_item(test2, x, y)
+		add_item(test3, x, y)
+		#add_item(test4, x, y)
