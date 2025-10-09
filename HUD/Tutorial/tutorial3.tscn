@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://ggqst1mx6ut6"]
+
+[ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="1_26hy7"]
+[ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="2_eyycq"]
+[ext_resource type="Texture2D" uid="uid://dw8ipdqwq15no" path="res://Enemies/Shadows Sprites/shadow_blob1.png" id="3_bkfjj"]
+[ext_resource type="Texture2D" uid="uid://8f3fxo7yxvft" path="res://Enemies/Shadows Sprites/shadow_blob2.png" id="4_08f0r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yglvg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bkfjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_08f0r")
+}],
+"loop": true,
+"name": &"Shadow Idle",
+"speed": 2.0
+}]
+
+[node name="Node" type="Node"]
+
+[node name="TutorialBG" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_26hy7")
+centered = false
+
+[node name="HowTo" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -254.0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 343.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_eyycq")
+theme_override_font_sizes/font_size = 60
+text = "HOW TO PLAY!"
+
+[node name="Text3" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -245.0
+offset_top = 206.0
+offset_right = 171.0
+offset_bottom = 255.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_eyycq")
+theme_override_font_sizes/font_size = 18
+text = "JUMP OVER NIGHTMARES 
+TO AVOID THEM!"
+horizontal_alignment = 1
+
+[node name="ShadowIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(569, 281)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_yglvg")
+animation = &"Shadow Idle"
