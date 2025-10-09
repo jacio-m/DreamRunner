@@ -9,6 +9,7 @@ var feather_item = preload("res://Items/Scenes/feather.tscn")
 var teddy_bear_item = preload("res://Items/Scenes/teddy_bear.tscn")
 var lollipop_item = preload("res://Items/Scenes/lollipop.tscn")
 var chocolatebar_item = preload("res://Items/Scenes/chocolatebar.tscn")
+var jawbreaker_item = preload("res://Items/Scenes/jawbreaker.tscn")
 var item_effects := {}
 
 var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
@@ -34,6 +35,7 @@ var game_running : bool
 var current_progress: float = 0.0
 var progress_smoothing : float = 5.0
 var lollipop_effect : bool
+var jawbreaker_effect : bool
 
 func _ready():
 	item_effects = {
@@ -68,7 +70,17 @@ func _ready():
 			await get_tree().create_timer(7).timeout
 			var tween_out = create_tween()
 			tween_out.tween_property(Engine, "time_scale", 1.0, 0.5)
-			tween_out.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 1.0, 0.5)}
+			tween_out.tween_property(MusicManager.get_node("MusicPlayer"), "pitch_scale", 1.0, 0.5),
+		
+		jawbreaker_item.resource_path: func(_item):
+			jawbreaker_effect = true
+			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
+			var timer = Timer.new()
+			timer.wait_time = 10.0
+			timer.one_shot = true
+			timer.timeout.connect(func(): jawbreaker_effect = false)
+			add_child(timer)
+			timer.start()}
 			
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
 	screen_size = get_viewport().get_visible_rect().size
@@ -147,6 +159,11 @@ func _process(delta):
 		for item in items:
 			if item.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_item(item)
+		
+		for item in items:
+			if jawbreaker_effect == true:
+				var direction = ($Player.position - item.position).normalized()
+				item.position += direction * 300 * delta
 				
 		var final_progress = float($Player.double_jump) / 3 * 100
 		current_progress = lerp(current_progress, final_progress, delta * progress_smoothing)
@@ -249,7 +266,7 @@ func enable_items():
 
 #for testing new items
 func spawn_test():
-		var test = lollipop_item.instantiate()
+		var test = jawbreaker_item.instantiate()
 		var x = $Camera2D.position.x + 300
 		var y = $Camera2D.position.y - 20
 		add_item(test, x, y)
