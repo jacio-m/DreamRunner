@@ -1,15 +1,11 @@
 extends Node
 
 func _ready():
-	$ConfirmLabel/EnterKey.play()
+	$ShadowIdle.play()
+	$ShadowSpike.play()
+	$ShadowKitty.play()
 	$BackButton.grab_focus()
 	$BackButton.pressed.connect(main_menu)
-	$ChildJump.play()
-	$UpKey.play()
-	$ChildRun.play()
-	$RightKey.play()
-	$LeftKey.play()
-	$ShadowIdle.play()
 
 func main_menu():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")

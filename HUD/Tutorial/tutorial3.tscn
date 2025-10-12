@@ -1,9 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://ggqst1mx6ut6"]
+[gd_scene load_steps=22 format=3 uid="uid://ggqst1mx6ut6"]
 
 [ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="1_26hy7"]
+[ext_resource type="Script" uid="uid://drhlggcfl68vy" path="res://HUD/Tutorial/tutorial3.gd" id="1_obdt1"]
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="2_eyycq"]
 [ext_resource type="Texture2D" uid="uid://dw8ipdqwq15no" path="res://Enemies/Shadows Sprites/shadow_blob1.png" id="3_bkfjj"]
 [ext_resource type="Texture2D" uid="uid://8f3fxo7yxvft" path="res://Enemies/Shadows Sprites/shadow_blob2.png" id="4_08f0r"]
+[ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="5_mnwdy"]
+[ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="6_l6xut"]
+[ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="7_kj11r"]
+[ext_resource type="Texture2D" uid="uid://dawwcfftmwy6q" path="res://HUD/Sprites/enter_key1.png" id="8_bgn2j"]
+[ext_resource type="Texture2D" uid="uid://bilvcwxdwsnon" path="res://Enemies/Shadows Sprites/shadow_spike1.png" id="10_mn821"]
+[ext_resource type="Texture2D" uid="uid://h4giv54no387" path="res://Enemies/Shadows Sprites/shadow_spike2.png" id="11_obdt1"]
+[ext_resource type="Texture2D" uid="uid://dbcyv0jecjyix" path="res://Enemies/Shadows Sprites/kitty_shadow1.png" id="12_k8psr"]
+[ext_resource type="Texture2D" uid="uid://1mrw6km3au80" path="res://Enemies/Shadows Sprites/kitty_shadow2.png" id="13_5qalk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yglvg"]
 animations = [{
@@ -19,7 +28,59 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="Node" type="Node"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_obdt1"]
+texture = ExtResource("5_mnwdy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8psr"]
+texture = ExtResource("6_l6xut")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qalk"]
+texture = ExtResource("7_kj11r")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1hvqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bgn2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mn821")
+}],
+"loop": true,
+"name": &"Enter Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ca2df"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_mn821")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_obdt1")
+}],
+"loop": true,
+"name": &"Shadow Spike Idle",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cpgxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_k8psr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5qalk")
+}],
+"loop": true,
+"name": &"Shadow Kitty Idle",
+"speed": 3.0
+}]
+
+[node name="Tutorial3" type="Node"]
+script = ExtResource("1_obdt1")
 
 [node name="TutorialBG" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
@@ -42,26 +103,93 @@ theme_override_fonts/font = ExtResource("2_eyycq")
 theme_override_font_sizes/font_size = 60
 text = "HOW TO PLAY!"
 
+[node name="HowTo2" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 118.0
+offset_right = 422.0
+offset_bottom = 401.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_eyycq")
+theme_override_font_sizes/font_size = 45
+text = "ENEMIES"
+
 [node name="Text3" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -245.0
-offset_top = 206.0
-offset_right = 171.0
-offset_bottom = 255.0
+offset_left = -240.0
+offset_top = 212.0
+offset_right = 244.0
+offset_bottom = 261.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("2_eyycq")
 theme_override_font_sizes/font_size = 18
-text = "JUMP OVER NIGHTMARES 
-TO AVOID THEM!"
+text = "JUMP OVER NIGHTMARES TO AVOID THEM!"
 horizontal_alignment = 1
 
 [node name="ShadowIdle" type="AnimatedSprite2D" parent="."]
-position = Vector2(569, 281)
-scale = Vector2(1.5, 1.5)
+position = Vector2(297, 267)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_yglvg")
 animation = &"Shadow Idle"
+
+[node name="BackButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = 168.0
+offset_right = 108.0
+offset_bottom = 313.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_eyycq")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxTexture_obdt1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k8psr")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5qalk")
+text = "MENU"
+
+[node name="ConfirmLabel" type="Label" parent="."]
+offset_left = 553.0
+offset_top = 619.0
+offset_right = 628.0
+offset_bottom = 644.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_eyycq")
+text = "SELECT"
+
+[node name="EnterKey" type="AnimatedSprite2D" parent="ConfirmLabel"]
+position = Vector2(-14.6154, 3.84615)
+sprite_frames = SubResource("SpriteFrames_1hvqw")
+animation = &"Enter Key"
+
+[node name="ShadowSpike" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 357)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ca2df")
+animation = &"Shadow Spike Idle"
+
+[node name="ShadowKitty" type="AnimatedSprite2D" parent="."]
+position = Vector2(847, 260)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_cpgxc")
+animation = &"Shadow Kitty Idle"

@@ -1,59 +1,54 @@
-[gd_scene load_steps=47 format=3 uid="uid://bcaxvcr3gedc"]
+[gd_scene load_steps=41 format=3 uid="uid://bcaxvcr3gedc"]
 
-[ext_resource type="Script" uid="uid://bq5qravcbtof0" path="res://tutorial.gd" id="1_3e5vs"]
-[ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="2_eacv7"]
-[ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_bir4d"]
-[ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="4_g887x"]
-[ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="5_1t327"]
-[ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="6_horc1"]
-[ext_resource type="Texture2D" uid="uid://dawwcfftmwy6q" path="res://HUD/Sprites/enter_key1.png" id="8_horc1"]
-[ext_resource type="Texture2D" uid="uid://b421tfqxeu1nq" path="res://HUD/Sprites/enter_key2.png" id="9_8w4f8"]
-[ext_resource type="Texture2D" uid="uid://bjy7gr83rq5vh" path="res://HUD/Sprites/up_key1.png" id="9_t5gy2"]
-[ext_resource type="Texture2D" uid="uid://c0esvier6a7uo" path="res://HUD/Sprites/up_key2.png" id="10_ej0yr"]
-[ext_resource type="Texture2D" uid="uid://cc3tx0ltg3oly" path="res://Player/Jumping Animation/child_jumping1.png" id="11_l1uxk"]
-[ext_resource type="Texture2D" uid="uid://dbfd8qhxk0dw7" path="res://Player/Jumping Animation/child_jumping2.png" id="12_pw15r"]
-[ext_resource type="Texture2D" uid="uid://ehqitl64kaw" path="res://Player/Jumping Animation/child_jumping3.png" id="13_3xi6e"]
-[ext_resource type="Texture2D" uid="uid://k41jfi7x7gb" path="res://Player/Jumping Animation/child_jumping4.png" id="14_lc21a"]
-[ext_resource type="Texture2D" uid="uid://37h6q6qt6332" path="res://Player/Running Animation/child_running1.png" id="15_84lvr"]
-[ext_resource type="Texture2D" uid="uid://80d7f8qbu5mk" path="res://Player/Running Animation/child_running2.png" id="16_jvlw1"]
-[ext_resource type="Texture2D" uid="uid://chtwkl7m72xo7" path="res://Player/Running Animation/child_running3.png" id="17_fc01w"]
-[ext_resource type="Texture2D" uid="uid://cm3hrfh05i5jn" path="res://Player/Running Animation/child_running4.png" id="18_eacv7"]
-[ext_resource type="Texture2D" uid="uid://cvp42n2rufr8h" path="res://Player/Running Animation/child_running5.png" id="19_rqvk7"]
-[ext_resource type="Texture2D" uid="uid://b8yikkhpoxl61" path="res://Player/Running Animation/child_running6.png" id="20_26oig"]
-[ext_resource type="Texture2D" uid="uid://b7wjbhvf0spka" path="res://Player/Running Animation/child_running7.png" id="21_3mqje"]
-[ext_resource type="Texture2D" uid="uid://di2kj5xdcvwfh" path="res://Player/Running Animation/child_running8.png" id="22_nq5xj"]
-[ext_resource type="Texture2D" uid="uid://bn5qrh5p1ijlg" path="res://Player/Running Animation/child_running9.png" id="23_n8vvn"]
-[ext_resource type="Texture2D" uid="uid://drm1yyl3560s5" path="res://Player/Running Animation/child_running10.png" id="24_vwyvk"]
-[ext_resource type="Texture2D" uid="uid://cbycv3oi0k6ii" path="res://Player/Running Animation/child_running11.png" id="25_8jxj3"]
-[ext_resource type="Texture2D" uid="uid://c5ao607e7n5lw" path="res://HUD/Sprites/right_key1.png" id="26_y8yhf"]
-[ext_resource type="Texture2D" uid="uid://dbucc47icgko4" path="res://HUD/Sprites/right_key2.png" id="27_qt7iw"]
-[ext_resource type="Texture2D" uid="uid://bsht5i32kbgr5" path="res://HUD/Sprites/left_key1.png" id="28_hsvtp"]
-[ext_resource type="Texture2D" uid="uid://muta7pt4wbdv" path="res://HUD/Sprites/left_key2.png" id="29_sjju7"]
-[ext_resource type="Texture2D" uid="uid://b6aqamfrmju2p" path="res://HUD/Sprites/doublejumpbar(under).png" id="30_0wvkt"]
-[ext_resource type="Texture2D" uid="uid://ngqpchhly8uu" path="res://HUD/Sprites/doublejumpbar(progress).png" id="31_oejj4"]
-[ext_resource type="Texture2D" uid="uid://dw8ipdqwq15no" path="res://Enemies/Shadows Sprites/shadow_blob1.png" id="32_n6nul"]
-[ext_resource type="Texture2D" uid="uid://8f3fxo7yxvft" path="res://Enemies/Shadows Sprites/shadow_blob2.png" id="33_wjw81"]
-[ext_resource type="Texture2D" uid="uid://bdni02sr7n87w" path="res://Items/Sprites/teddyBear.png" id="34_gu8na"]
-[ext_resource type="Texture2D" uid="uid://bsglm4e1bmhjy" path="res://Items/Sprites/feather.png" id="35_fc01w"]
-[ext_resource type="Texture2D" uid="uid://8uhmn5u4yulb" path="res://Items/Sprites/pillow.png" id="36_eacv7"]
+[ext_resource type="Script" uid="uid://bq5qravcbtof0" path="res://HUD/Tutorial/tutorial1.gd" id="1_8naw7"]
+[ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="2_50vq6"]
+[ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_0r27a"]
+[ext_resource type="Texture2D" uid="uid://b6aqamfrmju2p" path="res://HUD/Sprites/doublejumpbar(under).png" id="4_6q5ag"]
+[ext_resource type="Texture2D" uid="uid://ngqpchhly8uu" path="res://HUD/Sprites/doublejumpbar(progress).png" id="5_1brtq"]
+[ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="6_e3s5v"]
+[ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="7_iq1kt"]
+[ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="8_6lfyo"]
+[ext_resource type="Texture2D" uid="uid://dawwcfftmwy6q" path="res://HUD/Sprites/enter_key1.png" id="9_tluoh"]
+[ext_resource type="Texture2D" uid="uid://b421tfqxeu1nq" path="res://HUD/Sprites/enter_key2.png" id="10_6hxyn"]
+[ext_resource type="Texture2D" uid="uid://bjy7gr83rq5vh" path="res://HUD/Sprites/up_key1.png" id="11_dujvt"]
+[ext_resource type="Texture2D" uid="uid://c0esvier6a7uo" path="res://HUD/Sprites/up_key2.png" id="12_jyflm"]
+[ext_resource type="Texture2D" uid="uid://cc3tx0ltg3oly" path="res://Player/Jumping Animation/child_jumping1.png" id="13_5h8ak"]
+[ext_resource type="Texture2D" uid="uid://dbfd8qhxk0dw7" path="res://Player/Jumping Animation/child_jumping2.png" id="14_kmi3k"]
+[ext_resource type="Texture2D" uid="uid://ehqitl64kaw" path="res://Player/Jumping Animation/child_jumping3.png" id="15_bm6w2"]
+[ext_resource type="Texture2D" uid="uid://k41jfi7x7gb" path="res://Player/Jumping Animation/child_jumping4.png" id="16_wdedm"]
+[ext_resource type="Texture2D" uid="uid://bsht5i32kbgr5" path="res://HUD/Sprites/left_key1.png" id="17_yboxb"]
+[ext_resource type="Texture2D" uid="uid://muta7pt4wbdv" path="res://HUD/Sprites/left_key2.png" id="18_ylt7p"]
+[ext_resource type="Texture2D" uid="uid://c5ao607e7n5lw" path="res://HUD/Sprites/right_key1.png" id="19_now01"]
+[ext_resource type="Texture2D" uid="uid://dbucc47icgko4" path="res://HUD/Sprites/right_key2.png" id="20_72quc"]
+[ext_resource type="Texture2D" uid="uid://37h6q6qt6332" path="res://Player/Running Animation/child_running1.png" id="21_kj2pb"]
+[ext_resource type="Texture2D" uid="uid://80d7f8qbu5mk" path="res://Player/Running Animation/child_running2.png" id="22_1gsag"]
+[ext_resource type="Texture2D" uid="uid://chtwkl7m72xo7" path="res://Player/Running Animation/child_running3.png" id="23_244fa"]
+[ext_resource type="Texture2D" uid="uid://cm3hrfh05i5jn" path="res://Player/Running Animation/child_running4.png" id="24_eeay2"]
+[ext_resource type="Texture2D" uid="uid://cvp42n2rufr8h" path="res://Player/Running Animation/child_running5.png" id="25_7rb0l"]
+[ext_resource type="Texture2D" uid="uid://b8yikkhpoxl61" path="res://Player/Running Animation/child_running6.png" id="26_ubpyd"]
+[ext_resource type="Texture2D" uid="uid://b7wjbhvf0spka" path="res://Player/Running Animation/child_running7.png" id="27_gpx68"]
+[ext_resource type="Texture2D" uid="uid://di2kj5xdcvwfh" path="res://Player/Running Animation/child_running8.png" id="28_nwspp"]
+[ext_resource type="Texture2D" uid="uid://bn5qrh5p1ijlg" path="res://Player/Running Animation/child_running9.png" id="29_25ssm"]
+[ext_resource type="Texture2D" uid="uid://drm1yyl3560s5" path="res://Player/Running Animation/child_running10.png" id="30_hu4y0"]
+[ext_resource type="Texture2D" uid="uid://cbycv3oi0k6ii" path="res://Player/Running Animation/child_running11.png" id="31_l44g6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gjqde"]
-texture = ExtResource("4_g887x")
+texture = ExtResource("6_e3s5v")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vvalj"]
-texture = ExtResource("5_1t327")
+texture = ExtResource("7_iq1kt")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_62lem"]
-texture = ExtResource("6_horc1")
+texture = ExtResource("8_6lfyo")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gjqde"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_horc1")
+"texture": ExtResource("9_tluoh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_8w4f8")
+"texture": ExtResource("10_6hxyn")
 }],
 "loop": true,
 "name": &"Enter Key",
@@ -64,10 +59,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_t5gy2")
+"texture": ExtResource("11_dujvt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_ej0yr")
+"texture": ExtResource("12_jyflm")
 }],
 "loop": true,
 "name": &"Up Key",
@@ -78,16 +73,16 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_l1uxk")
+"texture": ExtResource("13_5h8ak")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_pw15r")
+"texture": ExtResource("14_kmi3k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_3xi6e")
+"texture": ExtResource("15_bm6w2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_lc21a")
+"texture": ExtResource("16_wdedm")
 }],
 "loop": true,
 "name": &"default",
@@ -98,10 +93,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("28_hsvtp")
+"texture": ExtResource("17_yboxb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("29_sjju7")
+"texture": ExtResource("18_ylt7p")
 }],
 "loop": true,
 "name": &"Left Key",
@@ -112,10 +107,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("26_y8yhf")
+"texture": ExtResource("19_now01")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_qt7iw")
+"texture": ExtResource("20_72quc")
 }],
 "loop": true,
 "name": &"Right Key",
@@ -126,63 +121,49 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_84lvr")
+"texture": ExtResource("21_kj2pb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_jvlw1")
+"texture": ExtResource("22_1gsag")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_fc01w")
+"texture": ExtResource("23_244fa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_eacv7")
+"texture": ExtResource("24_eeay2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_rqvk7")
+"texture": ExtResource("25_7rb0l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_26oig")
+"texture": ExtResource("26_ubpyd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_3mqje")
+"texture": ExtResource("27_gpx68")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_nq5xj")
+"texture": ExtResource("28_nwspp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_n8vvn")
+"texture": ExtResource("29_25ssm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_vwyvk")
+"texture": ExtResource("30_hu4y0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_8jxj3")
+"texture": ExtResource("31_l44g6")
 }],
 "loop": true,
 "name": &"Running",
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_kbh5l"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("32_n6nul")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_wjw81")
-}],
-"loop": true,
-"name": &"Shadow Idle",
-"speed": 2.0
-}]
+[node name="Tutorial1" type="Node"]
+script = ExtResource("1_8naw7")
 
-[node name="Tutorial" type="Node"]
-script = ExtResource("1_3e5vs")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="TutorialBG" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
-texture = ExtResource("2_eacv7")
+texture = ExtResource("2_50vq6")
 centered = false
 
 [node name="HowTo" type="Label" parent="."]
@@ -197,98 +178,70 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("3_bir4d")
+theme_override_fonts/font = ExtResource("3_0r27a")
 theme_override_font_sizes/font_size = 60
 text = "HOW TO PLAY!"
 
-[node name="Text" type="Label" parent="."]
+[node name="Movement" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -499.0
-offset_top = 140.0
-offset_right = -135.0
-offset_bottom = 181.0
+offset_left = -173.0
+offset_top = 119.0
+offset_right = 361.0
+offset_bottom = 402.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("3_bir4d")
-theme_override_font_sizes/font_size = 25
-text = "USE THE ARROW KEYS!"
+theme_override_fonts/font = ExtResource("3_0r27a")
+theme_override_font_sizes/font_size = 45
+text = "MOVEMENT"
 
 [node name="Text2" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -70.0
-offset_top = 138.0
-offset_right = 575.0
-offset_bottom = 213.0
+offset_left = -155.0
+offset_top = 251.0
+offset_right = 490.0
+offset_bottom = 326.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("3_bir4d")
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_0r27a")
+theme_override_font_sizes/font_size = 18
 text = "AFTER 3 JUMPS, YOUR STAR BAR 
 FILLS: DOUBLE JUMP ENABLED!
 "
 horizontal_alignment = 1
 
-[node name="Text3" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -536.0
-offset_top = 332.0
-offset_right = -120.0
-offset_bottom = 381.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
-theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("3_bir4d")
-theme_override_font_sizes/font_size = 20
-text = "JUMP OVER NIGHTMARES 
-TO AVOID THEM!"
-horizontal_alignment = 1
+[node name="DoubleJump" type="TextureProgressBar" parent="."]
+offset_left = 577.0
+offset_top = 314.0
+offset_right = 908.0
+offset_bottom = 366.0
+min_value = 100.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_6q5ag")
+texture_progress = ExtResource("5_1brtq")
 
-[node name="Text4" type="Label" parent="."]
+[node name="Text" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -271.0
-offset_top = 387.0
-offset_right = 273.0
-offset_bottom = 462.0
+offset_left = -364.0
+offset_top = 248.0
+offset_bottom = 289.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("3_bir4d")
-theme_override_font_sizes/font_size = 20
-text = "COLLECT FEATHERS AND PILLOWS 
-TO SPEND IN THE STORE! (WIP)"
-horizontal_alignment = 1
-
-[node name="Text5" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 10.0
-offset_top = 293.0
-offset_right = 554.0
-offset_bottom = 368.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
-theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("3_bir4d")
-theme_override_font_sizes/font_size = 20
-text = "TEDDY BEARS WILL PROTECT YOU 
-FROM NIGHTMARES (SINGLE USE)!"
-horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("3_0r27a")
+theme_override_font_sizes/font_size = 18
+text = "USE THE ARROW KEYS!"
 
 [node name="BackButton" type="Button" parent="."]
 anchors_preset = 8
@@ -306,12 +259,12 @@ mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
-theme_override_fonts/font = ExtResource("3_bir4d")
+theme_override_fonts/font = ExtResource("3_0r27a")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxTexture_gjqde")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_vvalj")
 theme_override_styles/normal = SubResource("StyleBoxTexture_62lem")
-text = "BACK"
+text = "NEXT"
 
 [node name="ConfirmLabel" type="Label" parent="."]
 offset_left = 553.0
@@ -322,7 +275,7 @@ scale = Vector2(1.3, 1.3)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("3_bir4d")
+theme_override_fonts/font = ExtResource("3_0r27a")
 text = "SELECT"
 
 [node name="EnterKey" type="AnimatedSprite2D" parent="ConfirmLabel"]
@@ -331,89 +284,57 @@ sprite_frames = SubResource("SpriteFrames_gjqde")
 animation = &"Enter Key"
 
 [node name="JumpLabel" type="Label" parent="."]
-offset_left = 145.0
-offset_top = 296.0
-offset_right = 202.0
-offset_bottom = 319.0
+offset_left = 240.0
+offset_top = 400.0
+offset_right = 297.0
+offset_bottom = 423.0
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("3_bir4d")
+theme_override_fonts/font = ExtResource("3_0r27a")
 text = "JUMP"
 
 [node name="UpKey" type="AnimatedSprite2D" parent="."]
-position = Vector2(172.5, 277)
+position = Vector2(268, 381)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_5j066")
 animation = &"Up Key"
 
 [node name="ChildJump" type="AnimatedSprite2D" parent="."]
-position = Vector2(171, 214)
+position = Vector2(271, 316)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_pdjei")
-frame_progress = 0.295717
+frame_progress = 0.960889
 
 [node name="RunLabel" type="Label" parent="."]
-offset_left = 277.0
-offset_top = 297.0
-offset_right = 334.0
-offset_bottom = 320.0
+offset_left = 357.0
+offset_top = 401.0
+offset_right = 414.0
+offset_bottom = 424.0
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 3
-theme_override_fonts/font = ExtResource("3_bir4d")
+theme_override_fonts/font = ExtResource("3_0r27a")
 text = "MOVE"
 
 [node name="LeftKey" type="AnimatedSprite2D" parent="."]
-position = Vector2(286, 275.5)
+position = Vector2(363, 382)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_8ilqp")
 animation = &"Left Key"
 frame_progress = 0.799457
 
 [node name="RightKey" type="AnimatedSprite2D" parent="."]
-position = Vector2(331, 275.5)
+position = Vector2(408, 382)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_1owce")
 animation = &"Right Key"
 frame_progress = 0.549647
 
 [node name="ChildRun" type="AnimatedSprite2D" parent="."]
-position = Vector2(316, 211)
+position = Vector2(390, 314)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_nuewf")
 animation = &"Running"
 frame_progress = 0.00748152
-
-[node name="DoubleJump" type="TextureProgressBar" parent="."]
-offset_left = 685.0
-offset_top = 201.0
-offset_right = 965.0
-offset_bottom = 263.0
-min_value = 100.0
-value = 100.0
-nine_patch_stretch = true
-texture_under = ExtResource("30_0wvkt")
-texture_progress = ExtResource("31_oejj4")
-
-[node name="ShadowIdle" type="AnimatedSprite2D" parent="."]
-position = Vector2(243, 380)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_kbh5l")
-animation = &"Shadow Idle"
-
-[node name="Teddy" type="Sprite2D" parent="."]
-position = Vector2(861, 386)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("34_gu8na")
-
-[node name="Feather" type="Sprite2D" parent="."]
-position = Vector2(510, 472)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("35_fc01w")
-
-[node name="Pillow" type="Sprite2D" parent="."]
-position = Vector2(625, 476)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("36_eacv7")

@@ -35,7 +35,7 @@ func tutorial_scene():
 	$TutorialButton.release_focus()
 	var pressed_style = $TutorialButton.get("theme_override_styles/pressed")
 	$TutorialButton.add_theme_stylebox_override("normal", pressed_style)
-	FadeAnimation.fade_to_scene("res://HUD/tutorial.tscn")
+	FadeAnimation.fade_to_scene("res://HUD/Tutorial/tutorial1.tscn")
 	
 func _on_play_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
