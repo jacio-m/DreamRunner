@@ -322,20 +322,43 @@ position = Vector2(-15.3846, 6.92308)
 sprite_frames = SubResource("SpriteFrames_qquwe")
 animation = &"Right Key"
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_top = 394.0
+offset_right = 323.0
+offset_bottom = 446.0
+color = Color(0.0862745, 0.054902, 0.447059, 1)
+
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 1.0
+offset_left = 3.0
 offset_top = 397.0
-offset_right = 318.0
+offset_right = 320.0
 offset_bottom = 443.0
 color = Color(0.188235, 0.152941, 0.584314, 1)
 
 [node name="Dialogue" type="Label" parent="."]
-offset_left = -49.0
+offset_left = -44.0
 offset_top = 410.0
-offset_right = 366.0
+offset_right = 371.0
 offset_bottom = 459.0
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.0862745, 0.054902, 0.447059, 1)
 theme_override_fonts/font = ExtResource("11_5qbqv")
 theme_override_font_sizes/font_size = 12
 text = "Start your next run with the teddy 
 bear, might be life saver!"
 horizontal_alignment = 1
+
+[node name="WIP2" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 303.0
+offset_top = 136.0
+offset_right = 683.0
+offset_bottom = 190.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("11_5qbqv")
+theme_override_font_sizes/font_size = 35
+text = "(WIP)"

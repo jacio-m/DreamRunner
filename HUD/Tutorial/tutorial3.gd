@@ -4,6 +4,7 @@ func _ready():
 	$ShadowIdle.play()
 	$ShadowSpike.play()
 	$ShadowKitty.play()
+	$ConfirmLabel/EnterKey.play()
 	$BackButton.grab_focus()
 	$BackButton.pressed.connect(main_menu)
 

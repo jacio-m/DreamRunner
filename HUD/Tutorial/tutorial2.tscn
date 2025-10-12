@@ -95,7 +95,7 @@ theme_override_font_sizes/font_size = 20
 text = "JAWBREAKER ACTS 
 LIKE A MAGNET, 
 PULLING ITEMS 
-TOWARD YOU"
+TOWARD YOU!"
 horizontal_alignment = 1
 
 [node name="Text7" type="Label" parent="."]
@@ -115,7 +115,7 @@ theme_override_font_sizes/font_size = 20
 text = "LOLLIPOP DOUBLES YOUR 
 DISTANCE AND FEATHERS 
 COLLECTED FOR A 
-SHORT TIME"
+SHORT TIME!"
 horizontal_alignment = 1
 
 [node name="Text6" type="Label" parent="."]
@@ -135,7 +135,7 @@ theme_override_font_sizes/font_size = 20
 text = "CHOCOLATE BAR WILL SLOW 
 DOWN TIME, GIVING 
 YOU MORE CONTROL 
-TO DOGDE SHADOWS"
+TO DOGDE SHADOWS!"
 horizontal_alignment = 1
 
 [node name="Text4" type="Label" parent="."]

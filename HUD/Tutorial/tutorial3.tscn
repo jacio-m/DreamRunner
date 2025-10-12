@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="6_l6xut"]
 [ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="7_kj11r"]
 [ext_resource type="Texture2D" uid="uid://dawwcfftmwy6q" path="res://HUD/Sprites/enter_key1.png" id="8_bgn2j"]
+[ext_resource type="Texture2D" uid="uid://b421tfqxeu1nq" path="res://HUD/Sprites/enter_key2.png" id="9_mn821"]
 [ext_resource type="Texture2D" uid="uid://bilvcwxdwsnon" path="res://Enemies/Shadows Sprites/shadow_spike1.png" id="10_mn821"]
 [ext_resource type="Texture2D" uid="uid://h4giv54no387" path="res://Enemies/Shadows Sprites/shadow_spike2.png" id="11_obdt1"]
 [ext_resource type="Texture2D" uid="uid://dbcyv0jecjyix" path="res://Enemies/Shadows Sprites/kitty_shadow1.png" id="12_k8psr"]
@@ -132,13 +133,13 @@ theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("2_eyycq")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 text = "JUMP OVER NIGHTMARES TO AVOID THEM!"
 horizontal_alignment = 1
 
 [node name="ShadowIdle" type="AnimatedSprite2D" parent="."]
 position = Vector2(297, 267)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_yglvg")
 animation = &"Shadow Idle"
 
@@ -184,12 +185,12 @@ animation = &"Enter Key"
 
 [node name="ShadowSpike" type="AnimatedSprite2D" parent="."]
 position = Vector2(576, 357)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ca2df")
 animation = &"Shadow Spike Idle"
 
 [node name="ShadowKitty" type="AnimatedSprite2D" parent="."]
 position = Vector2(847, 260)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_cpgxc")
 animation = &"Shadow Kitty Idle"

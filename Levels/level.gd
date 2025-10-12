@@ -121,8 +121,8 @@ func new_game():
 	FadeAnimation.fade_in()
 	
 	#for testing new items
-	await get_tree().create_timer(5).timeout
-	spawn_test()
+	#await get_tree().create_timer(5).timeout
+	#spawn_test()
 	
 func _process(delta):
 	if game_running:
@@ -195,7 +195,7 @@ func generate_items():
 		elif item_prob < 98:
 			item_type = pillow_item
 		else:
-			item_type = [teddy_bear_item, lollipop_item][randi() % 2]
+			item_type = [teddy_bear_item, lollipop_item, chocolatebar_item, jawbreaker_item][randi() % 4]
 		var item = item_type.instantiate()
 		var item_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 2000)
 		var item_y: int = $Camera2D.position.y - randi_range(10, 30)
