@@ -14,7 +14,7 @@ func play_campaign():
 	$CampaignButton.release_focus()
 	var pressed_style = $CampaignButton.get("theme_override_styles/pressed")
 	$CampaignButton.add_theme_stylebox_override("normal", pressed_style)
-	FadeAnimation.fade_to_scene("res://HUD/mode_select.tscn")
+	FadeAnimation.fade_to_scene("res://HUD/stage_selection.tscn")
 	
 func play_endless():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
