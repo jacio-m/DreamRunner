@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bclo24rkc4asn"]
+
+[ext_resource type="Texture2D" uid="uid://c42pew68p4k5h" path="res://Enemies/Shadows Sprites/shadow_birdo1.png" id="1_gi6eb"]
+[ext_resource type="Script" uid="uid://w3t5fko2gcwq" path="res://Enemies/shadow_birdo.gd" id="1_jt1aq"]
+[ext_resource type="Texture2D" uid="uid://ea18bg3u3dd2" path="res://Enemies/Shadows Sprites/shadow_birdo2.png" id="2_jt1aq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4tqdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gi6eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jt1aq")
+}],
+"loop": true,
+"name": &"Enemy Idle",
+"speed": 2.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_jt1aq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_4tqdm")
+animation = &"Enemy Idle"
+frame_progress = 0.554146
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, -2)
+scale = Vector2(2.5, 2.5)
+polygon = PackedVector2Array(-29, 6, -8, -16, -3, -15, -3, -11, -6, -7, 4, 2, 16, 3, 25, 15, 27, 18, 27, 22, 26, 23, 10, 24, 3, 21, -7, 21, -14, 14, -15, 11, -22, 11, -25, 12, -29, 12)
