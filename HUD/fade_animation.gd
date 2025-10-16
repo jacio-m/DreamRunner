@@ -17,3 +17,8 @@ func fade_to_scene(scene_path: String):
 	await anim.animation_finished
 	get_tree().change_scene_to_file(scene_path)
 	anim.play("Fade In")
+
+func quit_game():
+	anim.play("Fade Out")
+	await anim.animation_finished
+	get_tree().quit()

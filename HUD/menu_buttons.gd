@@ -7,6 +7,7 @@ func _ready():
 	$PlayButton.pressed.connect(play_game)
 	$ShopButton.pressed.connect(shop_scene)
 	$ConfigButton.pressed.connect(config_scene)
+	$QuitButton.pressed.connect(quit_game)
 
 func play_game():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
@@ -29,6 +30,13 @@ func config_scene():
 	$ConfigButton.add_theme_stylebox_override("normal", pressed_style)
 	FadeAnimation.fade_to_scene("res://HUD/config_screen.tscn")
 	
+func quit_game():
+	MusicManager.play_SFX("res://Sounds/entersound.ogg")
+	$QuitButton.release_focus()
+	var pressed_style = $ConfigButton.get("theme_override_styles/pressed")
+	$QuitButton.add_theme_stylebox_override("normal", pressed_style)
+	FadeAnimation.quit_game()
+	
 func _on_play_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
 	
@@ -36,4 +44,7 @@ func _on_config_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
 
 func _on_shop_button_focus_entered():
+	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
+
+func _on_quit_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
