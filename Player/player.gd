@@ -18,6 +18,8 @@ func _physics_process(delta):
 		
 	if jump_pressed and velocity.y < 0:
 		velocity.y += GRAVITY_WHILE_HOLD * delta
+	elif not is_on_floor() and Input.is_action_pressed("ui_down"):
+		velocity.y += GRAVITY * 2 * delta
 	else:
 		velocity.y += GRAVITY * delta
 			
@@ -48,4 +50,3 @@ func _physics_process(delta):
 		velocity.x = 0
 	
 	move_and_slide()
-	

@@ -7,11 +7,11 @@ var start_position: Vector2
 func _ready():
 	start_position = position
 	$AnimatedSprite2D.play("Enemy Idle")
-	var jump_delay = randf_range(1.0,4.0)
+	var jump_delay = randf_range(1.5,4.0)
 	add_to_group("shadow_frog")
 	
 	var sound_timer = Timer.new()
-	sound_timer.wait_time = max(jump_delay - 0.7, 0.1)
+	sound_timer.wait_time = jump_delay - 0.8
 	sound_timer.one_shot = true
 	sound_timer.timeout.connect(func(): 
 		if $VisibleOnScreenNotifier2D.is_on_screen():
@@ -28,5 +28,5 @@ func _ready():
 
 func jump():
 	var jumping = create_tween()
-	jumping.tween_property(self, "position:y", position.y + JUMP_HEIGHT, DURATION)
-	jumping.tween_property(self, "position:y", start_position.y, DURATION)
+	jumping.tween_property(self, "position:y", position.y + JUMP_HEIGHT, 0.2)
+	jumping.tween_property(self, "position:y", start_position.y, 0.1)

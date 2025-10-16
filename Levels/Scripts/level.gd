@@ -42,6 +42,7 @@ var progress_smoothing : float = 5.0
 var lollipop_effect : bool
 var jawbreaker_effect : bool
 var chocolatebar_effect : bool
+var flying_spawn_timer: Timer
 
 func _ready():
 	item_effects = {
@@ -90,15 +91,13 @@ func _ready():
 			add_child(timer)
 			timer.start()}
 	
-	var flying_spawn_timer := Timer.new()
+	flying_spawn_timer = Timer.new()
 	flying_spawn_timer.one_shot = true
 	add_child(flying_spawn_timer)
 	flying_spawn_timer.timeout.connect(func(): 
 		generate_flying_obs()
 		flying_spawn_timer.wait_time = randf_range(4.0, 8.0)
 		flying_spawn_timer.start())
-	flying_spawn_timer.wait_time = randf_range(4.0, 8.0)
-	flying_spawn_timer.start()
 			
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
 	screen_size = get_viewport().get_visible_rect().size
@@ -191,6 +190,8 @@ func _process(delta):
 			game_running = true
 			$Player.input_enabled = true
 			$HUD.get_node("StartLabel").visible = false
+			flying_spawn_timer.wait_time = randf_range(4.0, 8.0)
+			flying_spawn_timer.start()
 
 #= 
 func generate_obs():
@@ -204,7 +205,7 @@ func generate_obs():
 		var obs = obstacle_type.instantiate()
 		var obs_height = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("Enemy Idle", 0).get_size().y
 		var obs_scale = obs.get_node("AnimatedSprite2D").scale
-		var obs_x : int = $Camera2D.position.x + screen_size.x + 100
+		var obs_x : int = $Camera2D.position.x + screen_size.x + randi_range(50, 300)
 		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 25
 		last_obs = obs
 		add_obs(obs, obs_x, obs_y)
@@ -236,13 +237,11 @@ func generate_items():
 		
 func add_item(item, x, y):
 	item.position = Vector2i(x, y)
-	
 	item.body_entered.connect(func(body):
 		if body.name == "Player":
 			remove_item(item)
 			if item_effects.has(item.scene_file_path):
 				await item_effects[item.scene_file_path].call(item))
-				
 	add_child(item)
 	items.append(item)
 	
