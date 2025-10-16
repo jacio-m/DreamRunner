@@ -1,0 +1,200 @@
+[gd_scene load_steps=23 format=3 uid="uid://bj43q3u0gu6bd"]
+
+[ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="1_l87kw"]
+[ext_resource type="Script" uid="uid://b1ebdmul6hlej" path="res://HUD/mode_select.gd" id="1_mq7mh"]
+[ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="2_a047b"]
+[ext_resource type="Texture2D" uid="uid://6wtaq3o10dqt" path="res://HUD/Sprites/button_focused.png" id="3_mxm33"]
+[ext_resource type="Script" uid="uid://dt8sn0l1w6dsv" path="res://HUD/mode_buttons.gd" id="4_pwqg3"]
+[ext_resource type="Texture2D" uid="uid://c83ieknepnjjf" path="res://HUD/Sprites/button_pressed.png" id="4_wc452"]
+[ext_resource type="Texture2D" uid="uid://dr4fjb7r0dc2m" path="res://HUD/Sprites/button_idle.png" id="5_85skt"]
+[ext_resource type="Texture2D" uid="uid://bjy7gr83rq5vh" path="res://HUD/Sprites/up_key1.png" id="6_c4y5g"]
+[ext_resource type="Texture2D" uid="uid://c0esvier6a7uo" path="res://HUD/Sprites/up_key2.png" id="7_mq7mh"]
+[ext_resource type="Texture2D" uid="uid://d34mf6363jbiy" path="res://HUD/Sprites/down_key1.png" id="8_pwqg3"]
+[ext_resource type="Texture2D" uid="uid://bxajn8lrlsmlb" path="res://HUD/Sprites/down_key2.png" id="9_2suqg"]
+[ext_resource type="Texture2D" uid="uid://dawwcfftmwy6q" path="res://HUD/Sprites/enter_key1.png" id="10_e63t4"]
+[ext_resource type="Texture2D" uid="uid://b421tfqxeu1nq" path="res://HUD/Sprites/enter_key2.png" id="11_o5wa3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_clbg3"]
+texture = ExtResource("3_mxm33")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nx2fo"]
+texture = ExtResource("4_wc452")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uvf1e"]
+texture = ExtResource("5_85skt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c4y5g"]
+texture = ExtResource("3_mxm33")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mq7mh"]
+texture = ExtResource("4_wc452")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pwqg3"]
+texture = ExtResource("5_85skt")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3ak1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_c4y5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mq7mh")
+}],
+"loop": true,
+"name": &"Up Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqop1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pwqg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2suqg")
+}],
+"loop": true,
+"name": &"Down Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8t4q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_e63t4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_o5wa3")
+}],
+"loop": true,
+"name": &"Enter Key",
+"speed": 2.0
+}]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_mq7mh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_l87kw")
+centered = false
+
+[node name="Select" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_top = 55.0
+offset_right = 289.0
+offset_bottom = 338.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_a047b")
+theme_override_font_sizes/font_size = 60
+text = "SELECT A MODE"
+
+[node name="ModeButtons" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(120, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -189.0
+offset_right = -56.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -26
+script = ExtResource("4_pwqg3")
+
+[node name="CampaignButton" type="Button" parent="ModeButtons"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_a047b")
+theme_override_styles/focus = SubResource("StyleBoxTexture_clbg3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nx2fo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uvf1e")
+text = "CAMPAIGN"
+
+[node name="EndlessButton" type="Button" parent="ModeButtons"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_a047b")
+theme_override_styles/focus = SubResource("StyleBoxTexture_clbg3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nx2fo")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uvf1e")
+text = "ENDLESS"
+
+[node name="TutorialButton" type="Button" parent="ModeButtons"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_fonts/font = ExtResource("2_a047b")
+theme_override_styles/focus = SubResource("StyleBoxTexture_c4y5g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mq7mh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pwqg3")
+text = "TUTORIAL"
+
+[node name="NavigateLabel" type="Label" parent="."]
+offset_left = 461.0
+offset_top = 613.0
+offset_right = 566.0
+offset_bottom = 636.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_a047b")
+text = "NAVIGATE"
+
+[node name="UpKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-17, -7)
+sprite_frames = SubResource("SpriteFrames_e3ak1")
+animation = &"Up Key"
+
+[node name="DownKey" type="AnimatedSprite2D" parent="NavigateLabel"]
+position = Vector2(-17, 14)
+sprite_frames = SubResource("SpriteFrames_yqop1")
+animation = &"Down Key"
+
+[node name="ConfirmLabel" type="Label" parent="."]
+offset_left = 641.0
+offset_top = 615.0
+offset_right = 716.0
+offset_bottom = 640.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
+theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_a047b")
+text = "SELECT"
+
+[node name="EnterKey" type="AnimatedSprite2D" parent="ConfirmLabel"]
+position = Vector2(-14.6154, 3.84615)
+sprite_frames = SubResource("SpriteFrames_g8t4q")
+animation = &"Enter Key"
+
+[connection signal="focus_entered" from="ModeButtons/CampaignButton" to="ModeButtons" method="_on_campaign_button_focus_entered"]
+[connection signal="focus_entered" from="ModeButtons/EndlessButton" to="ModeButtons" method="_on_endless_button_focus_entered"]
+[connection signal="focus_entered" from="ModeButtons/TutorialButton" to="ModeButtons" method="_on_tutorial_button_focus_entered"]

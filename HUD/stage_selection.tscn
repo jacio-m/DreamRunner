@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctjafiybm7sdy"]
+
+[ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="1_fioy7"]
+
+[node name="Node" type="Node"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_fioy7")
+centered = false
