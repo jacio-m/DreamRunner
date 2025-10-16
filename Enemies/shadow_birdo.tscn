@@ -22,12 +22,12 @@ animations = [{
 script = ExtResource("1_jt1aq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2.5, 2.5)
+scale = Vector2(2, 1.5)
 sprite_frames = SubResource("SpriteFrames_4tqdm")
 animation = &"Enemy Idle"
-frame_progress = 0.554146
+frame_progress = 0.107044
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1, -2)
-scale = Vector2(2.5, 2.5)
+scale = Vector2(2, 1.5)
 polygon = PackedVector2Array(-29, 6, -8, -16, -3, -15, -3, -11, -6, -7, 4, 2, 16, 3, 25, 15, 27, 18, 27, 22, 26, 23, 10, 24, 3, 21, -7, 21, -14, 14, -15, 11, -22, 11, -25, 12, -29, 12)

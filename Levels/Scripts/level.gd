@@ -4,6 +4,7 @@ var shadow_blob = preload("res://Enemies/shadow_blob.tscn")
 var shadow_spike = preload("res://Enemies/shadow_spike.tscn")
 var shadow_kitty = preload("res://Enemies/shadow_kitty.tscn")
 var shadow_frog = preload("res://Enemies/shadow_frog.tscn")
+var shadow_birdo = preload("res://Enemies/shadow_birdo.tscn")
 #maybe some other enemies later on
 var pillow_item = preload("res://Items/Scenes/pillow.tscn")
 var feather_item = preload("res://Items/Scenes/feather.tscn")
@@ -13,6 +14,8 @@ var chocolatebar_item = preload("res://Items/Scenes/chocolatebar.tscn")
 var jawbreaker_item = preload("res://Items/Scenes/jawbreaker.tscn")
 var item_effects := {}
 
+var flying_obstacles_types := [shadow_birdo]
+var flying_obstacles: Array
 var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
 var obstacles : Array
 var item_types := [feather_item, pillow_item, teddy_bear_item, lollipop_item, chocolatebar_item]
@@ -32,6 +35,7 @@ var distance_gain : int
 const DISTANCE_MODIFIER: int = 100
 var last_obs
 var last_item
+var last_flying_obs
 var game_running : bool
 var current_progress: float = 0.0
 var progress_smoothing : float = 5.0
@@ -132,6 +136,7 @@ func _process(delta):
 			speed = MAX_SPEED
 			
 		generate_obs()
+		generate_flying_obs()
 		generate_items()
 		
 		$Player.position.x += speed * delta
@@ -157,6 +162,10 @@ func _process(delta):
 		for obs in obstacles:
 			if obs.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_obs(obs)
+				
+		for flying_obs in flying_obstacles:
+			if flying_obs.position.x < ($Camera2D.position.x - screen_size.x):
+				remove_flying_obs(flying_obs)
 		
 		for item in items:
 			if item.position.x < ($Camera2D.position.x - screen_size.x):
@@ -191,6 +200,16 @@ func generate_obs():
 		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 25
 		last_obs = obs
 		add_obs(obs, obs_x, obs_y)
+		
+func generate_flying_obs():
+	if flying_obstacles.is_empty() or last_flying_obs.position.x < $Camera2D.position.x + randi_range(1000, 2000):
+		var obs_flying_type = flying_obstacles_types[randi() % flying_obstacles_types.size()]
+		var flying_obs = obs_flying_type.instantiate()
+		var fly_x: int = $Camera2D.position.x + screen_size.x + randi_range(4000, 6000)
+		var fly_y: int = $Camera2D.position.y - randi_range(20, 60)
+		last_flying_obs = flying_obs
+		add_flying_obs(flying_obs, fly_x, fly_y)
+	
 
 func generate_items():
 	if items.is_empty() or last_item.position.x < $Camera2D.position.x + randi_range(100, 500):
@@ -226,9 +245,19 @@ func add_obs(obs, x, y):
 	add_child(obs)
 	obstacles.append(obs)
 
+func add_flying_obs(obs, x, y):
+	obs.position = Vector2i(x, y)
+	obs.body_entered.connect(hit_obs)
+	add_child(obs)
+	flying_obstacles.append(obs)
+
 func remove_obs(obs):
 	obs.queue_free()
 	obstacles.erase(obs)
+	
+func remove_flying_obs(flying_obs):
+	flying_obs.queue_free()
+	flying_obstacles.erase(flying_obs)
 	
 func remove_item(item):
 	item.queue_free()
