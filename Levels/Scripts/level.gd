@@ -3,6 +3,7 @@ extends Node
 var shadow_blob = preload("res://Enemies/shadow_blob.tscn")
 var shadow_spike = preload("res://Enemies/shadow_spike.tscn")
 var shadow_kitty = preload("res://Enemies/shadow_kitty.tscn")
+var shadow_frog = preload("res://Enemies/shadow_frog.tscn")
 #maybe some other enemies later on
 var pillow_item = preload("res://Items/Scenes/pillow.tscn")
 var feather_item = preload("res://Items/Scenes/feather.tscn")
@@ -12,7 +13,7 @@ var chocolatebar_item = preload("res://Items/Scenes/chocolatebar.tscn")
 var jawbreaker_item = preload("res://Items/Scenes/jawbreaker.tscn")
 var item_effects := {}
 
-var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
+var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty, shadow_frog]
 var obstacles : Array
 var item_types := [feather_item, pillow_item, teddy_bear_item, lollipop_item, chocolatebar_item]
 var items: Array

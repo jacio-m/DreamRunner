@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsccp1r535e4t"]
+
+[ext_resource type="Script" uid="uid://dsyuyy35l3et2" path="res://Enemies/shadow_frog.gd" id="1_87ls5"]
+[ext_resource type="Texture2D" uid="uid://cuwrr0w5qdlk8" path="res://Enemies/Shadows Sprites/shadow_frog1.png" id="1_d06qs"]
+[ext_resource type="Texture2D" uid="uid://bklvyqgg24cd5" path="res://Enemies/Shadows Sprites/shadow_frog2.png" id="2_87ls5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_op8ln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d06qs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_87ls5")
+}],
+"loop": true,
+"name": &"Enemy Idle",
+"speed": 2.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_87ls5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_op8ln")
+animation = &"Enemy Idle"
+frame = 1
+frame_progress = 0.913966
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-15, -16, -8, -16, -4, -11, 3, -11, 7, -16, 14, -16, 19, -11, 19, -5, 17, -2, 20, 2, 20, 10, 15, 14, 19, 20, 19, 23, 13, 29, 7, 29, 5, 32, -6, 32, -8, 29, -14, 29, -20, 23, -20, 20, -16, 14, -21, 10, -21, 2, -18, -2, -20, -5, -20, -11)
