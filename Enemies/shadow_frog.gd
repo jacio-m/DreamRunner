@@ -7,12 +7,21 @@ var start_position: Vector2
 func _ready():
 	start_position = position
 	$AnimatedSprite2D.play("Enemy Idle")
+	var jump_delay = randf_range(1.0,4.0)
+	add_to_group("shadow_frog")
+	
+	var sound_timer = Timer.new()
+	sound_timer.wait_time = max(jump_delay - 0.7, 0.1)
+	sound_timer.one_shot = true
+	sound_timer.timeout.connect(func(): 
+		if $VisibleOnScreenNotifier2D.is_on_screen():
+			MusicManager.play_SFX("res://Sounds/frogSFX.ogg"))
+	add_child(sound_timer)
+	sound_timer.start()
 	
 	var waiting = Timer.new()
-	waiting.wait_time = randf_range(0.1,5)
+	waiting.wait_time = jump_delay
 	waiting.one_shot = true
-	if waiting.time_left <= 0.1:
-		MusicManager.play_SFX("res://Sounds/frogSFX.ogg")
 	waiting.timeout.connect(jump)
 	add_child(waiting)
 	waiting.start()

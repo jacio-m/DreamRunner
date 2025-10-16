@@ -13,7 +13,7 @@ var chocolatebar_item = preload("res://Items/Scenes/chocolatebar.tscn")
 var jawbreaker_item = preload("res://Items/Scenes/jawbreaker.tscn")
 var item_effects := {}
 
-var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty, shadow_frog]
+var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
 var obstacles : Array
 var item_types := [feather_item, pillow_item, teddy_bear_item, lollipop_item, chocolatebar_item]
 var items: Array
@@ -175,11 +175,16 @@ func _process(delta):
 			$Player.input_enabled = true
 			$HUD.get_node("StartLabel").visible = false
 
+#= 
 func generate_obs():
 	if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 50 + randi_range(0, 400):
-		var obstacle_type = obstacle_types[randi() % obstacle_types.size()]
-		var obs
-		obs = obstacle_type.instantiate()
+		var obstacle_type 
+		var obs_prob = randi() % 101
+		if obs_prob < 90:
+			obstacle_type = obstacle_types[randi() % obstacle_types.size()]
+		else:
+			obstacle_type = shadow_frog
+		var obs = obstacle_type.instantiate()
 		var obs_height = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("Enemy Idle", 0).get_size().y
 		var obs_scale = obs.get_node("AnimatedSprite2D").scale
 		var obs_x : int = $Camera2D.position.x + screen_size.x + 100
