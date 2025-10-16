@@ -9,6 +9,7 @@ func _ready():
 	$ChildRun.play()
 	$RightKey.play()
 	$LeftKey.play()
+	$DownKey.play()
 
 func next():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")

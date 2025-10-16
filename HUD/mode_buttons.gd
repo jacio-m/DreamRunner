@@ -7,6 +7,7 @@ func _ready():
 	$CampaignButton.pressed.connect(play_campaign)
 	$EndlessButton.pressed.connect(play_endless)
 	$TutorialButton.pressed.connect(tutorial_scene)
+	$BackButton.pressed.connect(main_menu)
 
 func play_campaign():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
@@ -29,6 +30,13 @@ func tutorial_scene():
 	$TutorialButton.add_theme_stylebox_override("normal", pressed_style)
 	FadeAnimation.fade_to_scene("res://HUD/Tutorial/tutorial1.tscn")
 	
+func main_menu():
+	MusicManager.play_SFX("res://Sounds/entersound.ogg")
+	$BackButton.release_focus()
+	var pressed_style = $BackButton.get("theme_override_styles/pressed")
+	$BackButton.add_theme_stylebox_override("normal", pressed_style)
+	FadeAnimation.fade_to_scene("res://HUD/main_menu.tscn")
+	
 func _on_campaign_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
 
@@ -36,4 +44,7 @@ func _on_endless_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
 	
 func _on_tutorial_button_focus_entered():
+	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")
+
+func _on_back_button_focus_entered():
 	MusicManager.play_SFX("res://Sounds/selectingsound.ogg")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bcaxvcr3gedc"]
+[gd_scene load_steps=44 format=3 uid="uid://bcaxvcr3gedc"]
 
 [ext_resource type="Script" uid="uid://bq5qravcbtof0" path="res://HUD/Tutorial/tutorial1.gd" id="1_8naw7"]
 [ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="2_50vq6"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://b421tfqxeu1nq" path="res://HUD/Sprites/enter_key2.png" id="10_6hxyn"]
 [ext_resource type="Texture2D" uid="uid://bjy7gr83rq5vh" path="res://HUD/Sprites/up_key1.png" id="11_dujvt"]
 [ext_resource type="Texture2D" uid="uid://c0esvier6a7uo" path="res://HUD/Sprites/up_key2.png" id="12_jyflm"]
+[ext_resource type="Texture2D" uid="uid://d34mf6363jbiy" path="res://HUD/Sprites/down_key1.png" id="13_0r27a"]
 [ext_resource type="Texture2D" uid="uid://cc3tx0ltg3oly" path="res://Player/Jumping Animation/child_jumping1.png" id="13_5h8ak"]
+[ext_resource type="Texture2D" uid="uid://bxajn8lrlsmlb" path="res://HUD/Sprites/down_key2.png" id="14_6q5ag"]
 [ext_resource type="Texture2D" uid="uid://dbfd8qhxk0dw7" path="res://Player/Jumping Animation/child_jumping2.png" id="14_kmi3k"]
 [ext_resource type="Texture2D" uid="uid://ehqitl64kaw" path="res://Player/Jumping Animation/child_jumping3.png" id="15_bm6w2"]
 [ext_resource type="Texture2D" uid="uid://k41jfi7x7gb" path="res://Player/Jumping Animation/child_jumping4.png" id="16_wdedm"]
@@ -66,6 +68,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Up Key",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1brtq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_0r27a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_6q5ag")
+}],
+"loop": true,
+"name": &"Down Key",
 "speed": 2.0
 }]
 
@@ -284,21 +300,27 @@ sprite_frames = SubResource("SpriteFrames_gjqde")
 animation = &"Enter Key"
 
 [node name="JumpLabel" type="Label" parent="."]
-offset_left = 240.0
+offset_left = 210.0
 offset_top = 400.0
-offset_right = 297.0
+offset_right = 333.0
 offset_bottom = 423.0
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0.282353, 0.243137, 0.72549, 1)
 theme_override_constants/shadow_outline_size = 3
 theme_override_fonts/font = ExtResource("3_0r27a")
-text = "JUMP"
+text = "JUMP/FALL"
 
 [node name="UpKey" type="AnimatedSprite2D" parent="."]
-position = Vector2(268, 381)
+position = Vector2(249, 381)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_5j066")
 animation = &"Up Key"
+
+[node name="DownKey" type="AnimatedSprite2D" parent="."]
+position = Vector2(294, 381)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_1brtq")
+animation = &"Down Key"
 
 [node name="ChildJump" type="AnimatedSprite2D" parent="."]
 position = Vector2(271, 316)

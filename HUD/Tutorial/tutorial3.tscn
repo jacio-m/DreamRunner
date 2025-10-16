@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ggqst1mx6ut6"]
+[gd_scene load_steps=28 format=3 uid="uid://ggqst1mx6ut6"]
 
 [ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="1_26hy7"]
 [ext_resource type="Script" uid="uid://drhlggcfl68vy" path="res://HUD/Tutorial/tutorial3.gd" id="1_obdt1"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://h4giv54no387" path="res://Enemies/Shadows Sprites/shadow_spike2.png" id="11_obdt1"]
 [ext_resource type="Texture2D" uid="uid://dbcyv0jecjyix" path="res://Enemies/Shadows Sprites/kitty_shadow1.png" id="12_k8psr"]
 [ext_resource type="Texture2D" uid="uid://1mrw6km3au80" path="res://Enemies/Shadows Sprites/kitty_shadow2.png" id="13_5qalk"]
+[ext_resource type="Texture2D" uid="uid://c42pew68p4k5h" path="res://Enemies/Shadows Sprites/shadow_birdo1.png" id="15_ca2df"]
+[ext_resource type="Texture2D" uid="uid://ea18bg3u3dd2" path="res://Enemies/Shadows Sprites/shadow_birdo2.png" id="16_cpgxc"]
+[ext_resource type="Texture2D" uid="uid://cuwrr0w5qdlk8" path="res://Enemies/Shadows Sprites/shadow_frog1.png" id="17_8r2of"]
+[ext_resource type="Texture2D" uid="uid://bklvyqgg24cd5" path="res://Enemies/Shadows Sprites/shadow_frog2.png" id="18_wvn8y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yglvg"]
 animations = [{
@@ -63,7 +67,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Shadow Spike Idle",
-"speed": 3.0
+"speed": 2.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cpgxc"]
@@ -77,7 +81,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"Shadow Kitty Idle",
-"speed": 3.0
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1f24w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ca2df")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cpgxc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eot8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_8r2of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wvn8y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
 }]
 
 [node name="Tutorial3" type="Node"]
@@ -138,7 +170,7 @@ text = "JUMP OVER NIGHTMARES TO AVOID THEM!"
 horizontal_alignment = 1
 
 [node name="ShadowIdle" type="AnimatedSprite2D" parent="."]
-position = Vector2(297, 267)
+position = Vector2(598, 315)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_yglvg")
 animation = &"Shadow Idle"
@@ -164,7 +196,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxTexture_obdt1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_k8psr")
 theme_override_styles/normal = SubResource("StyleBoxTexture_5qalk")
-text = "MENU"
+text = "BACK"
 
 [node name="ConfirmLabel" type="Label" parent="."]
 offset_left = 553.0
@@ -184,13 +216,23 @@ sprite_frames = SubResource("SpriteFrames_1hvqw")
 animation = &"Enter Key"
 
 [node name="ShadowSpike" type="AnimatedSprite2D" parent="."]
-position = Vector2(576, 357)
+position = Vector2(373, 270)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ca2df")
 animation = &"Shadow Spike Idle"
 
 [node name="ShadowKitty" type="AnimatedSprite2D" parent="."]
-position = Vector2(847, 260)
+position = Vector2(807, 245)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_cpgxc")
 animation = &"Shadow Kitty Idle"
+
+[node name="ShadowBirdo" type="AnimatedSprite2D" parent="."]
+position = Vector2(805, 428)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1f24w")
+
+[node name="ShadowFrog" type="AnimatedSprite2D" parent="."]
+position = Vector2(375, 432)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_eot8v")
