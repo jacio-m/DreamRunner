@@ -89,6 +89,16 @@ func _ready():
 			timer.timeout.connect(func(): jawbreaker_effect = false)
 			add_child(timer)
 			timer.start()}
+	
+	var flying_spawn_timer := Timer.new()
+	flying_spawn_timer.one_shot = true
+	add_child(flying_spawn_timer)
+	flying_spawn_timer.timeout.connect(func(): 
+		generate_flying_obs()
+		flying_spawn_timer.wait_time = randf_range(4.0, 8.0)
+		flying_spawn_timer.start())
+	flying_spawn_timer.wait_time = randf_range(4.0, 8.0)
+	flying_spawn_timer.start()
 			
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
 	screen_size = get_viewport().get_visible_rect().size
@@ -114,7 +124,6 @@ func new_game():
 		obs.queue_free()
 	obstacles.clear()
 	
-	
 	$Player.position = PLAYER_START_POS 
 	$Player.velocity = Vector2i(0, 0)
 	$Camera2D.position = CAM_START_POS
@@ -136,7 +145,6 @@ func _process(delta):
 			speed = MAX_SPEED
 			
 		generate_obs()
-		generate_flying_obs()
 		generate_items()
 		
 		$Player.position.x += speed * delta
@@ -202,11 +210,10 @@ func generate_obs():
 		add_obs(obs, obs_x, obs_y)
 		
 func generate_flying_obs():
-	if flying_obstacles.is_empty() or last_flying_obs.position.x < $Camera2D.position.x + randi_range(1000, 2000):
 		var obs_flying_type = flying_obstacles_types[randi() % flying_obstacles_types.size()]
 		var flying_obs = obs_flying_type.instantiate()
-		var fly_x: int = $Camera2D.position.x + screen_size.x + randi_range(4000, 6000)
-		var fly_y: int = $Camera2D.position.y - randi_range(20, 60)
+		var fly_x: int = $Camera2D.position.x + screen_size.x + randi_range(1000, 2000)
+		var fly_y: int = $Camera2D.position.y - randi_range(20, 80)
 		last_flying_obs = flying_obs
 		add_flying_obs(flying_obs, fly_x, fly_y)
 	

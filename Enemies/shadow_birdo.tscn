@@ -25,7 +25,7 @@ script = ExtResource("1_jt1aq")
 scale = Vector2(2, 1.5)
 sprite_frames = SubResource("SpriteFrames_4tqdm")
 animation = &"Enemy Idle"
-frame_progress = 0.107044
+frame_progress = 0.862561
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1, -2)
