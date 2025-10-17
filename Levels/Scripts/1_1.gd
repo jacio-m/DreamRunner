@@ -1,11 +1,7 @@
 extends Node
 
 var shadow_blob = preload("res://Enemies/shadow_blob.tscn")
-var shadow_spike = preload("res://Enemies/shadow_spike.tscn")
-var shadow_kitty = preload("res://Enemies/shadow_kitty.tscn")
-var shadow_frog = preload("res://Enemies/shadow_frog.tscn")
-var shadow_birdo = preload("res://Enemies/shadow_birdo.tscn")
-#maybe some other enemies later on
+
 var pillow_item = preload("res://Items/Scenes/pillow.tscn")
 var feather_item = preload("res://Items/Scenes/feather.tscn")
 var teddy_bear_item = preload("res://Items/Scenes/teddy_bear.tscn")
@@ -14,18 +10,16 @@ var chocolatebar_item = preload("res://Items/Scenes/chocolatebar.tscn")
 var jawbreaker_item = preload("res://Items/Scenes/jawbreaker.tscn")
 var item_effects := {}
 
-var flying_obstacles_types := [shadow_birdo]
-var flying_obstacles: Array
-var obstacle_types := [shadow_blob, shadow_spike, shadow_kitty]
+var obstacle_types := [shadow_blob]
 var obstacles : Array
-var item_types := [feather_item, pillow_item, teddy_bear_item, lollipop_item, chocolatebar_item]
+var item_types := [feather_item, pillow_item]
 var items: Array
 
 const PLAYER_START_POS := Vector2i(155, 550)
 const CAM_START_POS := Vector2i(576, 324)
 
 var speed : float
-const START_SPEED : float = 800.0
+const START_SPEED : float = 1000.0
 const MAX_SPEED : float = 1400.0
 var screen_size : Vector2i
 var ground_height : int
@@ -42,11 +36,10 @@ var progress_smoothing : float = 5.0
 var lollipop_effect : bool
 var jawbreaker_effect : bool
 var chocolatebar_effect : bool
-var flying_spawn_timer: Timer
+var stage_finished : bool = false
 
 func _ready():
-	item_effects = {
-		feather_item.resource_path: func(item):
+	item_effects = {feather_item.resource_path: func(item):
 			MusicManager.play_SFX("res://Sounds/item_collected.ogg")
 			GameData.feather_count += 2 if lollipop_effect else 1,
 			
@@ -90,14 +83,6 @@ func _ready():
 			timer.timeout.connect(func(): jawbreaker_effect = false)
 			add_child(timer)
 			timer.start()}
-	
-	flying_spawn_timer = Timer.new()
-	flying_spawn_timer.one_shot = true
-	add_child(flying_spawn_timer)
-	flying_spawn_timer.timeout.connect(func(): 
-		generate_flying_obs()
-		flying_spawn_timer.wait_time = randf_range(4.0, 8.0)
-		flying_spawn_timer.start())
 			
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
 	screen_size = get_viewport().get_visible_rect().size
@@ -133,16 +118,15 @@ func new_game():
 	$GameOver.visible = false
 	FadeAnimation.fade_in()
 	
-	#for testing new items
-	#await get_tree().create_timer(5).timeout
-	#spawn_test()
-	
 func _process(delta):
 	if game_running:
 		speed = START_SPEED + distance / SPEED_MODIFIER 
 		if speed > MAX_SPEED:
 			speed = MAX_SPEED
 			
+		distance_gain = speed * delta
+		distance += distance_gain
+		
 		generate_obs()
 		generate_items()
 		
@@ -152,11 +136,6 @@ func _process(delta):
 		var cam_left = $Camera2D.position.x - screen_size.x / 2 + 30
 		var cam_right = $Camera2D.position.x + screen_size.x / 2 - 30
 		$Player.position.x = clamp($Player.position.x, cam_left, cam_right)
-		
-		distance_gain = speed * delta
-		if lollipop_effect == true:
-			distance_gain *= 2
-		distance += distance_gain
 		
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
 			$Ground.position.x += screen_size.x
@@ -169,17 +148,10 @@ func _process(delta):
 		for obs in obstacles:
 			if obs.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_obs(obs)
-				
-		for flying_obs in flying_obstacles:
-			if flying_obs.position.x < ($Camera2D.position.x - screen_size.x):
-				remove_flying_obs(flying_obs)
 		
 		for item in items:
 			if item.position.x < ($Camera2D.position.x - screen_size.x):
 				remove_item(item)
-		
-		if jawbreaker_effect == true:
-			apply_jawbreaker_effect(delta)
 				
 		var final_progress = float($Player.double_jump) / 3 * 100
 		current_progress = lerp(current_progress, final_progress, delta * progress_smoothing)
@@ -190,18 +162,11 @@ func _process(delta):
 			game_running = true
 			$Player.input_enabled = true
 			$HUD.get_node("StartLabel").visible = false
-			flying_spawn_timer.wait_time = randf_range(4.0, 8.0)
-			flying_spawn_timer.start()
 
-#= 
 func generate_obs():
 	if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 50 + randi_range(0, 400):
 		var obstacle_type 
-		var obs_prob = randi() % 101
-		if obs_prob < 90:
-			obstacle_type = obstacle_types[randi() % obstacle_types.size()]
-		else:
-			obstacle_type = shadow_frog
+		obstacle_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs = obstacle_type.instantiate()
 		var obs_height = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("Enemy Idle", 0).get_size().y
 		var obs_scale = obs.get_node("AnimatedSprite2D").scale
@@ -209,26 +174,15 @@ func generate_obs():
 		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 25
 		last_obs = obs
 		add_obs(obs, obs_x, obs_y)
-		
-func generate_flying_obs():
-		var obs_flying_type = flying_obstacles_types[randi() % flying_obstacles_types.size()]
-		var flying_obs = obs_flying_type.instantiate()
-		var fly_x: int = $Camera2D.position.x + screen_size.x + randi_range(1000, 2000)
-		var fly_y: int = $Camera2D.position.y - randi_range(20, 80)
-		last_flying_obs = flying_obs
-		add_flying_obs(flying_obs, fly_x, fly_y)
-	
 
 func generate_items():
 	if items.is_empty() or last_item.position.x < $Camera2D.position.x + randi_range(100, 500):
 		var item_type
 		var item_prob = randi() % 101
-		if item_prob < 89:
+		if item_prob < 91:
 			item_type = feather_item
-		elif item_prob < 98:
+		elif item_prob <= 100:
 			item_type = pillow_item
-		else:
-			item_type = [teddy_bear_item, lollipop_item, chocolatebar_item, jawbreaker_item][randi() % 4]
 		var item = item_type.instantiate()
 		var item_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 2000)
 		var item_y: int = $Camera2D.position.y - randi_range(10, 30)
@@ -251,19 +205,9 @@ func add_obs(obs, x, y):
 	add_child(obs)
 	obstacles.append(obs)
 
-func add_flying_obs(obs, x, y):
-	obs.position = Vector2i(x, y)
-	obs.body_entered.connect(hit_obs)
-	add_child(obs)
-	flying_obstacles.append(obs)
-
 func remove_obs(obs):
 	obs.queue_free()
 	obstacles.erase(obs)
-	
-func remove_flying_obs(flying_obs):
-	flying_obs.queue_free()
-	flying_obstacles.erase(flying_obs)
 	
 func remove_item(item):
 	item.queue_free()
@@ -313,16 +257,3 @@ func update_HUD():
 	$HUD.get_node("LollipopOn").visible = lollipop_effect
 	$HUD.get_node("ChocolateBarOn").visible = chocolatebar_effect
 	$HUD.get_node("DoubleJump").value = current_progress
-
-#for testing new items
-func spawn_test():
-		var test = chocolatebar_item.instantiate()
-		var test2 = lollipop_item.instantiate()
-		var test3 = jawbreaker_item.instantiate()
-		var test4 = teddy_bear_item.instantiate()
-		var x = $Camera2D.position.x + 300
-		var y = $Camera2D.position.y - 20
-		add_item(test, x, y)
-		add_item(test2, x, y)
-		add_item(test3, x, y)
-		add_item(test4, x, y)
