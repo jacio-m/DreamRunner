@@ -14,6 +14,7 @@ func _ready():
 	$"../NavigateLabel/RightKey".play()
 	$Back/BackButton.pressed.connect(back)
 	$"UpRow/1-1".pressed.connect(play1_1)
+	$"UpRow/1-2".pressed.connect(play1_2)
 	lock_stages()
 	enable_stages()
 
@@ -24,6 +25,14 @@ func play1_1():
 	$"UpRow/1-1".add_theme_stylebox_override("normal", pressed_style)
 	FadeAnimation.fade_to_scene("res://Levels/Scenes/1_1.tscn")
 
+func play1_2():
+	MusicManager.play_SFX("res://Sounds/entersound.ogg")
+	$"UpRow/1-2".release_focus()
+	var pressed_style = $"UpRow/1-2".get("theme_override_styles/pressed")
+	$"UpRow/1-2".add_theme_stylebox_override("normal", pressed_style)
+	FadeAnimation.fade_to_scene("res://Levels/Scenes/1_2.tscn")
+	$"UpRow/1-1".disabled = true
+	
 func back():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$Back/BackButton.release_focus()

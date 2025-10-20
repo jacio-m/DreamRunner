@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5rdlu5lxlxf7"]
+
+[ext_resource type="PackedScene" uid="uid://c45dfb07a8s8g" path="res://Levels/Scenes/ground.tscn" id="1_imnnp"]
+[ext_resource type="Script" uid="uid://di10j4r57frxj" path="res://Levels/Scripts/1_2.gd" id="1_m66q3"]
+[ext_resource type="PackedScene" uid="uid://r7k2f6vqyrs8" path="res://Player/player.tscn" id="2_irg7n"]
+[ext_resource type="PackedScene" uid="uid://c4xehiik8vl5x" path="res://HUD/hud.tscn" id="3_m66q3"]
+[ext_resource type="PackedScene" uid="uid://ciihrub27hd6i" path="res://Levels/Scenes/bg.tscn" id="4_n6cj3"]
+[ext_resource type="PackedScene" uid="uid://1m2uljx22onk" path="res://HUD/game_over.tscn" id="5_15g65"]
+[ext_resource type="Texture2D" uid="uid://2ux5yd301bh4" path="res://Levels/Sprites/cloudparticle.png" id="6_idjij"]
+[ext_resource type="PackedScene" uid="uid://c8p6fwx2bejai" path="res://HUD/stage_clear.tscn" id="7_63ffh"]
+
+[node name="1-2" type="Node"]
+script = ExtResource("1_m66q3")
+
+[node name="Ground" parent="." instance=ExtResource("1_imnnp")]
+position = Vector2(0, -74)
+
+[node name="Player" parent="." instance=ExtResource("2_irg7n")]
+position = Vector2(153, 489)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("3_m66q3")]
+
+[node name="BG" parent="." instance=ExtResource("4_n6cj3")]
+
+[node name="GameOver" parent="." instance=ExtResource("5_15g65")]
+process_mode = 2
+
+[node name="CloudParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 60
+texture = ExtResource("6_idjij")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.26
+randomness = 0.3
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 6.0
+
+[node name="StageClear" parent="." instance=ExtResource("7_63ffh")]
+process_mode = 2
