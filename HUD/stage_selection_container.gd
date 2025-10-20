@@ -1,6 +1,7 @@
 extends VBoxContainer
 
 func _ready():
+	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(intro cutted).ogg")
 	$"UpRow/1-1".focus_entered.disconnect(_on__focus_entered)
 	$"UpRow/1-1".grab_focus()
 	$"UpRow/1-1".focus_entered.connect(_on__focus_entered)
@@ -19,7 +20,7 @@ func play1_1():
 	$"UpRow/1-1".release_focus()
 	var pressed_style = $"UpRow/1-1".get("theme_override_styles/pressed")
 	$"UpRow/1-1".add_theme_stylebox_override("normal", pressed_style)
-	FadeAnimation.fade_to_scene("res://HUD/mode_select.tscn")
+	FadeAnimation.fade_to_scene("res://Levels/Scenes/1_1.tscn")
 
 func back():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")

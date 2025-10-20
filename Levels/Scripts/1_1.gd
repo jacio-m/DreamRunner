@@ -119,6 +119,7 @@ func new_game():
 	
 	$HUD.get_node("StartLabel").visible = true
 	$GameOver.visible = false
+	$StageClear.visible = false
 	FadeAnimation.fade_in()
 	
 func _process(delta):
@@ -274,3 +275,5 @@ func finish_stage():
 		GameData.stage_1_1_clear = true
 		$Player.input_enabled = false
 		$StageClear.visible = true
+		get_tree().paused = true
+		$StageClear.get_node("StageClearButtons/NextButton").grab_focus()
