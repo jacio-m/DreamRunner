@@ -13,7 +13,10 @@ const GRAVITY_WHILE_HOLD = 900
 
 func _physics_process(delta):
 	if not input_enabled:
+		velocity.x = 0
+		velocity.y += GRAVITY * delta
 		$AnimatedSprite2D.play("Player Idle")
+		move_and_slide()
 		return
 		
 	if jump_pressed and velocity.y < 0:

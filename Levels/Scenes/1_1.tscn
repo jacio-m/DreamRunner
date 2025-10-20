@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwfyy0xm1cgkw"]
+[gd_scene load_steps=9 format=3 uid="uid://cwfyy0xm1cgkw"]
 
 [ext_resource type="PackedScene" uid="uid://c45dfb07a8s8g" path="res://Levels/Scenes/ground.tscn" id="1_blrie"]
 [ext_resource type="Script" uid="uid://qv6g4nraxgyu" path="res://Levels/Scripts/1_1.gd" id="1_d4k8q"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ciihrub27hd6i" path="res://Levels/Scenes/bg.tscn" id="4_1wjfb"]
 [ext_resource type="PackedScene" uid="uid://1m2uljx22onk" path="res://HUD/game_over.tscn" id="5_jey4r"]
 [ext_resource type="Texture2D" uid="uid://2ux5yd301bh4" path="res://Levels/Sprites/cloudparticle.png" id="6_34sk7"]
+[ext_resource type="PackedScene" uid="uid://c8p6fwx2bejai" path="res://HUD/stage_clear.tscn" id="8_bf4kk"]
 
 [node name="1-1" type="Node"]
 script = ExtResource("1_d4k8q")
@@ -40,3 +41,6 @@ initial_velocity_min = 50.0
 initial_velocity_max = 100.0
 scale_amount_min = 2.0
 scale_amount_max = 6.0
+
+[node name="StageClear" parent="." instance=ExtResource("8_bf4kk")]
+visible = false

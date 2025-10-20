@@ -38,6 +38,7 @@ var jawbreaker_effect : bool
 var chocolatebar_effect : bool
 var stage_finished : bool = false
 var displayed_distance: int
+var enable_genaration: bool = false
 
 func _ready():
 	item_effects = {feather_item.resource_path: func(item):
@@ -102,6 +103,7 @@ func new_game():
 	get_tree().paused = false
 	$Player.input_enabled = false
 	$Player.shield = false
+	enable_genaration = true
 	enable_items()
 	update_HUD()
 	
@@ -131,20 +133,22 @@ func _process(delta):
 		generate_obs()
 		generate_items()
 		
-		$Player.position.x += speed * delta
-		$Camera2D.position.x += speed * delta
-		
-		var cam_left = $Camera2D.position.x - screen_size.x / 2 + 30
-		var cam_right = $Camera2D.position.x + screen_size.x / 2 - 30
-		$Player.position.x = clamp($Player.position.x, cam_left, cam_right)
+		if stage_finished == false:
+			$Player.position.x += speed * delta
+			$Camera2D.position.x += speed * delta
+			
+			var cam_left = $Camera2D.position.x - screen_size.x / 2 + 30
+			var cam_right = $Camera2D.position.x + screen_size.x / 2 - 30
+			$Player.position.x = clamp($Player.position.x, cam_left, cam_right)
 		
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
 			$Ground.position.x += screen_size.x
-			
-		if $Player.is_on_floor():
-			$CloudParticle.position = $Player.position
-			$CloudParticle.position.y += 40
-			$CloudParticle.emitting = true
+		
+		if stage_finished == false:
+			if $Player.is_on_floor():
+				$CloudParticle.position = $Player.position
+				$CloudParticle.position.y += 40
+				$CloudParticle.emitting = true
 			
 		for obs in obstacles:
 			if obs.position.x < ($Camera2D.position.x - screen_size.x):
@@ -167,30 +171,32 @@ func _process(delta):
 	finish_stage()
 
 func generate_obs():
-	if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 50 + randi_range(0, 400):
-		var obstacle_type 
-		obstacle_type = obstacle_types[randi() % obstacle_types.size()]
-		var obs = obstacle_type.instantiate()
-		var obs_height = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("Enemy Idle", 0).get_size().y
-		var obs_scale = obs.get_node("AnimatedSprite2D").scale
-		var obs_x : int = $Camera2D.position.x + screen_size.x + randi_range(50, 300)
-		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 25
-		last_obs = obs
-		add_obs(obs, obs_x, obs_y)
+	if enable_genaration == true:
+		if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 50 + randi_range(0, 400):
+			var obstacle_type 
+			obstacle_type = obstacle_types[randi() % obstacle_types.size()]
+			var obs = obstacle_type.instantiate()
+			var obs_height = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("Enemy Idle", 0).get_size().y
+			var obs_scale = obs.get_node("AnimatedSprite2D").scale
+			var obs_x : int = $Camera2D.position.x + screen_size.x + randi_range(50, 300)
+			var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 25
+			last_obs = obs
+			add_obs(obs, obs_x, obs_y)
 
 func generate_items():
-	if items.is_empty() or last_item.position.x < $Camera2D.position.x + randi_range(100, 500):
-		var item_type
-		var item_prob = randi() % 101
-		if item_prob < 91:
-			item_type = feather_item
-		elif item_prob <= 100:
-			item_type = pillow_item
-		var item = item_type.instantiate()
-		var item_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 2000)
-		var item_y: int = $Camera2D.position.y - randi_range(10, 30)
-		last_item = item
-		add_item(item, item_x, item_y)
+	if enable_genaration == true:
+		if items.is_empty() or last_item.position.x < $Camera2D.position.x + randi_range(100, 500):
+			var item_type
+			var item_prob = randi() % 101
+			if item_prob < 91:
+				item_type = feather_item
+			elif item_prob <= 100:
+				item_type = pillow_item
+			var item = item_type.instantiate()
+			var item_x: int = $Camera2D.position.x + screen_size.x + randi_range(300, 2000)
+			var item_y: int = $Camera2D.position.y - randi_range(10, 30)
+			last_item = item
+			add_item(item, item_x, item_y)
 		
 func add_item(item, x, y):
 	item.position = Vector2i(x, y)
@@ -263,7 +269,8 @@ func update_HUD():
 
 func finish_stage():
 	if displayed_distance > 200:
+		enable_genaration = false
 		stage_finished = true
 		GameData.stage_1_1_clear = true
-	if GameData.stage_1_1_clear == true:
-		print("ye boi, finished")
+		$Player.input_enabled = false
+		$StageClear.visible = true
