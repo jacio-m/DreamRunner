@@ -1,6 +1,8 @@
 extends VBoxContainer
 
 func _ready():
+	if get_tree().paused == true:
+		get_tree().paused = false
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(intro cutted).ogg")
 	$"UpRow/1-1".focus_entered.disconnect(_on__focus_entered)
 	$"UpRow/1-1".grab_focus()

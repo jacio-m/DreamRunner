@@ -81,7 +81,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxTexture_fox26")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u3met")
 theme_override_styles/normal = SubResource("StyleBoxTexture_h62o8")
-text = "MAIN MENU"
+text = "BACK"
 
 [connection signal="focus_entered" from="VBoxContainer/Button" to="VBoxContainer" method="_on_button_focus_entered"]
 [connection signal="focus_entered" from="VBoxContainer/MenuButton" to="VBoxContainer" method="_on_menu_button_focus_entered"]

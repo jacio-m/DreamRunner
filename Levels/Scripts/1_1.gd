@@ -89,12 +89,6 @@ func _ready():
 	MusicManager.play_music("res://Sounds/Takashi Lee - Dream sweet-(main cutted).ogg")
 	screen_size = get_viewport().get_visible_rect().size
 	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
-	$GameOver.get_node("VBoxContainer/Button").pressed.connect(func():
-		MusicManager.play_SFX("res://Sounds/entersound.ogg")
-		await FadeAnimation.fade_to_scene(get_tree().current_scene.scene_file_path))
-	$GameOver.get_node("VBoxContainer/MenuButton").pressed.connect(func():
-		MusicManager.play_SFX("res://Sounds/entersound.ogg")
-		await FadeAnimation.fade_to_scene("res://HUD/main_menu.tscn"))
 	new_game()
 	
 func new_game():
