@@ -37,6 +37,7 @@ var lollipop_effect : bool
 var jawbreaker_effect : bool
 var chocolatebar_effect : bool
 var stage_finished : bool = false
+var displayed_distance: int
 
 func _ready():
 	item_effects = {feather_item.resource_path: func(item):
@@ -162,6 +163,8 @@ func _process(delta):
 			game_running = true
 			$Player.input_enabled = true
 			$HUD.get_node("StartLabel").visible = false
+	
+	finish_stage()
 
 func generate_obs():
 	if obstacles.is_empty() or last_obs.position.x < $Camera2D.position.x + 50 + randi_range(0, 400):
@@ -249,7 +252,7 @@ func apply_jawbreaker_effect(delta):
 		item.position += direction * 300 * delta
 
 func update_HUD():
-	var displayed_distance = distance / DISTANCE_MODIFIER
+	displayed_distance = distance / DISTANCE_MODIFIER
 	$HUD.get_node("DistanceLabel").text = "DISTANCE: " + str(displayed_distance) + " m"
 	$HUD.get_node("FeatherLabel").text = str(GameData.feather_count)
 	$HUD.get_node("ShieldOn").visible = $Player.shield
@@ -257,3 +260,10 @@ func update_HUD():
 	$HUD.get_node("LollipopOn").visible = lollipop_effect
 	$HUD.get_node("ChocolateBarOn").visible = chocolatebar_effect
 	$HUD.get_node("DoubleJump").value = current_progress
+
+func finish_stage():
+	if displayed_distance > 200:
+		stage_finished = true
+		GameData.stage_1_1_clear = true
+	if GameData.stage_1_1_clear == true:
+		print("ye boi, finished")
