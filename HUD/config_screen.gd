@@ -12,6 +12,5 @@ func _ready():
 func main_menu():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$VolumeSliders/BackButton.release_focus()
-	var pressed_style = $VolumeSliders/BackButton.get("theme_override_styles/pressed")
-	$VolumeSliders/BackButton.add_theme_stylebox_override("normal", pressed_style)
+	$VolumeSliders/BackButton.disabled = true
 	FadeAnimation.fade_to_scene("res://HUD/main_menu.tscn")

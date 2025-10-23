@@ -180,7 +180,7 @@ func generate_obs():
 			var obs = obstacle_type.instantiate()
 			var obs_height = obs.get_node("AnimatedSprite2D").sprite_frames.get_frame_texture("Enemy Idle", 0).get_size().y
 			var obs_scale = obs.get_node("AnimatedSprite2D").scale
-			var obs_x : int = $Camera2D.position.x + screen_size.x + randi_range(50, 300)
+			var obs_x : int = $Camera2D.position.x + screen_size.x + randi_range(50, 1000)
 			var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 25
 			last_obs = obs
 			add_obs(obs, obs_x, obs_y)

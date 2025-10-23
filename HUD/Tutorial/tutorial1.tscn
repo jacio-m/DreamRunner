@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bcaxvcr3gedc"]
+[gd_scene load_steps=45 format=3 uid="uid://bcaxvcr3gedc"]
 
 [ext_resource type="Script" uid="uid://bq5qravcbtof0" path="res://HUD/Tutorial/tutorial1.gd" id="1_8naw7"]
 [ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="2_50vq6"]
@@ -36,6 +36,9 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gjqde"]
 texture = ExtResource("6_e3s5v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8psr"]
+texture = ExtResource("7_iq1kt")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vvalj"]
 texture = ExtResource("7_iq1kt")
@@ -272,12 +275,14 @@ offset_bottom = 313.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_colors/font_disabled_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("3_0r27a")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxTexture_gjqde")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_k8psr")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_vvalj")
 theme_override_styles/normal = SubResource("StyleBoxTexture_62lem")
 text = "NEXT"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ctjafiybm7sdy"]
+[gd_scene load_steps=26 format=3 uid="uid://ctjafiybm7sdy"]
 
 [ext_resource type="Texture2D" uid="uid://b83yt54qlg0qg" path="res://Levels/Sprites/BG Sprites/tutorialBG.png" id="1_fioy7"]
 [ext_resource type="FontFile" uid="uid://eiv0e5a5eppv" path="res://HUD/Fonts/PixelatedEleganceRegular-ovyAA.ttf" id="2_xbaqf"]
@@ -21,9 +21,6 @@
 texture = ExtResource("3_v1ofa")
 expand_margin_top = 45.0
 expand_margin_bottom = 45.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swy5m"]
-texture = ExtResource("4_am3uf")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1shu"]
 texture = ExtResource("4_am3uf")
@@ -160,7 +157,7 @@ theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("2_xbaqf")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxTexture_vmj5m")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_swy5m")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_k1shu")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_k1shu")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ihosy")
 text = "1-1"
@@ -323,12 +320,14 @@ alignment = 1
 custom_minimum_size = Vector2(170, 50)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_disabled_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("2_xbaqf")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxTexture_vmj5m")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_k1shu")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_k1shu")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ihosy")
 text = "BACK"

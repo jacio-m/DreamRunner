@@ -14,6 +14,5 @@ func _ready():
 func next():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$BackButton.release_focus()
-	var pressed_style = $BackButton.get("theme_override_styles/pressed")
-	$BackButton.add_theme_stylebox_override("normal", pressed_style)
+	$BackButton.disabled = true
 	FadeAnimation.fade_to_scene("res://HUD/Tutorial/tutorial2.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dqgwbeljp3ujc"]
+[gd_scene load_steps=39 format=3 uid="uid://dqgwbeljp3ujc"]
 
 [ext_resource type="Script" uid="uid://yfc80vp1mx8r" path="res://main_menu.gd" id="1_tssjr"]
 [ext_resource type="Texture2D" uid="uid://v6uyn720apd5" path="res://Player/Idle Animation/child_idle1.png" id="2_l7hc5"]
@@ -44,6 +44,9 @@ animations = [{
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gf600"]
 texture = ExtResource("9_rdytk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llogi"]
+texture = ExtResource("8_tukxf")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tukxf"]
 texture = ExtResource("8_tukxf")
@@ -190,11 +193,13 @@ script = ExtResource("6_qs2e7")
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_disabled_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("7_xudqj")
 theme_override_styles/focus = SubResource("StyleBoxTexture_gf600")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_llogi")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tukxf")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rdytk")
 text = "PLAY"
@@ -203,11 +208,13 @@ text = "PLAY"
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_disabled_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("7_xudqj")
 theme_override_styles/focus = SubResource("StyleBoxTexture_gf600")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_llogi")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tukxf")
 theme_override_styles/normal = SubResource("StyleBoxTexture_rdytk")
 text = "SHOP"
@@ -216,11 +223,13 @@ text = "SHOP"
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_disabled_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("7_xudqj")
 theme_override_styles/focus = SubResource("StyleBoxTexture_4rt0k")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_llogi")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_4bpgo")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t7sjn")
 text = "SETTINGS"
@@ -229,11 +238,13 @@ text = "SETTINGS"
 custom_minimum_size = Vector2(0, 65)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_disabled_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("7_xudqj")
 theme_override_styles/focus = SubResource("StyleBoxTexture_4rt0k")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_llogi")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_4bpgo")
 theme_override_styles/normal = SubResource("StyleBoxTexture_t7sjn")
 text = "QUIT"

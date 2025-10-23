@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d4e0i1sppeo6u"]
+[gd_scene load_steps=27 format=3 uid="uid://d4e0i1sppeo6u"]
 
 [ext_resource type="Script" uid="uid://cgqn4b1fq1vhq" path="res://HUD/config_screen.gd" id="1_xc0qo"]
 [ext_resource type="Texture2D" uid="uid://cl7f0evsun4u4" path="res://Levels/Sprites/BG Sprites/configBG.png" id="2_gphxe"]
@@ -90,6 +90,9 @@ animations = [{
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nvavp"]
 texture = ExtResource("6_uqe8c")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llogi"]
+texture = ExtResource("5_wiqho")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wiqho"]
 texture = ExtResource("5_wiqho")
@@ -241,12 +244,14 @@ value = 1.0
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_disabled_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_focus_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.819608, 0.513726, 1)
 theme_override_fonts/font = ExtResource("3_lul8w")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxTexture_nvavp")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_llogi")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_wiqho")
 theme_override_styles/normal = SubResource("StyleBoxTexture_uqe8c")
 text = "BACK"

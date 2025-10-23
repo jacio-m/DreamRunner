@@ -12,29 +12,25 @@ func _ready():
 func play_game():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$PlayButton.release_focus()
-	var pressed_style = $PlayButton.get("theme_override_styles/pressed")
-	$PlayButton.add_theme_stylebox_override("normal", pressed_style)
+	$PlayButton.disabled = true
 	FadeAnimation.fade_to_scene("res://HUD/mode_select.tscn")
 	
 func shop_scene():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$ShopButton.release_focus()
-	var pressed_style = $ShopButton.get("theme_override_styles/pressed")
-	$ShopButton.add_theme_stylebox_override("normal", pressed_style)
+	$ShopButton.disabled = true
 	FadeAnimation.fade_to_scene("res://HUD/shop.tscn")
 
 func config_scene():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$ConfigButton.release_focus()
-	var pressed_style = $ConfigButton.get("theme_override_styles/pressed")
-	$ConfigButton.add_theme_stylebox_override("normal", pressed_style)
+	$ConfigButton.disabled = true
 	FadeAnimation.fade_to_scene("res://HUD/config_screen.tscn")
 	
 func quit_game():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$QuitButton.release_focus()
-	var pressed_style = $ConfigButton.get("theme_override_styles/pressed")
-	$QuitButton.add_theme_stylebox_override("normal", pressed_style)
+	$QuitButton.disabled = true
 	FadeAnimation.quit_game()
 	
 func _on_play_button_focus_entered():

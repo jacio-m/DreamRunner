@@ -21,24 +21,21 @@ func _ready():
 func play1_1():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$"UpRow/1-1".release_focus()
-	var pressed_style = $"UpRow/1-1".get("theme_override_styles/pressed")
-	$"UpRow/1-1".add_theme_stylebox_override("normal", pressed_style)
+	$"UpRow/1-1".disabled = true
 	FadeAnimation.fade_to_scene("res://Levels/Scenes/1_1.tscn")
 
 func play1_2():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$"UpRow/1-2".release_focus()
-	var pressed_style = $"UpRow/1-2".get("theme_override_styles/pressed")
-	$"UpRow/1-2".add_theme_stylebox_override("normal", pressed_style)
+	$"UpRow/1-2".disabled = true
 	FadeAnimation.fade_to_scene("res://Levels/Scenes/1_2.tscn")
 	$"UpRow/1-1".disabled = true
 	
 func back():
 	MusicManager.play_SFX("res://Sounds/entersound.ogg")
 	$Back/BackButton.release_focus()
+	$Back/BackButton.disabled = true
 	$"UpRow/1-1".disabled = true
-	var pressed_style = $Back/BackButton.get("theme_override_styles/pressed")
-	$Back/BackButton.add_theme_stylebox_override("normal", pressed_style)
 	FadeAnimation.fade_to_scene("res://HUD/mode_select.tscn")
 
 func lock_stages():
