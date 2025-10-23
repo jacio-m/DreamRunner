@@ -38,7 +38,7 @@ var last_item
 var last_flying_obs
 var game_running : bool
 var current_progress: float = 0.0
-var progress_smoothing : float = 5.0
+var progress_smoothing : float = 7.0
 var lollipop_effect : bool
 var jawbreaker_effect : bool
 var chocolatebar_effect : bool

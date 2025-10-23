@@ -19,6 +19,7 @@ var items: Array
 const PLAYER_START_POS := Vector2i(155, 550)
 const CAM_START_POS := Vector2i(576, 324)
 
+var meta: int = 249
 var speed : float
 const START_SPEED : float = 1000.0
 const MAX_SPEED : float = 1400.0
@@ -32,8 +33,9 @@ var last_obs
 var last_item
 var last_flying_obs
 var game_running : bool
+var current_level_progress: float = 0.0
 var current_progress: float = 0.0
-var progress_smoothing : float = 5.0
+var progress_smoothing : float = 7.0
 var lollipop_effect : bool
 var jawbreaker_effect : bool
 var chocolatebar_effect : bool
@@ -115,6 +117,7 @@ func new_game():
 	$HUD.get_node("StartLabel").visible = true
 	$GameOver.visible = false
 	$StageClear.visible = false
+	$HUD.get_node("StageClear").visible = true
 	FadeAnimation.fade_in()
 	
 func _process(delta):
@@ -156,6 +159,9 @@ func _process(delta):
 				
 		var final_progress = float($Player.double_jump) / 3 * 100
 		current_progress = lerp(current_progress, final_progress, delta * progress_smoothing)
+		
+		var level_progress = float(displayed_distance) / meta * 100
+		current_level_progress = lerp(current_level_progress, level_progress, delta * progress_smoothing)
 		update_HUD()
 		
 	else:
@@ -262,9 +268,10 @@ func update_HUD():
 	$HUD.get_node("LollipopOn").visible = lollipop_effect
 	$HUD.get_node("ChocolateBarOn").visible = chocolatebar_effect
 	$HUD.get_node("DoubleJump").value = current_progress
+	$HUD.get_node("StageClear").value = current_level_progress
 
 func finish_stage():
-	if displayed_distance > 300:
+	if displayed_distance > meta:
 		enable_genaration = false
 		stage_finished = true
 		GameData.stage_1_1_clear = true
